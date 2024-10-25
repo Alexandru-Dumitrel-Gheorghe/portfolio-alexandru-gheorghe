@@ -1,0 +1,188 @@
+/* src/components/Certification/Certification.module.css */
+
+.certification {
+  padding: var(--padding);
+  background-color: var(--background-color-light);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.heading {
+  font-size: var(--font-size-large);
+  color: var(--primary-color);
+  margin-bottom: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Stiluri pentru cardul certificatului */
+.certificationCard {
+  background-color: var(--background-color-light);
+  border-radius: var(--border-radius);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  position: relative;
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+  max-width: 700px;
+  width: 100%;
+}
+
+.certificationCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.imageContainer {
+  height: 400px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.diplomaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.diplomaImage:hover {
+  transform: scale(1.1);
+}
+
+.viewIcon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: var(--overlay-background);
+  color: var(--white-color);
+  padding: 5px 10px;
+  border-radius: var(--border-radius);
+  font-size: 0.85rem;
+}
+
+.details {
+  padding: 20px;
+  text-align: center;
+  background-color: var(--background-color-light);
+}
+
+.title {
+  font-size: var(--font-size-medium);
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+.issuer {
+  font-size: var(--font-size-small);
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.description {
+  font-size: var(--font-size-small);
+  color: var(--text-color);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color var(--transition-speed),
+    transform var(--transition-speed);
+}
+
+.downloadButton:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.icon {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Stiluri pentru modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--modal-overlay-background);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalContent {
+  position: relative;
+  background-color: transparent;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.modalImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.closeButton {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeButton:hover {
+  background-color: var(--accent-color);
+}
+
+/* Responsivitate */
+@media (max-width: 768px) {
+  .certificationCard {
+    max-width: 100%;
+  }
+
+  .imageContainer {
+    height: 250px;
+  }
+
+  .title {
+    font-size: var(--font-size-medium);
+  }
+
+  .issuer {
+    font-size: var(--font-size-small);
+  }
+
+  .description {
+    font-size: var(--font-size-small);
+  }
+}

@@ -1,0 +1,126 @@
+/* src/components/Education.module.css */
+
+.education {
+  padding: var(--padding);
+  background-color: var(--background-color-light);
+  color: var(--text-color);
+  margin-top: 40px;
+}
+
+.heading {
+  text-align: center;
+  font-size: var(--font-size-large);
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.timeline {
+  position: relative;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--primary-color);
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  padding: 2rem 0;
+  position: relative;
+  width: 50%;
+}
+
+.timelineItem:nth-child(odd) {
+  left: 0;
+}
+
+.timelineItem:nth-child(even) {
+  left: 50%;
+}
+
+.content {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.timelineItem:nth-child(odd) .content {
+  margin-right: 1rem;
+}
+
+.timelineItem:nth-child(even) .content {
+  margin-left: 1rem;
+}
+
+.timelineItem::after {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  width: 20px;
+  height: 20px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.icon {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.degree {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.institution {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.detailsText {
+  font-size: var(--font-size-small);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timelineItem {
+    width: 100%;
+    left: 0;
+    padding-left: 40px;
+  }
+
+  .timelineItem:nth-child(even) {
+    left: 0;
+  }
+
+  .timelineItem .content {
+    margin: 0 0 1rem 0;
+  }
+
+  .timelineItem::after {
+    left: 20px;
+    transform: translateX(0);
+  }
+}

@@ -1,30 +1,37 @@
-/* src/styles/variables.css */
-
 :root {
-  /* Color Palette */
-  --primary-color: #4a90e2; /* Light Blue */
-  --secondary-color: #50e3c2; /* Turquoise */
-  --accent-color: #9013fe; /* Purple */
-  --text-color: #2c3e50; /* Dark Gray */
-  --background-color-light: #ecf0f1; /* Very Light Gray */
-  --background-color-dark: #34495e; /* Dark Bluish Gray */
-  --error-color: #e74c3c; /* Red */
+  /* Culori */
+  --primary-color: #3498db; /* Albastru deschis */
+  --secondary-color: #2ecc71; /* Verde deschis */
+  --accent-color: #e74c3c; /* Roșu coral */
+  --text-color: #2c3e50; /* Albastru închis */
+  --background-color-light: #ecf0f1; /* Gri foarte deschis */
+  --background-color-dark: #34495e; /* Albastru petrol */
 
-  /* Typography */
-  --font-family: "Open Sans", sans-serif;
+  /* Tipografie */
+  --font-family: "Roboto", sans-serif;
   --font-size-base: 16px;
-  --font-size-large: 2.5rem;
-  --font-size-medium: 1.75rem;
+  --font-size-large: 2rem;
+  --font-size-medium: 1.25rem;
   --font-size-small: 1rem;
 
   /* Layout */
   --max-width: 1200px;
-  --padding: 3rem 1.5rem;
+  --padding: 4rem 2rem;
   --border-radius: 10px;
+
+  /* Tranziții */
   --transition-speed: 0.3s;
+
+  /* Variabile pentru Modul Întunecat */
+  --dark-primary-color: #2980b9; /* Albastru mai închis */
+  --dark-secondary-color: #27ae60; /* Verde mai închis */
+  --dark-accent-color: #c0392b; /* Roșu mai închis */
+  --dark-text-color: #ecf0f1; /* Text deschis */
+  --dark-background-color-light: #2c3e50; /* Albastru închis */
+  --dark-background-color-dark: #1a252f; /* Albastru foarte închis */
 }
 
-/* Global Styles */
+/* Stiluri Globale */
 body {
   font-family: var(--font-family);
   background-color: var(--background-color-light);
@@ -49,6 +56,10 @@ h1 {
 }
 
 h2 {
+  font-size: var(--font-size-large);
+}
+
+h3 {
   font-size: var(--font-size-medium);
 }
 
@@ -70,9 +81,10 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Button Styling */
+/* Stilizare Butoane */
 button,
-.ctaButton {
+.ctaButton,
+a.buttonLink {
   font-family: var(--font-family);
   font-size: var(--font-size-small);
   background-color: var(--primary-color);
@@ -83,10 +95,12 @@ button,
   cursor: pointer;
   transition: background-color var(--transition-speed),
     transform var(--transition-speed);
+  text-align: center;
 }
 
 button:hover,
-.ctaButton:hover {
+.ctaButton:hover,
+a.buttonLink:hover {
   background-color: var(--accent-color);
   transform: translateY(-3px);
 }
@@ -103,7 +117,7 @@ img {
   border-radius: var(--border-radius);
 }
 
-/* Form Elements */
+/* Elemente de Form */
 input,
 textarea {
   font-family: var(--font-family);
@@ -122,13 +136,13 @@ textarea:focus {
   outline: none;
 }
 
-/* Media Queries for responsiveness */
+/* Media Queries pentru Responsivitate */
 @media (max-width: 768px) {
   :root {
-    --font-size-large: 2rem;
-    --font-size-medium: 1.25rem;
+    --font-size-large: 1.8rem;
+    --font-size-medium: 1.1rem;
     --font-size-small: 0.9rem;
-    --padding: 1rem;
+    --padding: 2rem 1rem;
   }
 
   h1 {
@@ -136,35 +150,14 @@ textarea:focus {
   }
 
   h2 {
+    font-size: var(--font-size-large);
+  }
+
+  h3 {
     font-size: var(--font-size-medium);
   }
 
   p {
     font-size: var(--font-size-small);
   }
-}
-
-/* Custom Scrollbar Styling */
-* {
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: var(--primary-color) var(--background-color-light); /* Firefox */
-}
-
-*::-webkit-scrollbar {
-  width: 8px;
-}
-
-*::-webkit-scrollbar-track {
-  background: var(--background-color-light);
-  border-radius: 10px;
-}
-
-*::-webkit-scrollbar-thumb {
-  background-color: var(--primary-color);
-  border-radius: 10px;
-  border: 2px solid var(--background-color-light);
-}
-
-*::-webkit-scrollbar-thumb:hover {
-  background-color: var(--accent-color);
 }

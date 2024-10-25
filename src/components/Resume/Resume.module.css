@@ -1,0 +1,130 @@
+/* src/components/Resume.module.css */
+
+.resume {
+  padding: var(--padding);
+  background-color: var(--background-color-light);
+  color: var(--text-color);
+  margin-top: 40px;
+}
+
+.heading {
+  text-align: center;
+  font-size: var(--font-size-large);
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+  font-weight: bold;
+}
+
+.resumeContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.resumeSection {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.resumeSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: var(--primary-color);
+}
+
+.resumeSection:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-medium);
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.sectionIcon {
+  margin-right: 0.5rem;
+  font-size: 1.5rem;
+  color: var(--accent-color);
+}
+
+.item {
+  margin-bottom: 1.5rem;
+}
+
+.itemTitle {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+}
+
+.itemSubtitle {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+  font-style: italic;
+}
+
+.itemDescription {
+  font-size: var(--font-size-small);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: var(--font-size-small);
+  transition: background-color var(--transition-speed),
+    transform var(--transition-speed);
+  margin: 2rem auto 0;
+  gap: 0.5rem;
+  width: 15%;
+}
+
+.downloadButton:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-3px);
+}
+
+.downloadIcon {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .resumeContent {
+    padding: 0 1rem;
+  }
+
+  .heading {
+    font-size: var(--font-size-medium);
+  }
+
+  .downloadButton {
+    width: 70%;
+    font-size: 0.9rem;
+  }
+}

@@ -1,0 +1,35 @@
+/* src/components/DarkModeToggle/DarkModeToggle.module.css */
+
+.toggleButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color var(--transition-speed),
+    transform var(--transition-speed);
+  z-index: 1000;
+}
+
+.toggleButton:hover {
+  background-color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .toggleButton {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+}

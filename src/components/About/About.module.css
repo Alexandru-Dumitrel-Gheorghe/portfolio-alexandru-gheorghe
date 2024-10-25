@@ -1,0 +1,176 @@
+/* src/components/About.module.css */
+
+.about {
+  padding: var(--padding);
+  background-color: var(--background-color-light);
+  color: var(--text-color);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profileImageContainer {
+  flex: 1;
+  max-width: 300px;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  border: 4px solid var(--primary-color);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.profileImageContainer:hover,
+.profileImageContainer:focus-within {
+  transform: scale(1.05);
+  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.3);
+}
+
+.profileImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.aboutText {
+  flex: 2;
+  text-align: center;
+  max-width: 600px;
+}
+
+.aboutText h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.aboutText p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.mission {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.socialIcons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.socialLink {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  transition: color var(--transition-speed), transform var(--transition-speed);
+}
+
+.socialLink:hover,
+.socialLink:focus {
+  color: var(--accent-color);
+  transform: scale(1.2);
+}
+
+.skillsSection {
+  margin-top: 4rem;
+}
+
+.skillsTitle {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.skillsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skillItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.skillInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skillIcon {
+  font-size: 2rem;
+}
+
+.skillDetails {
+  flex: 1;
+}
+
+.skillName {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.skillDescription {
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.progressBar {
+  width: 100%;
+  height: 10px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+  .mainContent {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .aboutText {
+    text-align: left;
+    max-width: 50%;
+  }
+
+  .socialIcons {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .aboutText {
+    text-align: center;
+  }
+}
