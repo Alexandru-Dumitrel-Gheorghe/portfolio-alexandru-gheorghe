@@ -70,7 +70,7 @@ const Contact = () => {
               <p
                 className={`${styles["text-blk"]} ${styles["contactus-subhead"]}`}
               >
-                Bitte zögern Sie nicht, uns zu kontaktieren.
+                Bitte zögern Sie nicht, mich zu kontaktieren.
               </p>
 
               {errorMessage && (
