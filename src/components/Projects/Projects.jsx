@@ -18,29 +18,31 @@ import { motion } from "framer-motion";
 const Projects = () => {
   const projectData = [
     {
-      title: "Produkt Timer",
+      title: "Task Timer",
       description:
-        "Entwicklung einer modernen Webanwendung mit React und Node.js.",
+        "The Product Timer Dashboard is a web-based application designed to help users track time spent on different products. It offers functionalities such as starting, pausing, and stopping timers for specific products under various categories. The app includes daily data storage, PDF report generation, and a real-time chart and calendar to visualize time spent on tasks. It supports dark mode and is fully responsive.",
       liveLink: "https://task-timerv1.netlify.app/",
-      gitLink: "https://github.com/alexandrugheorghe/produkt-timer",
+      gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/task-timer-app",
       image: require("../../assets/images/Timer.png"),
-      technologies: ["React", "CSS3", "Node.js"],
+      technologies: ["React", "CSS3", "Bootstrap", "Node.js", "MongoDB"],
     },
     {
-      title: "Portfolio Website",
+      title: "Wedding Photography",
       description:
-        "Eine interaktive Webseite, die JavaScript und MongoDB verwendet.",
+        "This project is a modern and professional website designed for wedding photography services. The website is built using React, CSS Modules, and various other tools to ensure responsiveness, animations, and ease of use. The website showcases photography portfolios, service packages, testimonials, a contact form, and more.",
       liveLink: "https://aleks-nikolic.netlify.app",
-      gitLink: "https://github.com/alexandrugheorghe/projekt2",
+      gitLink:
+        "https://github.com/Alexandru-Dumitrel-Gheorghe/Aleksander-Nikolic",
       image: require("../../assets/images/Aleks.png"),
       technologies: ["JavaScript", "HTML5", "MongoDB"],
     },
     {
-      title: "Kassen System",
+      title: "Kassa Pension",
       description:
-        "Ein responsives Designprojekt, das Bootstrap und Git verwendet.",
+        "Kassa is a luxurious vacation home located in Bran, Romania. This project is a React-based website designed to showcase the beauty and amenities of the Kassa property, allowing potential guests to explore rooms, facilities, and other offerings.",
       liveLink: "https://kassa-v1.netlify.app",
-      gitLink: "https://github.com/alexandrugheorghe/projekt3",
+      gitLink:
+        "https://github.com/Alexandru-Dumitrel-Gheorghe/Kassa-Pension-V2",
       image: require("../../assets/images/Kassa.png"),
       technologies: ["Bootstrap", "Git", "React"],
     },

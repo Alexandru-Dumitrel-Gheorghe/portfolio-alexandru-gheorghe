@@ -1,11 +1,18 @@
 :root {
-  /* Culori */
-  --primary-color: #3498db; /* Albastru deschis */
-  --secondary-color: #2ecc71; /* Verde deschis */
-  --accent-color: #e74c3c; /* Roșu coral */
-  --text-color: #2c3e50; /* Albastru închis */
-  --background-color-light: #ecf0f1; /* Gri foarte deschis */
-  --background-color-dark: #34495e; /* Albastru petrol */
+  --primary-color: #6e8efb;
+  --secondary-color: #50e3c2;
+  --text-color: #333333;
+  --background-color: #ffffff;
+  --border-color: #dddddd;
+  --hover-color: #5a7de1;
+  --font-family: "Arial", sans-serif;
+  --border-radius: 5px;
+  --font-size-small: 0.9rem;
+  --font-size-medium: 1.1rem;
+  --font-size-large: 1.8rem;
+  --padding: 2rem 1rem;
+  --transition-speed: 0.3s;
+  --accent-color: #ff4081;
 
   /* Tipografie */
   --font-family: "Roboto", sans-serif;
