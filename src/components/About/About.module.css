@@ -1,33 +1,59 @@
-/* src/components/About.module.css */
+@import "../../styles/variables.css";
 
+/* General Styles */
 .about {
   padding: var(--padding);
   background-color: var(--background-color-light);
   color: var(--text-color);
-  min-height: 100vh;
 }
 
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Main Content */
 .mainContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  width: 100%;
+  margin-bottom: 4rem;
 }
 
+/* Profile Image */
 .profileImageContainer {
   flex: 1;
   max-width: 300px;
+  width: 100%;
   overflow: hidden;
-  border-radius: var(--border-radius);
+  border-radius: var(
+    --border-radius
+  ); /* Changed from 50% to var(--border-radius) */
   border: 4px solid var(--primary-color);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   transition: transform var(--transition-speed),
     box-shadow var(--transition-speed);
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--accent-color)
+  );
+}
+
+.profileImageContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2); /* Adds a dark overlay */
 }
 
 .profileImageContainer:hover,
@@ -38,45 +64,50 @@
 
 .profileImage {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  opacity: 0.9; /* Slight transparency to blend with background */
 }
 
+/* About Text */
 .aboutText {
   flex: 2;
   text-align: center;
-  max-width: 600px;
+  max-width: 800px;
+  padding: 0 1rem;
 }
 
 .aboutText h2 {
-  font-size: 2rem;
+  font-size: var(--font-size-large);
   margin-bottom: 1rem;
   color: var(--primary-color);
 }
 
 .aboutText p {
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   line-height: 1.6;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .mission {
-  font-size: 1rem;
+  font-size: var(--font-size-medium);
   color: var(--secondary-color);
-  margin-top: 1rem;
+  margin-top: 2rem;
   font-style: italic;
 }
 
+/* Social Icons */
 .socialIcons {
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .socialLink {
   color: var(--primary-color);
-  font-size: 1.8rem;
+  font-size: 2rem;
   transition: color var(--transition-speed), transform var(--transition-speed);
 }
 
@@ -86,26 +117,37 @@
   transform: scale(1.2);
 }
 
+/* Skills Section */
 .skillsSection {
-  margin-top: 4rem;
+  width: 100%;
+  max-width: var(--max-width);
 }
 
 .skillsTitle {
-  font-size: 2rem;
+  font-size: var(--font-size-large);
   margin-bottom: 2rem;
   color: var(--primary-color);
   text-align: center;
 }
 
 .skillsList {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .skillItem {
-  display: flex;
-  flex-direction: column;
+  background-color: var(--background-color-light);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-speed),
+    box-shadow var(--transition-speed);
+}
+
+.skillItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .skillInfo {
@@ -115,7 +157,7 @@
 }
 
 .skillIcon {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .skillDetails {
@@ -123,23 +165,23 @@
 }
 
 .skillName {
-  font-size: 1.2rem;
+  font-size: var(--font-size-medium);
   color: var(--text-color);
   margin-bottom: 0.5rem;
 }
 
 .skillDescription {
-  font-size: 0.9rem;
+  font-size: var(--font-size-small);
   color: var(--text-color);
 }
 
 .progressBar {
   width: 100%;
   height: 10px;
-  background-color: #e0e0e0;
+  background-color: var(--background-color-dark);
   border-radius: 5px;
   overflow: hidden;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .progress {
@@ -172,5 +214,10 @@
 
   .aboutText {
     text-align: center;
+    padding: 0 1rem;
+  }
+
+  .skillsList {
+    grid-template-columns: 1fr;
   }
 }

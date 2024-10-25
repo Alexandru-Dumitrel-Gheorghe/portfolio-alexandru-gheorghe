@@ -127,21 +127,31 @@ const About = () => {
           >
             <h2>Über mich</h2>
             <p>
-              Hallo! Ich bin ein Frontend-Webentwickler, der seine Leidenschaft
-              während der Pandemie entdeckt hat. Im Jahr 2024 habe ich ein
-              Bootcamp für Frontend-Webentwicklung begonnen, um meine
-              Fähigkeiten zu vertiefen und mein Wissen zu erweitern.
+              Hallo! Ich bin ein hochmotivierter Frontend-Webentwickler mit
+              einer Leidenschaft für kreative und effiziente Lösungen. Meine
+              Reise begann während der Pandemie, als ich meine Begeisterung für
+              Webentwicklung entdeckte. Um meine Fähigkeiten zu vertiefen, habe
+              ich 2024 ein Bootcamp für Frontend-Webentwicklung abgeschlossen.
             </p>
             <p>
-              Dieses Portfolio wurde erstellt, um eine Firma zu finden, in der
-              ich meine Fähigkeiten einbringen und weiter wachsen kann. Ich bin
-              motiviert, in einem Team zu arbeiten und an spannenden Projekten
-              teilzunehmen.
+              Was mich von anderen unterscheidet, ist meine Fähigkeit, schnell
+              zu lernen und mich an neue Technologien anzupassen. Ich bringe
+              nicht nur technisches Wissen mit, sondern auch eine starke
+              Arbeitsmoral und den Wunsch, kontinuierlich zu wachsen und mich
+              weiterzuentwickeln.
+            </p>
+            <p>
+              Ich bin überzeugt, dass ich Ihrem Unternehmen einen Mehrwert
+              bieten kann, indem ich frische Ideen einbringe und effektiv im
+              Team arbeite. Meine Erfahrung in der Entwicklung
+              benutzerfreundlicher und responsiver Webanwendungen kann dazu
+              beitragen, Ihre Projekte auf das nächste Level zu heben.
             </p>
             <p className={styles.mission}>
               <em>
-                "Mein Ziel ist es, durch Kreativität und Engagement digitale
-                Erlebnisse zu schaffen, die beeindrucken."
+                "Mein Ziel ist es, durch Engagement und Innovation digitale
+                Erlebnisse zu schaffen, die einen bleibenden Eindruck
+                hinterlassen."
               </em>
             </p>
 

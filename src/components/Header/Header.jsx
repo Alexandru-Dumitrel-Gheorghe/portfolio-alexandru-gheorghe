@@ -1,3 +1,5 @@
+// src/components/Header.jsx
+
 import React from "react";
 import styles from "./Header.module.css";
 import profileImage from "../../assets/images/profilalex1.jpg";
@@ -29,49 +31,6 @@ const Header = () => {
     <header className={styles.header} id="home">
       <div className={styles.backgroundOverlay}></div>
       <div className={styles.content}>
-        {/* Text Section */}
-        <motion.div
-          className={styles.welcomeText}
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <h1>
-            Hallo, ich bin{" "}
-            <span className={styles.nameHighlight}>Alexandru Gheorghe</span>
-          </h1>
-          <ReactTypingEffect
-            text={[
-              "Frontend-Webentwickler",
-              "React-Spezialist",
-              "Kreativer Problemlöser",
-              "Technologie-Enthusiast",
-            ]}
-            speed={100}
-            eraseSpeed={50}
-            eraseDelay={2000}
-            typingDelay={500}
-            className={styles.typingEffect}
-          />
-          <p className={styles.description}>
-            Leidenschaftlicher Entwickler mit Fokus auf moderne Webtechnologien
-            und Benutzererfahrung.
-          </p>
-          <p className={styles.missionStatement}>
-            "Ich glaube an die Kraft der Technologie, um innovative Lösungen zu
-            schaffen, die das Leben der Menschen verbessern."
-          </p>
-          <Link
-            to="projects"
-            smooth={true}
-            duration={500}
-            className={styles.ctaButton}
-            aria-label="Seite zu meinen Projekten scrollen"
-          >
-            Meine Projekte ansehen
-          </Link>
-        </motion.div>
-
         {/* Profile Image Section */}
         <motion.div
           className={styles.profileImageContainer}
@@ -84,6 +43,50 @@ const Header = () => {
             alt="Profilbild von Alexandru Gheorghe"
             className={styles.profileImage}
           />
+        </motion.div>
+
+        {/* Text Section */}
+        <motion.div
+          className={styles.welcomeText}
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <h1>
+            Willkommen! Ich bin{" "}
+            <span className={styles.nameHighlight}>Alexandru Gheorghe</span>
+          </h1>
+          <ReactTypingEffect
+            text={[
+              "Motivierter Frontend-Entwickler",
+              "Lösungsorientierter Teamplayer",
+              "Stets lernbereit und engagiert",
+            ]}
+            speed={100}
+            eraseSpeed={50}
+            eraseDelay={2000}
+            typingDelay={500}
+            className={styles.typingEffect}
+          />
+          <p className={styles.description}>
+            Mit Leidenschaft für innovative Technologien und das Ziel,
+            außergewöhnliche digitale Erfahrungen zu schaffen, die einen
+            Unterschied machen.
+          </p>
+          <p className={styles.missionStatement}>
+            "Meine Motivation und Anpassungsfähigkeit heben mich von anderen ab.
+            Ich strebe danach, kontinuierlich zu wachsen und echten Mehrwert zu
+            bieten."
+          </p>
+          <Link
+            to="projects"
+            smooth={true}
+            duration={500}
+            className={styles.ctaButton}
+            aria-label="Zu meinen Projekten scrollen"
+          >
+            Meine Projekte ansehen
+          </Link>
         </motion.div>
       </div>
 

@@ -9,29 +9,28 @@ import { FaTimes, FaDownload } from "react-icons/fa";
 const Certification = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Function to toggle the modal view
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
   return (
     <section className={styles.certification} id="certification">
-      <h2 className={styles.heading}>Zertifikat</h2>
+      <h2 className={styles.heading}>Mein Zertifikat</h2>
 
-      <div className={styles.certificationCard}>
+      <motion.div className={styles.card} whileHover={{ scale: 1.05 }}>
         <div className={styles.imageContainer} onClick={toggleModal}>
           <img
             src={certificateImage}
-            alt="Diploma Dumitrel-Alexandru Gheorghe"
+            alt="Zertifikat von Dumitrel-Alexandru Gheorghe"
             className={styles.diplomaImage}
           />
-          <div className={styles.viewIcon}>
+          <div className={styles.overlay}>
             <span>Klicken zum Vergrößern</span>
           </div>
         </div>
 
         <div className={styles.details}>
-          <h3 className={styles.title}>Front-end Web Development</h3>
+          <h3 className={styles.title}>Front-End Webentwicklung</h3>
           <span className={styles.issuer}>IT School | 08.08.2024</span>
           <p className={styles.description}>
             Dieses Zertifikat wurde an Dumitrel-Alexandru Gheorghe verliehen für
@@ -46,9 +45,9 @@ const Certification = () => {
             Zertifikat herunterladen <FaDownload className={styles.icon} />
           </a>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Modal to display the certificate in full size */}
+      {/* Modal for the certificate */}
       {isModalOpen && (
         <div className={styles.modalOverlay} onClick={toggleModal}>
           <motion.div
@@ -64,7 +63,7 @@ const Certification = () => {
             </button>
             <img
               src={certificateImage}
-              alt="Diploma Dumitrel-Alexandru Gheorghe"
+              alt="Zertifikat von Dumitrel-Alexandru Gheorghe"
               className={styles.modalImage}
             />
           </motion.div>

@@ -24,7 +24,7 @@
 }
 
 .card {
-  background: var(--background-color-light);
+  background: white;
   border-radius: var(--border-radius);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -44,22 +44,6 @@
   width: 100%;
   height: 200px;
   overflow: hidden;
-}
-
-.imageContainer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
-  opacity: 0;
-  transition: opacity var(--transition-speed);
-}
-
-.card:hover .imageContainer::after {
-  opacity: 1;
 }
 
 .image {
@@ -91,6 +75,23 @@
   font-size: var(--font-size-small);
   color: var(--text-color);
   margin-bottom: 1rem;
+}
+
+.featureTitle {
+  font-weight: bold;
+  margin-top: 1rem;
+  color: var(--primary-color);
+}
+
+.featureList {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 1rem;
+}
+
+.featureItem {
+  font-size: 0.9rem;
+  color: var(--text-color);
 }
 
 .technologies {

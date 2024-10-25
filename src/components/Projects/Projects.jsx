@@ -20,7 +20,14 @@ const Projects = () => {
     {
       title: "Task Timer",
       description:
-        "The Product Timer Dashboard is a web-based application designed to help users track time spent on different products. It offers functionalities such as starting, pausing, and stopping timers for specific products under various categories. The app includes daily data storage, PDF report generation, and a real-time chart and calendar to visualize time spent on tasks. It supports dark mode and is fully responsive.",
+        "Die Product Timer Dashboard ist eine webbasierte Anwendung, die Nutzern hilft, die auf verschiedene Produkte verwendete Zeit zu verfolgen.",
+      features: [
+        "Timer starten, pausieren und stoppen",
+        "Tägliche Datenspeicherung",
+        "PDF-Berichtsgenerierung",
+        "Echtzeitdiagramm zur Visualisierung",
+        "Dunkelmodus und vollständig responsive",
+      ],
       liveLink: "https://task-timerv1.netlify.app/",
       gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/task-timer-app",
       image: require("../../assets/images/Timer.png"),
@@ -29,7 +36,13 @@ const Projects = () => {
     {
       title: "Wedding Photography",
       description:
-        "This project is a modern and professional website designed for wedding photography services. The website is built using React, CSS Modules, and various other tools to ensure responsiveness, animations, and ease of use. The website showcases photography portfolios, service packages, testimonials, a contact form, and more.",
+        "Diese Website wurde für Hochzeitsfotografie-Dienste erstellt und zeigt Portfolios, Dienstleistungspakete und Kundenbewertungen.",
+      features: [
+        "Responsive Design für alle Geräte",
+        "Interaktive Galerie für Fotos",
+        "Einfaches Kontaktformular",
+        "Verfügbare Dienstleistungspakete",
+      ],
       liveLink: "https://aleks-nikolic.netlify.app",
       gitLink:
         "https://github.com/Alexandru-Dumitrel-Gheorghe/Aleksander-Nikolic",
@@ -39,7 +52,12 @@ const Projects = () => {
     {
       title: "Kassa Pension",
       description:
-        "Kassa is a luxurious vacation home located in Bran, Romania. This project is a React-based website designed to showcase the beauty and amenities of the Kassa property, allowing potential guests to explore rooms, facilities, and other offerings.",
+        "Kassa ist ein luxuriöses Ferienhaus in Bran, Rumänien, das seine Schönheit und Annehmlichkeiten präsentiert.",
+      features: [
+        "Detaillierte Zimmerbeschreibung",
+        "Verfügbare Einrichtungen und Angebote",
+        "Buchungsanfragen direkt über die Website",
+      ],
       liveLink: "https://kassa-v1.netlify.app",
       gitLink:
         "https://github.com/Alexandru-Dumitrel-Gheorghe/Kassa-Pension-V2",
@@ -108,6 +126,14 @@ const Projects = () => {
             <div className={styles.content}>
               <h3 className={styles.title}>{project.title}</h3>
               <p className={styles.description}>{project.description}</p>
+              <h4 className={styles.featureTitle}>Funktionen:</h4>
+              <ul className={styles.featureList}>
+                {project.features.map((feature, idx) => (
+                  <li key={idx} className={styles.featureItem}>
+                    {feature}
+                  </li>
+                ))}
+              </ul>
               <div className={styles.technologies}>
                 {project.technologies.map((tech, idx) => (
                   <span key={idx} className={styles.tech}>
