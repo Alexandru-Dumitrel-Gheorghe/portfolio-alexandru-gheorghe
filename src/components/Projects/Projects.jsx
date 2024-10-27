@@ -32,13 +32,7 @@ const Projects = () => {
       liveLink: "https://task-timerv1.netlify.app/",
       gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/task-timer-app",
       image: require("../../assets/images/Timer.png"),
-      technologies: [
-        "Frontend: React, CSS Modules, React Calendar zur datumsbasierten Verfolgung",
-        "Styling: Benutzerdefinierte CSS-Variablen für konsistente Themen",
-        "Icons: Font Awesome für zugängliche und moderne Ikonographie",
-        "PDF-Export: jsPDF-Bibliothek zur Berichterstellung",
-        "Benachrichtigungen: React Toastify für Echtzeit-Feedback und Warnungen",
-      ],
+      technologies: ["React", "CSS Modules", "Bootstrap", "Node.js", "MongoDB"],
     },
     {
       title: "Wedding Photography",
@@ -54,14 +48,7 @@ const Projects = () => {
       gitLink:
         "https://github.com/Alexandru-Dumitrel-Gheorghe/Aleksander-Nikolic",
       image: require("../../assets/images/Aleks.png"),
-      technologies: [
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Bootstrap",
-        "Git",
-        "React",
-      ],
+      technologies: ["JavaScript", "HTML5", "CSS3", "Bootstrap", "React"],
     },
     {
       title: "Kassa Pension",
@@ -76,14 +63,23 @@ const Projects = () => {
       gitLink:
         "https://github.com/Alexandru-Dumitrel-Gheorghe/Kassa-Pension-V2",
       image: require("../../assets/images/Kassa.png"),
-      technologies: [
-        "JavaScript",
-        "HTML5",
-        "CSS3",
-        "Bootstrap",
-        "Git",
-        "React",
+      technologies: ["Bootstrap", "JavaScript", "React", "Git"],
+    },
+    {
+      title: "Personal Portfolio",
+      description:
+        "Eine persönliche Portfolio-Website, die Projekte, Fähigkeiten und Dienstleistungen eines Junior Frontend Webentwicklers präsentiert.",
+      features: [
+        "Moderne und minimalistische Benutzeroberfläche",
+        "Responsives Design für alle Geräte",
+        "Kontaktformular für direkte Anfragen",
+        "Übersicht über Technologien und Projekte",
       ],
+      liveLink: "https://alex-developer.netlify.app",
+      gitLink:
+        "https://github.com/Alexandru-Dumitrel-Gheorghe/Web-Developer-Site",
+      image: require("../../assets/images/Portofolio.png"),
+      technologies: ["React", "CSS Modules", "JavaScript", "HTML5"],
     },
   ];
 
