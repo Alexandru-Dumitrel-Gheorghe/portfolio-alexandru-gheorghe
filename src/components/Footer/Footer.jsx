@@ -1,6 +1,13 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaEnvelope,
+  FaPhone,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -10,9 +17,23 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Alexandru Gheorghe. Alle Rechte
           vorbehalten.
         </p>
+        <div className={styles.contactInfo}>
+          <div className={styles.contactItem}>
+            <FaPhone className={styles.contactIcon} />
+            <span>+49 160 93091768</span>
+          </div>
+          <div className={styles.contactItem}>
+            <FaEnvelope className={styles.contactIcon} />
+            <span>gheorghe.93@icloud.com</span>
+          </div>
+          <div className={styles.contactItem}>
+            <FaMapMarkerAlt className={styles.contactIcon} />
+            <span>Fürstenfeldbruck, Deutschland</span>
+          </div>
+        </div>
         <div className={styles.socialLinks}>
           <a
-            href="https://github.com/alexandrugheorghe"
+            href="https://github.com/Alexandru-Dumitrel-Gheorghe"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -21,7 +42,7 @@ const Footer = () => {
             <FaGithub />
           </a>
           <a
-            href="https://linkedin.com/in/alexandrugheorghe"
+            href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
@@ -39,7 +60,7 @@ const Footer = () => {
             <FaTwitter />
           </a>
           <a
-            href="mailto:alexandrugheorghe@example.com"
+            href="mailto:gheorghe.93@icloud.com"
             aria-label="E-Mail"
             className={styles.socialLink}
           >

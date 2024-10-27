@@ -53,7 +53,7 @@ const Header = () => {
           </h1>
           <ReactTypingEffect
             text={[
-              "Motivierter Frontend-Entwickler",
+              "Junior Frontend Webentwickler",
               "Lösungsorientierter Teamplayer",
               "Stets lernbereit und engagiert",
             ]}
@@ -64,14 +64,9 @@ const Header = () => {
             className={styles.typingEffect}
           />
           <p className={styles.description}>
-            Mit Leidenschaft für innovative Technologien und dem Ziel,
-            außergewöhnliche digitale Erfahrungen zu schaffen, die einen
-            Unterschied machen.
-          </p>
-          <p className={styles.missionStatement}>
-            "Meine Motivation und Anpassungsfähigkeit heben mich von anderen ab.
-            Ich strebe danach, kontinuierlich zu wachsen und echten Mehrwert zu
-            bieten."
+            Mit Leidenschaft für moderne Webtechnologien und dem Ziel,
+            benutzerfreundliche und funktionale Weblösungen zu schaffen, die
+            Mehrwert bieten.
           </p>
           <motion.div
             whileHover={{ scale: 1.05 }}

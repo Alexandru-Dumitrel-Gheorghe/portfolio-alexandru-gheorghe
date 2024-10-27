@@ -1,5 +1,3 @@
-// src/components/Projects/Projects.jsx
-
 import React, { useState } from "react";
 import styles from "./Projects.module.css";
 import {
@@ -22,25 +20,32 @@ const Projects = () => {
     {
       title: "Task Timer",
       description:
-        "Die Product Timer Dashboard ist eine webbasierte Anwendung, die Nutzern hilft, die auf verschiedene Produkte verwendete Zeit zu verfolgen.",
+        "Das Product Timer Dashboard ist eine webbasierte Anwendung, die Nutzern hilft, die auf verschiedene Produkte verwendete Zeit zu verfolgen.",
       features: [
-        "Timer starten, pausieren und stoppen",
-        "Tägliche Datenspeicherung",
-        "PDF-Berichtsgenerierung",
-        "Echtzeitdiagramm zur Visualisierung",
-        "Dunkelmodus und vollständig responsive",
+        "Echtzeit-Timer: Starten, Pausieren und Stoppen der Timer für Aufgaben.",
+        "Kategorienverwaltung: Organisieren Sie Aufgaben nach Kategorien für eine bessere Produktivitätsverfolgung.",
+        "Berichte: Tägliche, wöchentliche und monatliche Berichte zur Nachverfolgung der Aufgabenabschlüsse und der aufgewendeten Zeit.",
+        "PDF-Export: Erstellen Sie einen PDF-Bericht der Aufgabenprotokolle zur Offline-Verfolgung.",
+        "Dunkelmodus: Wechseln Sie zwischen hellen und dunklen Themen für ein angenehmes Benutzererlebnis.",
+        "Responsives Design: Optimiert für sowohl Desktop- als auch mobile Geräte.",
       ],
       liveLink: "https://task-timerv1.netlify.app/",
       gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/task-timer-app",
       image: require("../../assets/images/Timer.png"),
-      technologies: ["React", "CSS3", "Bootstrap", "Node.js", "MongoDB"],
+      technologies: [
+        "Frontend: React, CSS Modules, React Calendar zur datumsbasierten Verfolgung",
+        "Styling: Benutzerdefinierte CSS-Variablen für konsistente Themen",
+        "Icons: Font Awesome für zugängliche und moderne Ikonographie",
+        "PDF-Export: jsPDF-Bibliothek zur Berichterstellung",
+        "Benachrichtigungen: React Toastify für Echtzeit-Feedback und Warnungen",
+      ],
     },
     {
       title: "Wedding Photography",
       description:
         "Diese Website wurde für Hochzeitsfotografie-Dienste erstellt und zeigt Portfolios, Dienstleistungspakete und Kundenbewertungen.",
       features: [
-        "Responsive Design für alle Geräte",
+        "Responsives Design für alle Geräte",
         "Interaktive Galerie für Fotos",
         "Einfaches Kontaktformular",
         "Verfügbare Dienstleistungspakete",
@@ -49,7 +54,14 @@ const Projects = () => {
       gitLink:
         "https://github.com/Alexandru-Dumitrel-Gheorghe/Aleksander-Nikolic",
       image: require("../../assets/images/Aleks.png"),
-      technologies: ["JavaScript", "HTML5", "MongoDB"],
+      technologies: [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "Git",
+        "React",
+      ],
     },
     {
       title: "Kassa Pension",
@@ -64,7 +76,14 @@ const Projects = () => {
       gitLink:
         "https://github.com/Alexandru-Dumitrel-Gheorghe/Kassa-Pension-V2",
       image: require("../../assets/images/Kassa.png"),
-      technologies: ["Bootstrap", "Git", "React"],
+      technologies: [
+        "JavaScript",
+        "HTML5",
+        "CSS3",
+        "Bootstrap",
+        "Git",
+        "React",
+      ],
     },
   ];
 
@@ -114,8 +133,8 @@ const Projects = () => {
             className={styles.projectItem}
             onClick={() => setSelectedProject(project)}
             variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1 },
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 },
             }}
             whileHover={{ scale: 1.05 }}
           >
