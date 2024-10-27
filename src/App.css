@@ -1,29 +1,19 @@
-/* src/styles/variables.css */
-
 :root {
   /* Color Palette */
-  --primary-color: #4a90e2; /* Light Blue */
-  --secondary-color: #50e3c2; /* Turquoise */
-  --accent-color: #9013fe; /* Purple */
-  --text-color: #2c3e50; /* Dark Gray */
-  --background-color-light: #ecf0f1; /* Very Light Gray */
-  --background-color-dark: #34495e; /* Dark Bluish Gray */
-  --error-color: #e74c3c; /* Red */
+  --primary-color: #3b5998; /* Nuanță de albastru închis */
+  --secondary-color: #6a9fb5; /* Albastru deschis pentru accent */
+  --accent-color: #ff6b6b; /* Roșu coral pentru evidențiere */
+  --text-color: #1a1a1a; /* Gri închis pentru contrast */
+  --background-color-light: #f1f2f6; /* Gri foarte deschis */
+  --background-color-dark: #273c5a; /* Nuanță mai închisă de albastru-gri */
+  --error-color: #e74c3c; /* Roșu pentru erori */
 
   /* Typography */
   --font-family: "Open Sans", sans-serif;
   --font-size-base: 1rem; /* 16px */
-  --font-size-small: clamp(
-    0.875rem,
-    0.8125rem + 0.5vw,
-    1rem
-  ); /* ~14px to 16px */
-  --font-size-medium: clamp(
-    1.25rem,
-    1.125rem + 1vw,
-    1.75rem
-  ); /* ~20px to 28px */
-  --font-size-large: clamp(2rem, 1.75rem + 2vw, 2.5rem); /* ~32px to 40px */
+  --font-size-small: clamp(0.875rem, 0.8125rem + 0.5vw, 1rem); /* ~14px-16px */
+  --font-size-medium: clamp(1.25rem, 1.125rem + 1vw, 1.75rem); /* ~20px-28px */
+  --font-size-large: clamp(2rem, 1.75rem + 2vw, 2.5rem); /* ~32px-40px */
 
   /* Layout */
   --max-width: 1200px;
@@ -31,7 +21,9 @@
   --padding-small: 1.5rem 1rem;
   --padding-medium: 2rem 1.5rem;
   --border-radius: 10px;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   --transition-speed: 0.3s;
+  --transition-smooth: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Breakpoints */
   --breakpoint-xs: 480px;
@@ -75,15 +67,18 @@ p {
   margin: 1rem 0;
 }
 
+/* Link Styling */
 a {
   color: var(--primary-color);
-  text-decoration: none;
-  transition: color var(--transition-speed);
+  text-decoration: none; /* Eliminăm linia de subliniere */
+  cursor: pointer; /* Setăm cursorul pointer (mână) */
+  transition: color var(--transition-smooth), transform var(--transition-smooth);
 }
 
 a:hover {
   color: var(--accent-color);
-  text-decoration: underline;
+  transform: scale(1.05);
+  text-decoration: none; /* Ne asigurăm că linia de subliniere nu apare la hover */
 }
 
 /* Button Styling */
@@ -96,21 +91,23 @@ button,
   border: none;
   border-radius: var(--border-radius);
   padding: 0.75rem 1.5rem;
-  cursor: pointer;
-  transition: background-color var(--transition-speed),
-    transform var(--transition-speed);
+  cursor: pointer; /* Setăm cursorul pointer */
+  box-shadow: var(--box-shadow);
+  transition: background-color var(--transition-smooth),
+    transform var(--transition-smooth);
 }
 
 button:hover,
 .ctaButton:hover {
   background-color: var(--accent-color);
-  transform: translateY(-3px);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .container {
   max-width: var(--max-width);
   padding: var(--padding);
   margin: 0 auto;
+  box-shadow: var(--box-shadow);
 }
 
 img {
@@ -129,7 +126,7 @@ textarea {
   font-size: var(--font-size-small);
   width: 100%;
   margin-bottom: 1rem;
-  transition: border-color var(--transition-speed);
+  transition: border-color var(--transition-smooth);
 }
 
 input:focus,
@@ -138,7 +135,15 @@ textarea:focus {
   outline: none;
 }
 
-/* Media Queries for responsiveness */
+/* Header and Footer Styling */
+header,
+footer {
+  background-color: var(--background-color-dark);
+  color: var(--background-color-light);
+  padding: var(--padding-small);
+}
+
+/* Responsive Styles */
 @media (max-width: var(--breakpoint-lg)) {
   :root {
     --padding: 2.5rem 1.25rem;
@@ -153,17 +158,9 @@ textarea:focus {
 
 @media (max-width: var(--breakpoint-sm)) {
   :root {
-    --font-size-large: clamp(1.75rem, 1.5rem + 1vw, 2rem); /* ~28px to 32px */
-    --font-size-medium: clamp(
-      1.125rem,
-      1rem + 0.75vw,
-      1.25rem
-    ); /* ~18px to 20px */
-    --font-size-small: clamp(
-      0.8125rem,
-      0.75rem + 0.5vw,
-      0.875rem
-    ); /* ~13px to 14px */
+    --font-size-large: clamp(1.75rem, 1.5rem + 1vw, 2rem);
+    --font-size-medium: clamp(1.125rem, 1rem + 0.75vw, 1.25rem);
+    --font-size-small: clamp(0.8125rem, 0.75rem + 0.5vw, 0.875rem);
     --padding: var(--padding-small);
   }
 
@@ -192,8 +189,8 @@ textarea:focus {
 
 /* Custom Scrollbar Styling */
 * {
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: var(--primary-color) var(--background-color-light); /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--background-color-light);
 }
 
 *::-webkit-scrollbar {
@@ -209,8 +206,10 @@ textarea:focus {
   background-color: var(--primary-color);
   border-radius: 10px;
   border: 2px solid var(--background-color-light);
+  transition: background-color var(--transition-smooth);
 }
 
 *::-webkit-scrollbar-thumb:hover {
   background-color: var(--accent-color);
+  transform: scale(1.1);
 }

@@ -1,34 +1,15 @@
-// src/components/Header.jsx
-
 import React from "react";
 import styles from "./Header.module.css";
 import profileImage from "../../assets/images/profilalex1.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import ReactTypingEffect from "react-typing-effect";
-
-const socialLinks = [
-  {
-    icon: <FaGithub />,
-    url: "https://github.com/Alexandru-Dumitrel-Gheorghe",
-    label: "GitHub",
-  },
-  {
-    icon: <FaLinkedin />,
-    url: "https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/",
-    label: "LinkedIn",
-  },
-  {
-    icon: <FaTwitter />,
-    url: "https://twitter.com/alexandrugheorghe",
-    label: "Twitter",
-  },
-];
+import Navbar from "../Navbar/Navbar"; // Import Navbar
 
 const Header = () => {
   return (
     <header className={styles.header} id="home">
+      <Navbar /> {/* Add Navbar */}
       <div className={styles.backgroundOverlay}></div>
       <div className={styles.content}>
         {/* Profile Image Section */}
@@ -69,7 +50,7 @@ const Header = () => {
             className={styles.typingEffect}
           />
           <p className={styles.description}>
-            Mit Leidenschaft für innovative Technologien und das Ziel,
+            Mit Leidenschaft für innovative Technologien und dem Ziel,
             außergewöhnliche digitale Erfahrungen zu schaffen, die einen
             Unterschied machen.
           </p>
@@ -89,27 +70,34 @@ const Header = () => {
           </Link>
         </motion.div>
       </div>
-
-      {/* Social Media Icons */}
+      {/* Social Media Icons (optional, if you want to keep them here as well) */}
+      {/*
       <motion.div
         className={styles.socialIcons}
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
       >
-        {socialLinks.map((link, index) => (
-          <a
-            key={index}
-            href={link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.iconLink}
-            aria-label={link.label}
-          >
-            {link.icon}
-          </a>
-        ))}
+        <a
+          href="https://github.com/Alexandru-Dumitrel-Gheorghe"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.iconLink}
+          aria-label="GitHub"
+        >
+          <FaGithub />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.iconLink}
+          aria-label="LinkedIn"
+        >
+          <FaLinkedin />
+        </a>
       </motion.div>
+      */}
     </header>
   );
 };

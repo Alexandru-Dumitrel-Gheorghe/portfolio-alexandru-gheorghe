@@ -14,9 +14,16 @@ const Contact = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   const handleChange = ({ target: { name, value } }) => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const validateEmail = (email) => {
+    // Simple email regex for validation
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
   };
 
   const sendEmail = (e) => {
@@ -24,10 +31,19 @@ const Contact = () => {
 
     const { firstName, lastName, email, phoneNumber, message } = formData;
 
+    // Basic validation
     if (!firstName || !lastName || !email || !phoneNumber || !message) {
       setErrorMessage("Bitte füllen Sie alle Felder aus.");
       return;
     }
+
+    if (!validateEmail(email)) {
+      setErrorMessage("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+      return;
+    }
+
+    setIsSending(true);
+    setErrorMessage("");
 
     emailjs
       .sendForm(
@@ -40,144 +56,132 @@ const Contact = () => {
         () => {
           setIsSubmitted(true);
           setFormData(initialFormData);
-          setErrorMessage("");
+          setIsSending(false);
         },
         (error) => {
           console.error("Email sending error:", error);
           setErrorMessage("Es gab einen Fehler beim Senden der Nachricht.");
+          setIsSending(false);
         }
       );
   };
 
   return (
-    <div className={styles.contact_us_2}>
-      <div
-        className={`${styles["responsive-container-block"]} ${styles["big-container"]}`}
-      >
-        <div className={styles.blueBG}></div>
-        <div
-          className={`${styles["responsive-container-block"]} ${styles.container}`}
-        >
-          <form className={styles["form-box"]} onSubmit={sendEmail}>
-            <div
-              className={`${styles["container-block"]} ${styles["form-wrapper"]}`}
-            >
-              <p
-                className={`${styles["text-blk"]} ${styles["contactus-head"]}`}
-              >
-                Kontakt aufnehmen
-              </p>
-              <p
-                className={`${styles["text-blk"]} ${styles["contactus-subhead"]}`}
-              >
-                Bitte zögern Sie nicht, mich zu kontaktieren.
-              </p>
+    <section className={styles.contactSection}>
+      <div className={styles.background}></div>
+      <div className={styles.container}>
+        <form className={styles.form} onSubmit={sendEmail} noValidate>
+          <h2 className={styles.heading}>Kontakt aufnehmen</h2>
+          <p className={styles.subheading}>
+            Bitte zögern Sie nicht, mich zu kontaktieren.
+          </p>
 
-              {errorMessage && (
-                <p className={styles.errorMessage}>{errorMessage}</p>
-              )}
-
-              {isSubmitted ? (
-                <p className={styles.thankYou}>
-                  Vielen Dank für Ihre Nachricht! Ich werde mich bald bei Ihnen
-                  melden.
-                </p>
-              ) : (
-                <div className={styles["responsive-container-block"]}>
-                  <div
-                    className={`${styles["responsive-cell-block"]} ${styles["wk-ipadp-6"]} ${styles["wk-tab-12"]} ${styles["wk-mobile-12"]} ${styles["wk-desk-6"]}`}
-                  >
-                    <p
-                      className={`${styles["text-blk"]} ${styles["input-title"]}`}
-                    >
-                      VORNAME
-                    </p>
-                    <input
-                      className={styles.input}
-                      name="firstName"
-                      placeholder="Bitte Vornamen eingeben..."
-                      value={formData.firstName}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div
-                    className={`${styles["responsive-cell-block"]} ${styles["wk-desk-6"]} ${styles["wk-ipadp-6"]} ${styles["wk-tab-12"]} ${styles["wk-mobile-12"]}`}
-                  >
-                    <p
-                      className={`${styles["text-blk"]} ${styles["input-title"]}`}
-                    >
-                      NACHNAME
-                    </p>
-                    <input
-                      className={styles.input}
-                      name="lastName"
-                      placeholder="Bitte Nachnamen eingeben..."
-                      value={formData.lastName}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div
-                    className={`${styles["responsive-cell-block"]} ${styles["wk-desk-6"]} ${styles["wk-ipadp-6"]} ${styles["wk-tab-12"]} ${styles["wk-mobile-12"]}`}
-                  >
-                    <p
-                      className={`${styles["text-blk"]} ${styles["input-title"]}`}
-                    >
-                      E-MAIL
-                    </p>
-                    <input
-                      className={styles.input}
-                      type="email"
-                      name="email"
-                      placeholder="Bitte E-Mail-Adresse eingeben..."
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div
-                    className={`${styles["responsive-cell-block"]} ${styles["wk-desk-6"]} ${styles["wk-ipadp-6"]} ${styles["wk-tab-12"]} ${styles["wk-mobile-12"]}`}
-                  >
-                    <p
-                      className={`${styles["text-blk"]} ${styles["input-title"]}`}
-                    >
-                      TELEFONNUMMER
-                    </p>
-                    <input
-                      className={styles.input}
-                      name="phoneNumber"
-                      placeholder="Bitte Telefonnummer eingeben..."
-                      value={formData.phoneNumber}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div
-                    className={`${styles["responsive-cell-block"]} ${styles["wk-tab-12"]} ${styles["wk-mobile-12"]} ${styles["wk-desk-12"]} ${styles["wk-ipadp-12"]}`}
-                  >
-                    <p
-                      className={`${styles["text-blk"]} ${styles["input-title"]}`}
-                    >
-                      IHRE NACHRICHT
-                    </p>
-                    <textarea
-                      className={styles.textinput}
-                      name="message"
-                      placeholder="Bitte Nachricht eingeben..."
-                      value={formData.message}
-                      onChange={handleChange}
-                    ></textarea>
-                  </div>
-                </div>
-              )}
-
-              {!isSubmitted && (
-                <button type="submit" className={styles["submit-btn"]}>
-                  Absenden
-                </button>
-              )}
+          {errorMessage && (
+            <div className={styles.errorMessage} role="alert">
+              {errorMessage}
             </div>
-          </form>
-        </div>
+          )}
+
+          {isSubmitted ? (
+            <div className={styles.thankYouMessage}>
+              Vielen Dank für Ihre Nachricht! Ich werde mich bald bei Ihnen
+              melden.
+            </div>
+          ) : (
+            <div className={styles.formGrid}>
+              <div className={styles.formGroup}>
+                <label htmlFor="firstName" className={styles.label}>
+                  Vorname
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  className={styles.input}
+                  placeholder="Bitte Vornamen eingeben..."
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="lastName" className={styles.label}>
+                  Nachname
+                </label>
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  className={styles.input}
+                  placeholder="Bitte Nachnamen eingeben..."
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="email" className={styles.label}>
+                  E-Mail
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  className={styles.input}
+                  placeholder="Bitte E-Mail-Adresse eingeben..."
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="phoneNumber" className={styles.label}>
+                  Telefonnummer
+                </label>
+                <input
+                  type="tel"
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  className={styles.input}
+                  placeholder="Bitte Telefonnummer eingeben..."
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroupFull}>
+                <label htmlFor="message" className={styles.label}>
+                  Ihre Nachricht
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  className={styles.textarea}
+                  placeholder="Bitte Nachricht eingeben..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                ></textarea>
+              </div>
+            </div>
+          )}
+
+          {!isSubmitted && (
+            <button
+              type="submit"
+              className={styles.submitButton}
+              disabled={isSending}
+            >
+              {isSending ? "Senden..." : "Absenden"}
+            </button>
+          )}
+        </form>
       </div>
-    </div>
+    </section>
   );
 };
 

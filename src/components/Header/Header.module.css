@@ -1,8 +1,6 @@
-/* src/components/Header.module.css */
-
 @import "../../styles/variables.css";
 
-/* General Styles */
+/* Adjustments for Header after adding Navbar */
 .header {
   position: relative;
   min-height: 100vh;
@@ -12,6 +10,7 @@
   align-items: center;
   justify-content: center;
   padding: 0 1rem;
+  padding-top: 60px; /* Height of the Navbar */
 }
 
 .backgroundOverlay {
@@ -92,7 +91,6 @@
 
 .ctaButton:hover,
 .ctaButton:focus {
-  background-color: var(--accent-color);
   transform: translateY(-2px);
 }
 
@@ -120,7 +118,7 @@
   object-fit: cover;
 }
 
-/* Social Icons */
+/* Social Icons (if kept here) */
 .socialIcons {
   position: absolute;
   bottom: 30px;

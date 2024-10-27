@@ -101,7 +101,6 @@
 }
 
 .downloadButton:hover {
-  background-color: var(--accent-color);
   transform: translateY(-3px);
 }
 

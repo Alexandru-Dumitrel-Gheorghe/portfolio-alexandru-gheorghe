@@ -1,0 +1,137 @@
+@import "../../styles/variables.css";
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: background-color 0.3s ease, padding 0.3s ease;
+}
+
+.activeNavbar {
+  background-color: var(--secondary-color);
+  padding: 0.5rem 2rem;
+}
+
+/* Logo-ul/Numele */
+.navLogo {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.navLogo:hover {
+  color: var(--accent-color);
+}
+
+/* Linkurile de navigație */
+.navMenu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  transition: all 0.3s ease;
+}
+
+.navItem {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.navLinks {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.navLinks:hover,
+.activeLink {
+  color: var(--accent-color);
+}
+
+/* Iconițele sociale */
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+}
+
+.iconLink {
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.iconLink:hover {
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+/* Mobile Icon */
+.mobileIcon {
+  display: none;
+  color: #ffffff;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .navMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 60px);
+    background-color: var(--primary-color);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: left 0.3s ease;
+    padding: 0;
+  }
+
+  .navMenu.active {
+    left: 0;
+  }
+
+  .navItem {
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  .navLinks {
+    display: block;
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .socialIcons {
+    display: none;
+  }
+
+  .mobileIcon {
+    display: block;
+  }
+}
