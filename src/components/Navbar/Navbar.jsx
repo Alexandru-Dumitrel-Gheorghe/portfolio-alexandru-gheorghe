@@ -31,19 +31,22 @@ const Navbar = () => {
     };
   }, []);
 
+  const navbarVariants = {
+    transparent: { backgroundColor: "rgba(59, 89, 152, 0)" },
+    solid: { backgroundColor: "rgba(59, 89, 152, 0.9)" },
+  };
+
   return (
     <motion.nav
-      className={`${styles.navbar} ${navBackground ? styles.activeNavbar : ""}`}
-      initial={{ opacity: 0, y: -50 }}
-      animate={{ opacity: 1, y: 0 }}
+      className={styles.navbar}
+      variants={navbarVariants}
+      animate={navBackground ? "solid" : "transparent"}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      {/* Logo-ul/Numele */}
       <a href="/" className={styles.navLogo}>
         Alexandru Gheorghe
       </a>
 
-      {/* Linkurile de navigație */}
       <ul
         className={
           isMobile ? `${styles.navMenu} ${styles.active}` : styles.navMenu
@@ -105,35 +108,33 @@ const Navbar = () => {
             Kontakt
           </Link>
         </li>
+        {/* Iconițele sociale în meniul mobil */}
+        <li className={styles.socialIconsMobile}>
+          <motion.a
+            href="https://github.com/Alexandru-Dumitrel-Gheorghe"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.iconLink}
+            aria-label="GitHub"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <FaGithub />
+          </motion.a>
+          <motion.a
+            href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.iconLink}
+            aria-label="LinkedIn"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <FaLinkedin />
+          </motion.a>
+        </li>
       </ul>
 
-      {/* Iconițele sociale */}
-      <div className={styles.socialIcons}>
-        <motion.a
-          href="https://github.com/Alexandru-Dumitrel-Gheorghe"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.iconLink}
-          aria-label="GitHub"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <FaGithub />
-        </motion.a>
-        <motion.a
-          href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.iconLink}
-          aria-label="LinkedIn"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <FaLinkedin />
-        </motion.a>
-      </div>
-
-      {/* Icon pentru meniul mobil */}
       <div className={styles.mobileIcon} onClick={handleToggle}>
         {isMobile ? <FaTimes /> : <FaBars />}
       </div>

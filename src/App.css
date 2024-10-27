@@ -42,7 +42,10 @@ body {
   transition: background-color var(--transition-speed),
     color var(--transition-speed);
 }
-
+html,
+body {
+  overflow-x: hidden;
+}
 h1,
 h2,
 h3,

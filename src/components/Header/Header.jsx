@@ -4,20 +4,34 @@ import profileImage from "../../assets/images/profilalex1.jpg";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 import ReactTypingEffect from "react-typing-effect";
-import Navbar from "../Navbar/Navbar"; // Import Navbar
+import Navbar from "../Navbar/Navbar";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaBirthdayCake,
+} from "react-icons/fa";
 
 const Header = () => {
+  const age = new Date().getFullYear() - 1993;
+
   return (
     <header className={styles.header} id="home">
-      <Navbar /> {/* Add Navbar */}
-      <div className={styles.backgroundOverlay}></div>
+      <Navbar />
+      <motion.div
+        className={styles.backgroundOverlay}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        transition={{ duration: 1 }}
+      ></motion.div>
       <div className={styles.content}>
         {/* Profile Image Section */}
         <motion.div
           className={styles.profileImageContainer}
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
+          initial={{ scale: 0, rotate: -10 }}
+          animate={{ scale: 1, rotate: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
+          whileHover={{ scale: 1.1, rotate: 10 }}
         >
           <img
             src={profileImage}
@@ -29,9 +43,9 @@ const Header = () => {
         {/* Text Section */}
         <motion.div
           className={styles.welcomeText}
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
         >
           <h1>
             Willkommen! Ich bin{" "}
@@ -59,45 +73,58 @@ const Header = () => {
             Ich strebe danach, kontinuierlich zu wachsen und echten Mehrwert zu
             bieten."
           </p>
-          <Link
-            to="projects"
-            smooth={true}
-            duration={500}
-            className={styles.ctaButton}
-            aria-label="Zu meinen Projekten scrollen"
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={styles.buttonWrapper}
           >
-            Meine Projekte ansehen
-          </Link>
+            <Link
+              to="projects"
+              smooth={true}
+              duration={500}
+              className={styles.ctaButton}
+              aria-label="Zu meinen Projekten scrollen"
+            >
+              Meine Projekte ansehen
+            </Link>
+          </motion.div>
+        </motion.div>
+
+        {/* Contact Information */}
+        <motion.div
+          className={styles.contactInfo}
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+        >
+          <motion.a
+            href="tel:+4916093091768"
+            className={styles.contactItem}
+            whileHover={{ scale: 1.05, color: "#FFD700" }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Sunați la Alexandru Gheorghe"
+          >
+            <FaPhoneAlt className={styles.icon} /> <span>+49 160 93091768</span>
+          </motion.a>
+          <motion.a
+            href="mailto:gheorghe.93@icloud.com"
+            className={styles.contactItem}
+            whileHover={{ scale: 1.05, color: "#FFD700" }}
+            whileTap={{ scale: 0.95 }}
+            aria-label="Trimiteți un email lui Alexandru Gheorghe"
+          >
+            <FaEnvelope className={styles.icon} />
+            <span>gheorghe.93@icloud.com</span>
+          </motion.a>
+          <div className={styles.contactItem}>
+            <FaMapMarkerAlt className={styles.icon} />
+            <span>Fürstenfeldbruck, Deutschland</span>
+          </div>
+          <div className={styles.contactItem}>
+            <FaBirthdayCake className={styles.icon} /> <span>{age} Jahre</span>
+          </div>
         </motion.div>
       </div>
-      {/* Social Media Icons (optional, if you want to keep them here as well) */}
-      {/*
-      <motion.div
-        className={styles.socialIcons}
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}
-      >
-        <a
-          href="https://github.com/Alexandru-Dumitrel-Gheorghe"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.iconLink}
-          aria-label="GitHub"
-        >
-          <FaGithub />
-        </a>
-        <a
-          href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.iconLink}
-          aria-label="LinkedIn"
-        >
-          <FaLinkedin />
-        </a>
-      </motion.div>
-      */}
     </header>
   );
 };

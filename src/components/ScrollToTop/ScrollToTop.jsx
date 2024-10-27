@@ -1,5 +1,3 @@
-// src/components/ScrollToTop.js
-
 import React, { useState, useEffect } from "react";
 import styles from "./ScrollToTop.module.css";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";

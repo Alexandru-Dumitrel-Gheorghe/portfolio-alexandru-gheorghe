@@ -7,26 +7,22 @@
   left: 0;
   width: 100%;
   height: 60px;
-  background-color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  transition: background-color 0.3s ease, padding 0.3s ease;
-}
-
-.activeNavbar {
-  background-color: var(--secondary-color);
-  padding: 0.5rem 2rem;
+  transition: padding 0.3s ease;
+  overflow: hidden;
 }
 
 /* Logo-ul/Numele */
 .navLogo {
   color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
   text-decoration: none;
   cursor: pointer;
   transition: color 0.3s ease;
@@ -45,6 +41,7 @@
   justify-content: center;
   align-items: center;
   margin: 0;
+  text-align: center;
   transition: all 0.3s ease;
 }
 
@@ -52,22 +49,29 @@
   height: 60px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .navLinks {
   color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
   text-decoration: none;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
   padding: 0.5rem 1rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
 .navLinks:hover,
 .activeLink {
   color: var(--accent-color);
+  transform: scale(1.05);
 }
 
 /* Iconițele sociale */
-.socialIcons {
+.socialIcons,
+.socialIconsMobile {
   display: flex;
   gap: 1rem;
 }
@@ -75,7 +79,9 @@
 .iconLink {
   color: #ffffff;
   font-size: 1.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
   transition: color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 
 .iconLink:hover {
@@ -96,9 +102,9 @@
   .navMenu {
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 60px;
-    left: -100%;
+    left: 0;
     width: 100%;
     height: calc(100vh - 60px);
     background-color: var(--primary-color);
@@ -127,8 +133,10 @@
     color: #ffffff;
   }
 
-  .socialIcons {
-    display: none;
+  .socialIconsMobile {
+    display: flex; /* Afișează iconițele sociale și pe mobil */
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
   .mobileIcon {
