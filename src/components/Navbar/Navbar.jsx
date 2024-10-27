@@ -108,32 +108,32 @@ const Navbar = () => {
             Kontakt
           </Link>
         </li>
-        {/* Iconițele sociale în meniul mobil */}
-        <li className={styles.socialIconsMobile}>
-          <motion.a
-            href="https://github.com/Alexandru-Dumitrel-Gheorghe"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.iconLink}
-            aria-label="GitHub"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <FaGithub />
-          </motion.a>
-          <motion.a
-            href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.iconLink}
-            aria-label="LinkedIn"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <FaLinkedin />
-          </motion.a>
-        </li>
       </ul>
+
+      <div className={styles.socialIcons}>
+        <motion.a
+          href="https://github.com/Alexandru-Dumitrel-Gheorghe"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.iconLink}
+          aria-label="GitHub"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <FaGithub />
+        </motion.a>
+        <motion.a
+          href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.iconLink}
+          aria-label="LinkedIn"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <FaLinkedin />
+        </motion.a>
+      </div>
 
       <div className={styles.mobileIcon} onClick={handleToggle}>
         {isMobile ? <FaTimes /> : <FaBars />}
