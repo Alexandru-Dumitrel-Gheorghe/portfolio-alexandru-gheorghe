@@ -116,7 +116,7 @@ const Resume = () => {
 
       {/* Link to download the Lebenslauf PDF */}
       <a href="/Lebenslauf.pdf" download className={styles.downloadButton}>
-        Lebenslauf herunterladen <FaDownload className={styles.downloadIcon} />
+        Herunterladen <FaDownload className={styles.downloadIcon} />
       </a>
     </section>
   );

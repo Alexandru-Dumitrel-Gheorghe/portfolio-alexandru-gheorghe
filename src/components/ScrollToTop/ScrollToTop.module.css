@@ -1,0 +1,37 @@
+/* src/components/ScrollToTop.module.css */
+
+.scrollToTop {
+  position: fixed;
+  bottom: 20px; /* 2rem */
+  right: 20px; /* 2rem */
+  z-index: 1000;
+}
+
+.button {
+  background-color: #007bff; /* Primary Blue */
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3; /* Darker Blue on Hover */
+  transform: translateY(-3px);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Focus Ring */
+}
+
+.button svg {
+  color: #ffffff; /* White Icon */
+  font-size: 1.5rem;
+}

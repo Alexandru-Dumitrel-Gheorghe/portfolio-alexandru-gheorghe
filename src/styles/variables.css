@@ -1,6 +1,6 @@
 :root {
   --primary-color: #6e8efb;
-  --secondary-color: #50e3c2;
+  --secondary-color: #d48524;
   --text-color: #333333;
   --background-color: #ffffff;
   --border-color: #dddddd;
@@ -142,7 +142,6 @@ textarea:focus {
   border-color: var(--accent-color);
   outline: none;
 }
-
 /* Media Queries pentru Responsivitate */
 @media (max-width: 768px) {
   :root {

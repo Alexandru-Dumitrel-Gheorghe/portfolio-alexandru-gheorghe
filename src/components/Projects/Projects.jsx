@@ -1,6 +1,6 @@
 // src/components/Projects/Projects.jsx
 
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Projects.module.css";
 import {
   FaReact,
@@ -16,6 +16,8 @@ import {
 import { motion } from "framer-motion";
 
 const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+
   const projectData = [
     {
       title: "Task Timer",
@@ -93,7 +95,7 @@ const Projects = () => {
     <section id="projects" className={styles.projects}>
       <h2 className={styles.heading}>Projekte</h2>
       <motion.div
-        className={styles.projectList}
+        className={styles.gallery}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
@@ -109,60 +111,79 @@ const Projects = () => {
         {projectData.map((project, index) => (
           <motion.div
             key={index}
-            className={styles.card}
+            className={styles.projectItem}
+            onClick={() => setSelectedProject(project)}
             variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
+              hidden: { opacity: 0 },
+              visible: { opacity: 1 },
             }}
+            whileHover={{ scale: 1.05 }}
           >
-            <div className={styles.imageContainer}>
-              <img
-                src={project.image}
-                alt={`Screenshot von ${project.title}`}
-                className={styles.image}
-                loading="lazy"
-              />
-            </div>
-            <div className={styles.content}>
-              <h3 className={styles.title}>{project.title}</h3>
-              <p className={styles.description}>{project.description}</p>
-              <h4 className={styles.featureTitle}>Funktionen:</h4>
-              <ul className={styles.featureList}>
-                {project.features.map((feature, idx) => (
-                  <li key={idx} className={styles.featureItem}>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <div className={styles.technologies}>
-                {project.technologies.map((tech, idx) => (
-                  <span key={idx} className={styles.tech}>
-                    {getTechnologyIcon(tech)} {tech}
-                  </span>
-                ))}
-              </div>
-              <div className={styles.links}>
-                <a
-                  href={project.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.link}
-                >
-                  Live ansehen <FaExternalLinkAlt />
-                </a>
-                <a
-                  href={project.gitLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.link}
-                >
-                  GitHub <FaExternalLinkAlt />
-                </a>
-              </div>
+            <img
+              src={project.image}
+              alt={`Screenshot von ${project.title}`}
+              className={styles.projectImage}
+              loading="lazy"
+            />
+            <div className={styles.overlay}>
+              <h3 className={styles.projectTitle}>{project.title}</h3>
+              <FaExternalLinkAlt className={styles.linkIcon} />
             </div>
           </motion.div>
         ))}
       </motion.div>
+
+      {selectedProject && (
+        <div className={styles.modal} onClick={() => setSelectedProject(null)}>
+          <div
+            className={styles.modalContent}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <span
+              className={styles.close}
+              onClick={() => setSelectedProject(null)}
+            >
+              &times;
+            </span>
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.title}
+              className={styles.modalImage}
+            />
+            <h3>{selectedProject.title}</h3>
+            <p>{selectedProject.description}</p>
+            <h4>Funktionen:</h4>
+            <ul>
+              {selectedProject.features.map((feature, idx) => (
+                <li key={idx}>{feature}</li>
+              ))}
+            </ul>
+            <div className={styles.technologies}>
+              {selectedProject.technologies.map((tech, idx) => (
+                <span key={idx} className={styles.tech}>
+                  {getTechnologyIcon(tech)} {tech}
+                </span>
+              ))}
+            </div>
+            <div className={styles.links}>
+              <a
+                href={selectedProject.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live ansehen <FaExternalLinkAlt />
+              </a>
+              <a
+                href={selectedProject.gitLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub <FaExternalLinkAlt />
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

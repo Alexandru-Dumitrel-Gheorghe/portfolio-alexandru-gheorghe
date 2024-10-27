@@ -1,17 +1,20 @@
 /* src/components/Resume.module.css */
 
+@import "../../styles/variables.css";
+
+/* General Styles */
 .resume {
   padding: var(--padding);
   background-color: var(--background-color-light);
   color: var(--text-color);
-  margin-top: 40px;
+  margin-top: clamp(2.5rem, 3vw, 4rem);
 }
 
 .heading {
   text-align: center;
-  font-size: var(--font-size-large);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   color: var(--primary-color);
-  margin-bottom: 3rem;
+  margin-bottom: clamp(2rem, 3vw, 3rem);
   font-weight: bold;
 }
 
@@ -25,7 +28,7 @@
 
 .resumeSection {
   background-color: #fff;
-  padding: 2rem;
+  padding: clamp(1.5rem, 2vw, 2.5rem);
   border-radius: var(--border-radius);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -39,7 +42,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 5px;
+  width: clamp(4px, 1vw, 5px);
   height: 100%;
   background-color: var(--primary-color);
 }
@@ -52,37 +55,37 @@
 .sectionTitle {
   display: flex;
   align-items: center;
-  font-size: var(--font-size-medium);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
   color: var(--primary-color);
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
 }
 
 .sectionIcon {
-  margin-right: 0.5rem;
-  font-size: 1.5rem;
+  margin-right: clamp(0.5rem, 1vw, 0.75rem);
+  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   color: var(--accent-color);
 }
 
 .item {
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 .itemTitle {
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
   color: var(--text-color);
-  margin-bottom: 0.3rem;
+  margin-bottom: clamp(0.3rem, 0.5vw, 0.5rem);
   font-weight: bold;
 }
 
 .itemSubtitle {
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
   color: var(--secondary-color);
-  margin-bottom: 0.5rem;
+  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
   font-style: italic;
 }
 
 .itemDescription {
-  font-size: var(--font-size-small);
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
   color: var(--text-color);
   line-height: 1.6;
 }
@@ -93,16 +96,16 @@
   justify-content: center;
   background-color: var(--primary-color);
   color: #fff;
-  padding: 1rem 1.5rem;
+  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
   border-radius: var(--border-radius);
   text-decoration: none;
   font-weight: bold;
-  font-size: var(--font-size-small);
+  font-size: clamp(0.875rem, 1vw, 1rem);
   transition: background-color var(--transition-speed),
     transform var(--transition-speed);
-  margin: 2rem auto 0;
-  gap: 0.5rem;
-  width: 15%;
+  margin: clamp(2rem, 3vw, 2.5rem) auto 0;
+  gap: clamp(0.25rem, 0.5vw, 0.5rem);
+  width: clamp(120px, 20vw, 200px);
 }
 
 .downloadButton:hover {
@@ -111,20 +114,166 @@
 }
 
 .downloadIcon {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
 }
 
-@media (max-width: 768px) {
+/* Progress Bar */
+.progressBar {
+  width: 100%;
+  height: clamp(8px, 1vw, 10px);
+  background-color: var(--background-color-dark);
+  border-radius: clamp(4px, 0.5vw, 5px);
+  overflow: hidden;
+  margin-top: clamp(0.75rem, 1.2vw, 1rem);
+}
+
+.progress {
+  width: 80%; /* Exemplu de completare */
+  height: 100%;
+  background-color: var(--primary-color);
+  border-radius: clamp(4px, 0.5vw, 5px);
+  transition: width var(--transition-speed);
+}
+
+/* Responsive Styles */
+
+/* Large Devices (Desktops) */
+@media (min-width: var(--breakpoint-lg)) {
   .resumeContent {
-    padding: 0 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
-  .heading {
-    font-size: var(--font-size-medium);
+  .resumeSection {
+    width: calc(50% - 1rem);
   }
 
   .downloadButton {
-    width: 70%;
-    font-size: 0.9rem;
+    width: clamp(150px, 15vw, 200px);
+  }
+}
+
+/* Medium Devices (Tablets) */
+@media (max-width: var(--breakpoint-md)) and (min-width: var(--breakpoint-sm)) {
+  .resumeContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .resumeSection {
+    width: 100%;
+  }
+
+  .downloadButton {
+    width: clamp(130px, 18vw, 180px);
+  }
+}
+
+/* Small Devices (Large Mobile) */
+@media (max-width: var(--breakpoint-sm)) {
+  .resume {
+    padding: var(--padding-small);
+    margin-top: clamp(1.5rem, 2vw, 3rem);
+  }
+
+  .heading {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+  }
+
+  .resumeContent {
+    padding: 0 clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .resumeSection {
+    padding: clamp(1rem, 1.5vw, 1.5rem);
+  }
+
+  .sectionTitle {
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+    margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .sectionIcon {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    margin-right: clamp(0.3rem, 1vw, 0.5rem);
+  }
+
+  .itemTitle {
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  }
+
+  .itemSubtitle {
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+  }
+
+  .itemDescription {
+    font-size: clamp(0.75rem, 1vw, 0.9rem);
+  }
+
+  .downloadButton {
+    width: clamp(120px, 25vw, 150px);
+    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1.25rem);
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
+    margin: clamp(1.5rem, 2vw, 2rem) auto 0;
+  }
+
+  .downloadIcon {
+    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+  }
+}
+
+/* Extra Small Devices (Very Small Mobile) */
+@media (max-width: var(--breakpoint-xs)) {
+  .resume {
+    padding: var(--padding-xs);
+    margin-top: clamp(1rem, 1.5vw, 2rem);
+  }
+
+  .heading {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+  }
+
+  .resumeContent {
+    padding: 0 clamp(0.5rem, 1vw, 1rem);
+  }
+
+  .resumeSection {
+    padding: clamp(0.75rem, 1vw, 1.25rem);
+  }
+
+  .sectionTitle {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
+  }
+
+  .sectionIcon {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    margin-right: clamp(0.2rem, 0.8vw, 0.3rem);
+  }
+
+  .itemTitle {
+    font-size: clamp(0.8rem, 1.2vw, 1rem);
+  }
+
+  .itemSubtitle {
+    font-size: clamp(0.7rem, 0.8vw, 0.85rem);
+  }
+
+  .itemDescription {
+    font-size: clamp(0.7rem, 1vw, 0.85rem);
+  }
+
+  .downloadButton {
+    width: clamp(120px, 30vw, 120px);
+    padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.5rem, 1vw, 1rem);
+    font-size: clamp(0.75rem, 0.8vw, 0.85rem);
+    margin: clamp(1rem, 1.5vw, 1.5rem) auto 0;
+  }
+
+  .downloadIcon {
+    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
   }
 }

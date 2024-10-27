@@ -1,12 +1,16 @@
 /* src/components/SkillCard.module.css */
 
+@import "../../styles/variables.css";
+
+/* General Styles */
 .card {
-  width: 150px;
-  height: 200px;
-  perspective: 1000px;
+  width: clamp(120px, 25vw, 200px);
+  height: clamp(160px, 30vw, 250px);
+  perspective: clamp(800px, 1000px, 1200px);
   cursor: pointer;
   position: relative;
   transform-style: preserve-3d;
+  transition: transform var(--transition-speed);
 }
 
 .face {
@@ -20,7 +24,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 0.6s;
+  transition: transform var(--transition-speed);
 }
 
 .front {
@@ -32,32 +36,109 @@
   background-color: var(--primary-color);
   color: #fff;
   transform: rotateY(180deg);
-  padding: 1rem;
+  padding: clamp(0.75rem, 1vw, 1rem);
   box-sizing: border-box;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .icon {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: var(--primary-color);
 }
 
 .skillName {
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
+  margin-top: clamp(0.4rem, 1vw, 0.8rem);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
   font-weight: bold;
 }
 
 .description {
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  margin-bottom: clamp(0.75rem, 1.2vw, 1rem);
 }
 
 .level {
-  font-size: 0.85rem;
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
 }
 
 /* Rotirea întregului card la hover */
 .card:hover {
   transform: rotateY(180deg);
+}
+
+/* Responsivitate suplimentară */
+@media (max-width: var(--breakpoint-md)) {
+  .card {
+    width: clamp(100px, 30vw, 180px);
+    height: clamp(140px, 35vw, 220px);
+    perspective: clamp(700px, 900px, 1100px);
+  }
+
+  .icon {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+  }
+
+  .skillName {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+  }
+
+  .description {
+    font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+  }
+
+  .level {
+    font-size: clamp(0.7rem, 0.8vw, 0.85rem);
+  }
+}
+
+@media (max-width: var(--breakpoint-sm)) {
+  .card {
+    width: clamp(90px, 35vw, 160px);
+    height: clamp(130px, 40vw, 200px);
+    perspective: clamp(600px, 800px, 1000px);
+  }
+
+  .icon {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+
+  .skillName {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+  }
+
+  .description {
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+  }
+
+  .level {
+    font-size: clamp(0.65rem, 0.8vw, 0.75rem);
+  }
+}
+
+@media (max-width: var(--breakpoint-xs)) {
+  .card {
+    width: clamp(80px, 40vw, 140px);
+    height: clamp(120px, 45vw, 180px);
+    perspective: clamp(500px, 700px, 900px);
+  }
+
+  .icon {
+    font-size: clamp(1.2rem, 7vw, 1.8rem);
+  }
+
+  .skillName {
+    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  }
+
+  .description {
+    font-size: clamp(0.6rem, 1vw, 0.75rem);
+  }
+
+  .level {
+    font-size: clamp(0.6rem, 0.7vw, 0.7rem);
+  }
 }
