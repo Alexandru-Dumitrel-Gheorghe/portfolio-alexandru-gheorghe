@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Education.module.css";
-import { FaUniversity } from "react-icons/fa";
+import { FaUniversity, FaLaptopCode } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Education = () => {
@@ -17,6 +17,14 @@ const Education = () => {
       duration: "2023",
       details:
         "Kurse: Web Development, Frontend-Entwicklung, Frameworks und Bibliotheken, Responsive Design.",
+    },
+    {
+      degree: "UI/UX Design Kurs",
+      institution: "IT School",
+      duration: "2024",
+      details:
+        "Spezialisierung auf User Experience Design, Prototyping mit Figma und Wireframing mit Miro.",
+      icon: <FaLaptopCode />, // Icon personalizat pentru UI/UX Design
     },
   ];
 
@@ -56,7 +64,7 @@ const Education = () => {
           >
             <div className={styles.content}>
               <div className={styles.icon}>
-                <FaUniversity />
+                {edu.icon ? edu.icon : <FaUniversity />}
               </div>
               <div className={styles.details}>
                 <h3 className={styles.degree}>{edu.degree}</h3>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Contact.module.css";
 import emailjs from "emailjs-com";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const initialFormData = {
@@ -21,17 +22,14 @@ const Contact = () => {
   };
 
   const validateEmail = (email) => {
-    // Simple email regex for validation
     const re = /\S+@\S+\.\S+/;
     return re.test(email);
   };
 
   const sendEmail = (e) => {
     e.preventDefault();
-
     const { firstName, lastName, email, phoneNumber, message } = formData;
 
-    // Basic validation
     if (!firstName || !lastName || !email || !phoneNumber || !message) {
       setErrorMessage("Bitte füllen Sie alle Felder aus.");
       return;
@@ -67,26 +65,56 @@ const Contact = () => {
   };
 
   return (
-    <section className={styles.contactSection}>
+    <section className={styles.contactSection} id="contact">
+      {/* Fundal animat cu gradient */}
       <div className={styles.background}></div>
       <div className={styles.container}>
-        <form className={styles.form} onSubmit={sendEmail} noValidate>
-          <h2 className={styles.heading}>Kontakt aufnehmen</h2>
-          <p className={styles.subheading}>
+        <motion.form
+          className={styles.form}
+          onSubmit={sendEmail}
+          noValidate
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h2
+            className={styles.heading}
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            Kontakt aufnehmen
+          </motion.h2>
+          <motion.p
+            className={styles.subheading}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
             Bitte zögern Sie nicht, mich zu kontaktieren.
-          </p>
+          </motion.p>
 
           {errorMessage && (
-            <div className={styles.errorMessage} role="alert">
+            <motion.div
+              className={styles.errorMessage}
+              role="alert"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
               {errorMessage}
-            </div>
+            </motion.div>
           )}
 
           {isSubmitted ? (
-            <div className={styles.thankYouMessage}>
-              Vielen Dank für Ihre Nachricht! Ich werde mich bald bei Ihnen
-              melden.
-            </div>
+            <motion.div
+              className={styles.thankYouMessage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+            >
+              Vielen Dank für Ihre Nachricht! Ich werde mich bald bei Ihnen melden.
+            </motion.div>
           ) : (
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
@@ -171,15 +199,18 @@ const Contact = () => {
           )}
 
           {!isSubmitted && (
-            <button
+            <motion.button
               type="submit"
               className={styles.submitButton}
               disabled={isSending}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
             >
               {isSending ? "Senden..." : "Absenden"}
-            </button>
+            </motion.button>
           )}
-        </form>
+        </motion.form>
       </div>
     </section>
   );

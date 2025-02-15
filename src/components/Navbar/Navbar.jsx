@@ -1,144 +1,106 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaBars, FaTimes, FaLinkedin, FaGithub } from "react-icons/fa";
+import { SiMiro, SiFigma } from "react-icons/si";
 import { Link } from "react-scroll";
-import { FaBars, FaTimes, FaGithub, FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
 
 const Navbar = () => {
-  const [isMobile, setIsMobile] = useState(false);
-  const [navBackground, setNavBackground] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggle = () => {
-    setIsMobile(!isMobile);
-  };
-
-  const closeMobileMenu = () => {
-    setIsMobile(false);
-  };
-
-  const handleScroll = () => {
-    if (window.scrollY >= 80) {
-      setNavBackground(true);
-    } else {
-      setNavBackground(false);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const navbarVariants = {
-    transparent: { backgroundColor: "rgba(59, 89, 152, 0)" },
-    solid: { backgroundColor: "rgba(59, 89, 152, 0.9)" },
-  };
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   return (
-    <motion.nav
-      className={styles.navbar}
-      variants={navbarVariants}
-      animate={navBackground ? "solid" : "transparent"}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
-      <a href="/" className={styles.navLogo}>
-        Alexandru Gheorghe
-      </a>
+    <nav className={styles.navbar}>
+      {/* Logo */}
+      <div className={styles.logo}>Alexandru</div>
 
-      <ul
-        className={
-          isMobile ? `${styles.navMenu} ${styles.active}` : styles.navMenu
-        }
-      >
-        <li className={styles.navItem}>
-          <Link
-            activeClass={styles.activeLink}
-            to="home"
-            spy={true}
-            smooth={true}
-            offset={-60}
-            duration={500}
-            onClick={closeMobileMenu}
-            className={styles.navLinks}
-          >
-            Startseite
-          </Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link
-            activeClass={styles.activeLink}
-            to="about"
-            spy={true}
-            smooth={true}
-            offset={-60}
-            duration={500}
-            onClick={closeMobileMenu}
-            className={styles.navLinks}
-          >
-            Über mich
-          </Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link
-            activeClass={styles.activeLink}
-            to="projects"
-            spy={true}
-            smooth={true}
-            offset={-60}
-            duration={500}
-            onClick={closeMobileMenu}
-            className={styles.navLinks}
-          >
-            Projekte
-          </Link>
-        </li>
-        <li className={styles.navItem}>
-          <Link
-            activeClass={styles.activeLink}
-            to="contact"
-            spy={true}
-            smooth={true}
-            offset={-60}
-            duration={500}
-            onClick={closeMobileMenu}
-            className={styles.navLinks}
-          >
-            Kontakt
-          </Link>
-        </li>
-      </ul>
+      {/* Meniu desktop */}
+      <div className={styles.desktopMenu}>
+        <Link to="home" smooth={true} duration={500}>
+          Home
+        </Link>
+        <Link to="about" smooth={true} duration={500}>
+          About
+        </Link>
+        <Link to="projects" smooth={true} duration={500}>
+          Projects
+        </Link>
+        <Link to="contact" smooth={true} duration={500}>
+          Contact
+        </Link>
 
-      <div className={styles.socialIcons}>
-        <motion.a
-          href="https://github.com/Alexandru-Dumitrel-Gheorghe"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.iconLink}
-          aria-label="GitHub"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <FaGithub />
-        </motion.a>
-        <motion.a
-          href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.iconLink}
-          aria-label="LinkedIn"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <FaLinkedin />
-        </motion.a>
+        {/* Iconițe social media în meniul desktop */}
+        <div className={styles.socialLinks}>
+          <a href="https://miro.com" target="_blank" rel="noreferrer">
+            <SiMiro />
+          </a>
+          <a href="https://figma.com" target="_blank" rel="noreferrer">
+            <SiFigma />
+          </a>
+          <a href="https://github.com" target="_blank" rel="noreferrer">
+            <FaGithub />
+          </a>
+          <a href="https://linkedin.com/in/username" target="_blank" rel="noreferrer">
+            <FaLinkedin />
+          </a>
+        </div>
       </div>
 
-      <div className={styles.mobileIcon} onClick={handleToggle}>
-        {isMobile ? <FaTimes /> : <FaBars />}
+      {/* Buton hamburger (apare doar pe mobil) */}
+      <div className={styles.mobileMenuIcon} onClick={toggleMenu}>
+        <FaBars />
       </div>
-    </motion.nav>
+
+      {/* Meniul mobil full-screen cu efect clip-path */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className={styles.mobileMenu}
+            initial={{ clipPath: "circle(0% at 90% 10%)", opacity: 0 }}
+            animate={{ clipPath: "circle(150% at 90% 10%)", opacity: 1 }}
+            exit={{ clipPath: "circle(0% at 90% 10%)", opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {/* Butonul de închidere (X) */}
+            <div className={styles.closeIcon} onClick={toggleMenu}>
+              <FaTimes />
+            </div>
+
+            <div className={styles.mobileMenuContent}>
+              <Link onClick={toggleMenu} to="home" smooth={true} duration={500}>
+                Home
+              </Link>
+              <Link onClick={toggleMenu} to="about" smooth={true} duration={500}>
+                About
+              </Link>
+              <Link onClick={toggleMenu} to="projects" smooth={true} duration={500}>
+                Projects
+              </Link>
+              <Link onClick={toggleMenu} to="contact" smooth={true} duration={500}>
+                Contact
+              </Link>
+
+              {/* Iconițe social media și în meniul mobil */}
+              <div className={styles.mobileSocialLinks}>
+                <a href="https://miro.com" target="_blank" rel="noreferrer">
+                  <SiMiro />
+                </a>
+                <a href="https://figma.com" target="_blank" rel="noreferrer">
+                  <SiFigma />
+                </a>
+                <a href="https://github.com/Alexandru-Dumitrel-Gheorghe" target="_blank" rel="noreferrer">
+                  <FaGithub />
+                </a>
+                <a href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/" target="_blank" rel="noreferrer">
+                  <FaLinkedin />
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
   );
 };
 

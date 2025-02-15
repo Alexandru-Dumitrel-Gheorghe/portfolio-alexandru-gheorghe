@@ -1,58 +1,73 @@
-/* src/components/Certification/Certification.module.css */
+/**************************** 
+   SECTIUNEA ZERTIFIKATE 
+****************************/
 
-.certification {
-  padding: var(--padding);
+.certificationSection {
+  padding: 4rem 2rem; 
   background-color: var(--background-color-light);
-  color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 40px;
+  text-align: center;
 }
 
 .heading {
-  font-size: var(--font-size-large);
+  font-size: 2rem;
   color: var(--primary-color);
-  margin-bottom: 40px;
-  text-align: center;
+  margin-bottom: 2.5rem;
   text-transform: uppercase;
 }
 
-/* Styles for the certificate card */
+/* GRID-ul cu carduri */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;  /* Aliniem cardurile la centru */
+}
+
+/* CARDUL DE CERTIFICAT */
 .card {
-  background-color: var(--background-color-light);
+  background-color: #ffffff;
   border-radius: var(--border-radius);
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
   overflow: hidden;
-  position: relative;
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
-  max-width: 700px;
   width: 100%;
+  max-width: 400px;
+  text-align: left;
+  transition: transform var(--transition-speed), 
+              box-shadow var(--transition-speed);
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
+/* Imaginea din header-ul cardului */
 .imageContainer {
-  height: 400px;
-  overflow: hidden;
   position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #f1f1f1;
 }
 
 .diplomaImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.4s ease;
 }
 
+.card:hover .diplomaImage {
+  transform: scale(1.05);
+}
+
+/* Overlay text la hover */
 .overlay {
   position: absolute;
   bottom: 10px;
   left: 10px;
   background: rgba(0, 0, 0, 0.6);
-  color: white;
+  color: #fff;
   padding: 5px 10px;
   border-radius: var(--border-radius);
+  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
@@ -60,44 +75,47 @@
   opacity: 1;
 }
 
+/* Zona de detalii (titlu, descriere, download) */
 .details {
-  padding: 20px;
+  flex: 1;
+  padding: 1.5rem;
+  background-color: #ffffff;
   text-align: center;
-  background-color: var(--background-color-light);
 }
 
 .title {
-  font-size: var(--font-size-medium);
-  margin-bottom: 10px;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
   color: var(--primary-color);
   text-transform: uppercase;
 }
 
 .issuer {
-  font-size: var(--font-size-small);
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
   color: var(--secondary-color);
-  margin-bottom: 15px;
 }
 
 .description {
-  font-size: var(--font-size-small);
+  font-size: 0.9rem;
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.5;
   margin-bottom: 1rem;
 }
 
+/* Butonul de download */
 .downloadButton {
   display: inline-flex;
   align-items: center;
   background-color: var(--primary-color);
-  color: var(--white-color);
-  padding: 0.75rem 1.5rem;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
   border-radius: var(--border-radius);
   text-decoration: none;
   font-weight: bold;
   font-size: 0.9rem;
-  transition: background-color var(--transition-speed),
-    transform var(--transition-speed);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .downloadButton:hover {
@@ -109,7 +127,7 @@
   font-size: 1rem;
 }
 
-/* Modal Styles */
+/* MODAL STILURI */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -117,7 +135,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 1000;
+  z-index: 999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -128,6 +146,7 @@
   background-color: transparent;
   max-width: 90%;
   max-height: 90%;
+  border-radius: var(--border-radius);
 }
 
 .modalImage {
@@ -136,12 +155,13 @@
   border-radius: var(--border-radius);
 }
 
+/* Butonul de close */
 .closeButton {
   position: absolute;
   top: -20px;
   right: -20px;
   background-color: var(--primary-color);
-  color: var(--white-color);
+  color: #fff;
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -157,25 +177,19 @@
   background-color: var(--accent-color);
 }
 
-/* Responsiveness */
+/* Responsiv pentru card */
 @media (max-width: 768px) {
-  .card {
-    max-width: 100%;
-  }
-
   .imageContainer {
-    height: 250px;
+    height: 180px;
   }
-
   .title {
-    font-size: var(--font-size-medium);
+    font-size: 1.1rem;
   }
-
-  .issuer {
-    font-size: var(--font-size-small);
-  }
-
+  .issuer,
   .description {
-    font-size: var(--font-size-small);
+    font-size: 0.85rem;
+  }
+  .downloadButton {
+    font-size: 0.85rem;
   }
 }

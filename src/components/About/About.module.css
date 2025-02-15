@@ -1,223 +1,67 @@
-@import "../../styles/variables.css";
-
-/* General Styles */
-.about {
-  padding: var(--padding);
-  background-color: var(--background-color-light);
-  color: var(--text-color);
-}
-
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-/* Main Content */
-.mainContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  width: 100%;
-  margin-bottom: 4rem;
-}
-
-/* Profile Image */
-.profileImageContainer {
-  flex: 1;
-  max-width: 300px;
-  width: 100%;
-  overflow: hidden;
-  border-radius: var(
-    --border-radius
-  ); /* Changed from 50% to var(--border-radius) */
-  border: 4px solid var(--primary-color);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+.aboutSection {
   position: relative;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--accent-color)
-  );
+  padding-bottom: 5rem;
+  overflow: hidden;
+  background: linear-gradient(135deg, #eef2ff, #f0fdfa);
 }
 
-.profileImageContainer::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2); /* Adds a dark overlay */
-}
-
-.profileImageContainer:hover,
-.profileImageContainer:focus-within {
-  transform: scale(1.05);
-  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.3);
-}
-
-.profileImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  opacity: 0.9; /* Slight transparency to blend with background */
-}
-
-/* About Text */
-.aboutText {
-  flex: 2;
+/* Containerul principal */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8rem 2rem 2rem;
   text-align: center;
-  max-width: 800px;
-  padding: 0 1rem;
 }
 
-.aboutText h2 {
-  font-size: var(--font-size-large);
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-
-.aboutText p {
-  font-size: var(--font-size-base);
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-}
-
-.mission {
-  font-size: var(--font-size-medium);
-  color: var(--secondary-color);
-  margin-top: 2rem;
-  font-style: italic;
-}
-
-/* Social Icons */
-.socialIcons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.socialLink {
-  color: var(--primary-color);
+/* Titlu secțiune */
+.title {
   font-size: 2rem;
-  transition: color var(--transition-speed), transform var(--transition-speed);
-}
-
-.socialLink:hover,
-.socialLink:focus {
-  color: var(--accent-color);
-  transform: scale(1.2);
-}
-
-/* Skills Section */
-.skillsSection {
-  width: 100%;
-  max-width: var(--max-width);
-}
-
-.skillsTitle {
-  font-size: var(--font-size-large);
+  color: #1e293b;
   margin-bottom: 2rem;
-  color: var(--primary-color);
-  text-align: center;
 }
 
-.skillsList {
+/* Grid cu cardurile */
+.columns {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
+  align-items: start;
 }
 
-.skillItem {
-  background-color: var(--background-color-light);
-  padding: 1.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+/* Indicator de scroll down */
+.scrollIndicator {
+  margin-top: 2rem;
 }
 
-.skillItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+.arrow {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-bottom: 3px solid #3b82f6;
+  border-right: 3px solid #3b82f6;
+  transform: rotate(45deg);
 }
 
-.skillInfo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.skillIcon {
-  font-size: 3rem;
-}
-
-.skillDetails {
-  flex: 1;
-}
-
-.skillName {
-  font-size: var(--font-size-medium);
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
-}
-
-.skillDescription {
-  font-size: var(--font-size-small);
-  color: var(--text-color);
-}
-
-.progressBar {
-  width: 100%;
-  height: 10px;
-  background-color: var(--background-color-dark);
-  border-radius: 5px;
-  overflow: hidden;
-  margin-top: 1rem;
-}
-
-.progress {
-  height: 100%;
-  border-radius: 5px;
-}
-
-@media (min-width: 768px) {
-  .mainContent {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .aboutText {
-    text-align: left;
-    max-width: 50%;
-  }
-
-  .socialIcons {
-    justify-content: flex-start;
+/* Media Queries */
+@media (max-width: 1024px) {
+  .container {
+    padding: 6rem 2rem 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .mainContent {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .aboutText {
-    text-align: center;
-    padding: 0 1rem;
-  }
-
-  .skillsList {
+  .columns {
     grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 8rem 1rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.8rem;
   }
 }

@@ -1,50 +1,47 @@
-/* src/components/Resume.module.css */
+:root {
+  --primary-color: #3b82f6;
+  --accent-color: #2563eb;
+  --secondary-color: #64748b;
+  --background-color-light: #f8fafc;
+  --text-color: #1f2937;
+  --font-family: "Roboto", sans-serif;
+  --transition-speed: 0.3s;
+}
 
-@import "../../styles/variables.css";
-
-/* General Styles */
 .resume {
-  padding: var(--padding);
-  background-color: var(--background-color-light);
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
   color: var(--text-color);
-  margin-top: clamp(2.5rem, 3vw, 4rem);
+  margin-top: 40px;
+  font-family: var(--font-family);
 }
 
 .heading {
   text-align: center;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-size: 2.2rem;
   color: var(--primary-color);
-  margin-bottom: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 3rem;
   font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
+/* Container pentru secțiuni */
 .resumeContent {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: var(--max-width);
+  max-width: 900px;
   margin: 0 auto;
 }
 
+/* Cardurile fiecărei secțiuni */
 .resumeSection {
   background-color: #fff;
-  padding: clamp(1.5rem, 2vw, 2.5rem);
-  border-radius: var(--border-radius);
+  padding: 2rem;
+  border-radius: 12px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   position: relative;
-  overflow: hidden;
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
-}
-
-.resumeSection::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: clamp(4px, 1vw, 5px);
-  height: 100%;
-  background-color: var(--primary-color);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .resumeSection:hover {
@@ -52,227 +49,106 @@
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
 }
 
+/* Titlul secțiunii */
 .sectionTitle {
   display: flex;
   align-items: center;
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-size: 1.8rem;
   color: var(--primary-color);
-  margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+  margin-bottom: 1.5rem;
 }
 
 .sectionIcon {
-  margin-right: clamp(0.5rem, 1vw, 0.75rem);
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  margin-right: 0.75rem;
+  font-size: 1.5rem;
   color: var(--accent-color);
 }
 
+/* Fiecare item din secțiune */
 .item {
-  margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--primary-color);
 }
 
 .itemTitle {
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-size: 1.3rem;
   color: var(--text-color);
-  margin-bottom: clamp(0.3rem, 0.5vw, 0.5rem);
+  margin-bottom: 0.5rem;
   font-weight: bold;
 }
 
 .itemSubtitle {
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  font-size: 1rem;
   color: var(--secondary-color);
-  margin-bottom: clamp(0.5rem, 1vw, 0.75rem);
+  margin-bottom: 0.75rem;
   font-style: italic;
 }
 
 .itemDescription {
-  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-size: 1rem;
   color: var(--text-color);
   line-height: 1.6;
 }
 
+/* Buton de descărcare */
 .downloadButton {
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--primary-color);
   color: #fff;
-  padding: clamp(0.75rem, 1.5vw, 1rem) clamp(1rem, 2vw, 1.5rem);
-  border-radius: var(--border-radius);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  font-size: clamp(0.875rem, 1vw, 1rem);
-  transition: background-color var(--transition-speed),
-    transform var(--transition-speed);
-  margin: clamp(2rem, 3vw, 2.5rem) auto 0;
-  gap: clamp(0.25rem, 0.5vw, 0.5rem);
-  width: clamp(120px, 20vw, 200px);
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 2.5rem auto 0;
+  gap: 0.5rem;
+  width: 220px;
 }
 
 .downloadButton:hover {
   transform: translateY(-3px);
+  background-color: var(--accent-color);
 }
 
 .downloadIcon {
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-size: 1rem;
 }
 
-/* Progress Bar */
-.progressBar {
-  width: 100%;
-  height: clamp(8px, 1vw, 10px);
-  background-color: var(--background-color-dark);
-  border-radius: clamp(4px, 0.5vw, 5px);
-  overflow: hidden;
-  margin-top: clamp(0.75rem, 1.2vw, 1rem);
-}
-
-.progress {
-  width: 80%; /* Exemplu de completare */
-  height: 100%;
-  background-color: var(--primary-color);
-  border-radius: clamp(4px, 0.5vw, 5px);
-  transition: width var(--transition-speed);
-}
-
-/* Responsive Styles */
-
-/* Large Devices (Desktops) */
-@media (min-width: var(--breakpoint-lg)) {
-  .resumeContent {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .resumeSection {
-    width: calc(50% - 1rem);
-  }
-
-  .downloadButton {
-    width: clamp(150px, 15vw, 200px);
-  }
-}
-
-/* Medium Devices (Tablets) */
-@media (max-width: var(--breakpoint-md)) and (min-width: var(--breakpoint-sm)) {
-  .resumeContent {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .resumeSection {
-    width: 100%;
-  }
-
-  .downloadButton {
-    width: clamp(130px, 18vw, 180px);
-  }
-}
-
-/* Small Devices (Large Mobile) */
-@media (max-width: var(--breakpoint-sm)) {
-  .resume {
-    padding: var(--padding-small);
-    margin-top: clamp(1.5rem, 2vw, 3rem);
-  }
-
+/* Responsivitate */
+@media (max-width: 768px) {
   .heading {
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
-    margin-bottom: clamp(1.5rem, 2.5vw, 2rem);
+    font-size: 2rem;
   }
-
-  .resumeContent {
-    padding: 0 clamp(1rem, 2vw, 1.5rem);
-  }
-
-  .resumeSection {
-    padding: clamp(1rem, 1.5vw, 1.5rem);
-  }
-
-  .sectionTitle {
-    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
-    margin-bottom: clamp(1rem, 2vw, 1.5rem);
-  }
-
-  .sectionIcon {
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    margin-right: clamp(0.3rem, 1vw, 0.5rem);
-  }
-
   .itemTitle {
-    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-size: 1.2rem;
   }
-
-  .itemSubtitle {
-    font-size: clamp(0.75rem, 1vw, 0.9rem);
-  }
-
+  .itemSubtitle,
   .itemDescription {
-    font-size: clamp(0.75rem, 1vw, 0.9rem);
+    font-size: 0.95rem;
   }
-
   .downloadButton {
-    width: clamp(120px, 25vw, 150px);
-    padding: clamp(0.5rem, 1vw, 0.75rem) clamp(0.75rem, 1.5vw, 1.25rem);
-    font-size: clamp(0.8rem, 1vw, 0.95rem);
-    margin: clamp(1.5rem, 2vw, 2rem) auto 0;
-  }
-
-  .downloadIcon {
-    font-size: clamp(0.75rem, 1.2vw, 0.9rem);
+    width: 180px;
   }
 }
 
-/* Extra Small Devices (Very Small Mobile) */
-@media (max-width: var(--breakpoint-xs)) {
-  .resume {
-    padding: var(--padding-xs);
-    margin-top: clamp(1rem, 1.5vw, 2rem);
-  }
-
+@media (max-width: 480px) {
   .heading {
-    font-size: clamp(1.25rem, 3vw, 1.5rem);
-    margin-bottom: clamp(1rem, 1.5vw, 1.5rem);
+    font-size: 1.8rem;
   }
-
-  .resumeContent {
-    padding: 0 clamp(0.5rem, 1vw, 1rem);
-  }
-
-  .resumeSection {
-    padding: clamp(0.75rem, 1vw, 1.25rem);
-  }
-
-  .sectionTitle {
-    font-size: clamp(1rem, 1.5vw, 1.3rem);
-    margin-bottom: clamp(0.75rem, 1.5vw, 1rem);
-  }
-
-  .sectionIcon {
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    margin-right: clamp(0.2rem, 0.8vw, 0.3rem);
-  }
-
   .itemTitle {
-    font-size: clamp(0.8rem, 1.2vw, 1rem);
+    font-size: 1.1rem;
   }
-
-  .itemSubtitle {
-    font-size: clamp(0.7rem, 0.8vw, 0.85rem);
-  }
-
+  .itemSubtitle,
   .itemDescription {
-    font-size: clamp(0.7rem, 1vw, 0.85rem);
+    font-size: 0.9rem;
   }
-
   .downloadButton {
-    width: clamp(120px, 30vw, 120px);
-    padding: clamp(0.4rem, 0.8vw, 0.6rem) clamp(0.5rem, 1vw, 1rem);
-    font-size: clamp(0.75rem, 0.8vw, 0.85rem);
-    margin: clamp(1rem, 1.5vw, 1.5rem) auto 0;
-  }
-
-  .downloadIcon {
-    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+    font-size: 0.9rem;
+    padding: 0.8rem 1.2rem;
+    width: 160px;
   }
 }

@@ -1,156 +1,82 @@
 @import "../../styles/variables.css";
 
-/* Header */
+/* HEADER - secțiunea principală */
 .header {
   position: relative;
   min-height: 100vh;
-  overflow: hidden;
-  background-color: var(--background-color-light);
-  display: flex;
+  width: 100%;
+  display: flex; 
   align-items: center;
   justify-content: center;
-  padding: 60px 1rem 0; /* Height of the Navbar */
+  background: linear-gradient(135deg, #eef2ff, #f0fdfa);
+  overflow: hidden;
 }
 
-.backgroundOverlay {
+/* Wave Divider în partea de jos */
+.waveWrapper {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
   width: 100%;
+  height: 200px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.waveSvg {
+  width: 100%;
   height: 100%;
-  background: url("https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-4.0.3&ixid=M3wx")
-    center center / cover no-repeat;
-  opacity: 0.1;
-  z-index: 0;
-  background-attachment: fixed;
 }
 
-/* Contact Info */
-.contactInfo {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--primary-color);
-  color: #ffffff;
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  margin-top: 2rem;
-  font-size: var(--font-size-small);
-  cursor: default;
-}
-
-.contactItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: transform var(--transition-speed), color var(--transition-speed);
-}
-
-.contactItem:hover {
-  transform: translateY(-5px);
-}
-
-.icon {
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-
-.contactInfo a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.contactInfo a:hover {
-  color: var(--accent-color);
-}
-
-.contactInfo a:focus {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
-}
-
-/* Content */
-.content {
-  position: relative;
+/* Fundal radial animat */
+.backgroundShape {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.15), transparent);
+  transform: rotate(-15deg);
   z-index: 1;
-  max-width: var(--max-width);
+}
+
+/* Container principal */
+.container {
+  position: relative;
+  z-index: 3; /* deasupra wave-ului */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
-  padding: var(--padding);
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* Coloana stângă */
+.leftColumn {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  width: 100%;
 }
 
-/* Welcome Text */
-.welcomeText {
-  text-align: center;
-  max-width: 800px;
-}
-
-.welcomeText h1 {
-  font-size: var(--font-size-large);
-  color: var(--text-color);
-  margin-bottom: 1rem;
-}
-
-.nameHighlight {
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-.typingEffect {
-  font-size: var(--font-size-medium);
-  color: var(--secondary-text);
-  margin-bottom: 1rem;
-}
-
-.description {
-  font-size: var(--font-size-base);
-  color: var(--text-color);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-.ctaButton {
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: var(--border-radius);
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color var(--transition-speed),
-    transform var(--transition-speed);
-  display: inline-block;
-  font-size: var(--font-size-base);
-  position: relative;
-}
-
-.ctaButton:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px);
-}
-
-/* Profile Image */
+/* Imaginea de profil cu bordură gradient */
 .profileImageContainer {
-  width: 250px;
-  height: 250px;
-  overflow: hidden;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  border: 6px solid var(--primary-color);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  overflow: hidden;
+  border: 5px solid;
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profileImageContainer:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 45px rgba(0, 0, 0, 0.25);
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(59, 130, 246, 0.25);
 }
 
 .profileImage {
@@ -159,41 +85,138 @@
   object-fit: cover;
 }
 
-/* Button Wrapper */
-.buttonWrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+/* Contact info */
+.contactContainer {
+  display: grid;
+  gap: 1rem;
 }
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-  .contactInfo {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background-color: #ffffff;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  color: #0f172a;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .welcomeText {
-    padding: 0 1rem;
+.contactItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: #3b82f6;
+}
+
+/* Coloana dreaptă: glass morphism */
+.rightColumn {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Titlul */
+.title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #1e293b;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.title span {
+  color: #3b82f6;
+}
+
+/* Roluri - typed effect container */
+.roles {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #3b82f6;
+  margin-bottom: 0.5rem;
+  height: 1.5rem; /* Ca să nu sară pagina când textul typed e scurt/lung */
+  display: flex;
+  align-items: center;
+}
+
+/* Subtitlu */
+.subtitle {
+  font-size: 1.1rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Buton CTA cu gradient */
+.ctaButton {
+  display: inline-block;
+  padding: 0.7rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(45deg, #3b82f6, #2563eb);
+  border-radius: 24px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .container {
+    flex-direction: column;
+    padding: 2rem 1rem;
+  }
+  .rightColumn {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 2rem 1.5rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .roles {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    margin-top: 70px; /* Ajustează dacă ai un navbar fix */
   }
 }
 
 @media (max-width: 480px) {
-  .welcomeText h1 {
-    font-size: 2rem;
+  .title {
+    font-size: 1.8rem;
   }
-
-  .typingEffect {
+  .roles {
+    font-size: 1.1rem;
+  }
+  .subtitle {
     font-size: 1rem;
   }
-
-  .profileImageContainer {
-    width: 150px;
-    height: 150px;
-  }
-
   .ctaButton {
+    padding: 0.7rem 1.4rem;
     font-size: 0.9rem;
-    padding: 0.5rem 1rem;
   }
 }

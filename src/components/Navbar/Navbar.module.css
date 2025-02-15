@@ -1,143 +1,138 @@
-@import "../../styles/variables.css";
-
-/* Navbar */
+/* Bara de navigație fixă */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 60px;
-  /* Background color now handled by framer-motion */
+  right: 0;
+  padding: 1rem 2rem;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  transition: padding 0.3s ease;
-  overflow: x hidden;
-}
-
-/* Logo-ul/Numele */
-.navLogo {
-  color: #ffffff;
-  font-size: 1.6rem; /* Ușor mai mare pentru vizibilitate */
-  font-weight: 700; /* Bold pentru un contrast mai mare */
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); /* Adăugăm o umbră pentru a evidenția textul */
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-
-.navLogo:hover {
-  color: var(--accent-color);
-}
-
-/* Linkurile de navigație */
-.navMenu {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  flex-grow: 1;
-  justify-content: center; /* Centrare pe mijloc */
   align-items: center;
-  margin: 0;
-  text-align: center; /* Centrare text */
-  transition: all 0.3s ease;
+  z-index: 100;
 }
 
-.navItem {
-  height: 60px;
+/* Logo */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e293b;
+}
+
+/* Meniu desktop */
+.desktopMenu {
   display: flex;
   align-items: center;
-  justify-content: center; /* Centrare pe mijloc */
+  gap: 1.5rem;
 }
 
-.navLinks {
-  color: #ffffff;
-  font-size: 1.1rem; /* Ușor mai mare */
-  font-weight: 600; /* Mai accentuat */
+.desktopMenu a {
   text-decoration: none;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); /* Umbră pentru contrast */
-  padding: 0.5rem 1rem;
-  transition: color 0.3s ease, transform 0.3s ease;
-  cursor: pointer; /* Cursor pointer */
+  color: #1e293b;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-.navLinks:hover,
-.activeLink {
-  color: var(--accent-color);
-  transform: scale(1.05); /* Efect de scalare ușoară la hover */
+.desktopMenu a:hover {
+  color: #3b82f6;
 }
 
-/* Iconițele sociale */
-.socialIcons {
+/* Iconițe social media (desktop) */
+.socialLinks {
   display: flex;
   gap: 1rem;
+  margin-left: 1rem;
 }
 
-.iconLink {
-  color: #ffffff;
-  font-size: 1.5rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4); /* Umbră pentru iconițe */
-  transition: color 0.3s ease, transform 0.3s ease;
-  cursor: pointer;
+.socialLinks a {
+  color: #1e293b;
+  font-size: 1.3rem;
+  transition: color 0.3s;
 }
 
-.iconLink:hover {
-  color: var(--accent-color);
-  transform: scale(1.1);
+.socialLinks a:hover {
+  color: #3b82f6;
 }
 
-/* Mobile Icon */
-.mobileIcon {
+/* Buton hamburger (inițial ascuns) */
+.mobileMenuIcon {
   display: none;
-  color: #ffffff;
   font-size: 1.8rem;
+  color: #1e293b;
   cursor: pointer;
 }
 
-/* Responsive Styles */
-@media screen and (max-width: 768px) {
-  .navMenu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: -100%;
-    width: 100%;
-    height: calc(100vh - 60px);
-    background-color: var(--primary-color); /* Fundalul pentru meniul mobil */
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: left 0.3s ease;
-    padding: 0;
-  }
+/* Meniul mobil full-screen, animat cu clip-path */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+}
 
-  .navMenu.active {
-    left: 0;
-  }
+/* Buton de închidere (X) */
+.closeIcon {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #1e293b;
+  cursor: pointer;
+  z-index: 999;
+}
 
-  .navItem {
-    margin: 1rem 0;
-    width: 100%;
-  }
+/* Conținutul meniului mobil */
+.mobileMenuContent {
+  margin-top: 5rem; /* un pic de spațiu față de top */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
 
-  .navLinks {
-    display: block;
-    width: 100%;
-    padding: 1rem 0;
-    font-size: 1.2rem;
-    text-align: center;
-    color: #ffffff;
-  }
+.mobileMenuContent a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  color: #1e293b;
+  font-weight: bold;
+  transition: color 0.3s;
+}
 
-  .socialIcons {
-    display: none;
-  }
+.mobileMenuContent a:hover {
+  color: #3b82f6;
+}
 
-  .mobileIcon {
-    display: block;
+/* Iconițe social media în meniul mobil */
+.mobileSocialLinks {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.mobileSocialLinks a {
+  color: #1e293b;
+  font-size: 1.8rem;
+  transition: color 0.3s;
+}
+
+.mobileSocialLinks a:hover {
+  color: #3b82f6;
+}
+
+/* Responsiv */
+@media (max-width: 768px) {
+  .desktopMenu {
+    display: none; /* Ascundem meniul desktop pe mobil */
+  }
+  .mobileMenuIcon {
+    display: block; /* Afișăm butonul hamburger pe mobil */
   }
 }

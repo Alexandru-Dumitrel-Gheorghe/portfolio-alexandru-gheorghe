@@ -21,16 +21,16 @@
   letter-spacing: 1px;
 }
 
+/* Folosim grid pentru galerie */
 .gallery {
-  column-count: 3;
-  column-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
 }
 
 .projectItem {
   position: relative;
-  margin-bottom: 1rem;
   cursor: pointer;
-  break-inside: avoid;
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -45,8 +45,8 @@
 
 .projectImage {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 200px;
+  object-fit: cover;
   transition: transform var(--transition-speed);
 }
 
@@ -57,21 +57,32 @@
 .overlay {
   position: absolute;
   bottom: 0;
+  width: 100%;
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  width: 100%;
-  transform: translateY(100%);
-  transition: transform var(--transition-speed);
   padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform var(--transition-speed), opacity var(--transition-speed);
 }
 
 .projectItem:hover .overlay {
+  opacity: 1;
   transform: translateY(0);
 }
 
+.projectTitle {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.linkIcon {
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+/* Modal Styles */
 .modal {
   position: fixed;
   top: 0;
@@ -83,6 +94,7 @@
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding: 1rem;
 }
 
 .modalContent {
@@ -90,8 +102,7 @@
   padding: 2rem;
   border-radius: var(--border-radius);
   max-width: 800px;
-  width: 90%;
-  position: relative;
+  width: 100%;
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -116,6 +127,20 @@
 
 .close:hover {
   color: var(--accent-color);
+}
+
+.modalImage {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.featuresList {
+  list-style: disc;
+  padding-left: 1.5rem;
+  text-align: left;
+  margin-bottom: 1rem;
 }
 
 .technologies {
@@ -154,9 +179,9 @@
   color: var(--accent-color);
 }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
-  .gallery {
-    column-count: 1;
+  .projectImage {
+    height: 180px;
   }
 }

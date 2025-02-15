@@ -11,7 +11,7 @@ import {
   FaGitAlt,
   FaExternalLinkAlt,
 } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -20,7 +20,7 @@ const Projects = () => {
     {
       title: "Task Timer",
       description:
-        "Das Product Timer Dashboard ist eine webbasierte Anwendung, die Nutzern hilft, die auf verschiedene Produkte verwendete Zeit zu verfolgen.",
+        "Das Product Timer Dashboard ist eine webbasierte Anwendung, die Nutzern hilft, die auf verschiedene Produkte verwendete Zeit zu verfolgen. Das Projekt nutzt ein React-Frontend mit CSS Modules und ein Backend, das mit Node.js und MongoDB entwickelt wurde. Es wurde auf Vercel bereitgestellt und verwendet eine API zur Kommunikation.",
       features: [
         "Echtzeit-Timer: Starten, Pausieren und Stoppen der Timer für Aufgaben.",
         "Kategorienverwaltung: Organisieren Sie Aufgaben nach Kategorien für eine bessere Produktivitätsverfolgung.",
@@ -33,7 +33,8 @@ const Projects = () => {
       gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/task-timer-app",
       image: require("../../assets/images/Timer.png"),
       technologies: ["React", "CSS Modules", "Bootstrap", "Node.js", "MongoDB"],
-    },
+    }
+    ,
     {
       title: "Wedding Photography",
       description:
@@ -81,12 +82,49 @@ const Projects = () => {
       image: require("../../assets/images/Portofolio.png"),
       technologies: ["React", "CSS Modules", "JavaScript", "HTML5"],
     },
+    {
+      title: "Breakout Game in React",
+      description:
+        "A modern take on the classic Breakout game, built using React. It features multiple levels with increasing difficulty, dynamic ball speed adjustments, power-ups, and sound effects for an engaging gameplay experience.",
+      features: [
+        "Multiple Levels: 4 distinct levels defined in src/levels/levels.js with increasing challenge.",
+        "Dynamic Ball Speed: The ball's speed increases with each level for progressive difficulty.",
+        "Power-Ups: Occasionally drops power-ups that grant extra lives, increase paddle width, spawn extra balls, or shrink the paddle.",
+        "Sound Effects: Audio feedback for paddle hits, brick hits, losing lives, level completion, and game over events.",
+        "Responsive Design: Automatically adjusts game board dimensions for different screen sizes.",
+        "Immersive Controls: Paddle controlled with the mouse; the cursor is hidden for an immersive experience.",
+      ],
+      liveLink: "https://breakout-v1.netlify.app/",
+      gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/Breakout-Game",
+      image: require("../../assets/images/Breakout.png"),
+      technologies: ["React", "JavaScript", "HTML5", "CSS3"],
+    },
+
+    {
+      title: "Tetris Game",
+      description:
+        "Tetris is a timeless and highly addictive puzzle game built using React. In this game, players must arrange falling tetrominoes (shapes made up of four blocks) to form complete horizontal lines. As lines clear, players earn points, and the falling speed increases progressively.",
+      features: [
+        "Multiple Levels: 4 distinct levels defined in src/levels/levels.js with increasing challenge.",
+        "Dynamic Ball Speed: The falling speed increases as the game progresses.",
+        "Power-Ups: Extra lives, increased paddle width, extra balls, or paddle shrinkage when bricks are destroyed.",
+        "Sound Effects: Audio feedback for paddle hits, brick hits, losing lives, level completion, and game over events.",
+        "Responsive Design: The game board adjusts automatically to different screen sizes.",
+        "Immersive Controls: Paddle controlled with the mouse, with the cursor hidden over the game board.",
+      ],
+      liveLink: "https://tetris-alex93.netlify.app/",
+      gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/Tetris-Game",
+      image: require("../../assets/images/Tetris.png"),
+      technologies: ["React", "JavaScript", "HTML5", "CSS3"],
+    },
+  
   ];
 
   const getTechnologyIcon = (tech) => {
     switch (tech) {
       case "React":
         return <FaReact />;
+      case "CSS Modules":
       case "CSS3":
         return <FaCss3Alt />;
       case "Node.js":
@@ -116,11 +154,7 @@ const Projects = () => {
         viewport={{ once: true, amount: 0.2 }}
         variants={{
           hidden: {},
-          visible: {
-            transition: {
-              staggerChildren: 0.3,
-            },
-          },
+          visible: { transition: { staggerChildren: 0.2 } },
         }}
       >
         {projectData.map((project, index) => (
@@ -148,57 +182,69 @@ const Projects = () => {
         ))}
       </motion.div>
 
-      {selectedProject && (
-        <div className={styles.modal} onClick={() => setSelectedProject(null)}>
-          <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className={styles.modal}
+            onClick={() => setSelectedProject(null)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            <span
-              className={styles.close}
-              onClick={() => setSelectedProject(null)}
+            <motion.div
+              className={styles.modalContent}
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
             >
-              &times;
-            </span>
-            <img
-              src={selectedProject.image}
-              alt={selectedProject.title}
-              className={styles.modalImage}
-            />
-            <h3>{selectedProject.title}</h3>
-            <p>{selectedProject.description}</p>
-            <h4>Funktionen:</h4>
-            <ul>
-              {selectedProject.features.map((feature, idx) => (
-                <li key={idx}>{feature}</li>
-              ))}
-            </ul>
-            <div className={styles.technologies}>
-              {selectedProject.technologies.map((tech, idx) => (
-                <span key={idx} className={styles.tech}>
-                  {getTechnologyIcon(tech)} {tech}
-                </span>
-              ))}
-            </div>
-            <div className={styles.links}>
-              <a
-                href={selectedProject.liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <span
+                className={styles.close}
+                onClick={() => setSelectedProject(null)}
               >
-                Live ansehen <FaExternalLinkAlt />
-              </a>
-              <a
-                href={selectedProject.gitLink}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                GitHub <FaExternalLinkAlt />
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
+                &times;
+              </span>
+              <img
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                className={styles.modalImage}
+              />
+              <h3>{selectedProject.title}</h3>
+              <p>{selectedProject.description}</p>
+              <h4>Funktionen:</h4>
+              <ul className={styles.featuresList}>
+                {selectedProject.features.map((feature, idx) => (
+                  <li key={idx}>{feature}</li>
+                ))}
+              </ul>
+              <div className={styles.technologies}>
+                {selectedProject.technologies.map((tech, idx) => (
+                  <span key={idx} className={styles.tech}>
+                    {getTechnologyIcon(tech)} {tech}
+                  </span>
+                ))}
+              </div>
+              <div className={styles.links}>
+                <a
+                  href={selectedProject.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Live ansehen <FaExternalLinkAlt />
+                </a>
+                <a
+                  href={selectedProject.gitLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub <FaExternalLinkAlt />
+                </a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };

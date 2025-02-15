@@ -1,0 +1,36 @@
+.ueberMich {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efect la hover – cardul crește puțin umbra */
+.ueberMich:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: 1.3rem;
+  color: #3b82f6;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #1e293b;
+}
+
+.text {
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #475569;
+}

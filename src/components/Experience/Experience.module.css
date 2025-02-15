@@ -1,7 +1,5 @@
-/* src/components/Experience.module.css */
-
 .experience {
-  padding: var(--padding);
+  padding: 4rem 2rem;
   background-color: var(--background-color-light);
   color: var(--text-color);
   margin-top: 40px;
@@ -9,7 +7,7 @@
 
 .heading {
   text-align: center;
-  font-size: var(--font-size-large);
+  font-size: 2rem;
   color: var(--primary-color);
   margin-bottom: 3rem;
   font-weight: bold;
@@ -17,7 +15,7 @@
 
 .timeline {
   position: relative;
-  max-width: var(--max-width);
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -49,9 +47,15 @@
 .content {
   background-color: #fff;
   padding: 1.5rem;
-  border-radius: var(--border-radius);
+  border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .timelineItem:nth-child(odd) .content {
@@ -101,7 +105,7 @@
 
 .responsibilities li {
   margin-bottom: 0.75rem;
-  font-size: var(--font-size-small);
+  font-size: 1rem;
   line-height: 1.6;
   position: relative;
   padding-left: 1.5rem;
@@ -114,6 +118,7 @@
   left: 0;
 }
 
+/* Responsivitate */
 @media (max-width: 768px) {
   .timeline::before {
     left: 20px;

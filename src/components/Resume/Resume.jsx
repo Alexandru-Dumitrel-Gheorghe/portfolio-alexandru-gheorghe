@@ -1,5 +1,3 @@
-// src/components/Resume.jsx
-
 import React from "react";
 import styles from "./Resume.module.css";
 import {
@@ -7,6 +5,8 @@ import {
   FaBriefcase,
   FaUniversity,
   FaCertificate,
+  FaPencilRuler,
+  FaCode,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -18,9 +18,23 @@ const Resume = () => {
       items: [
         {
           title: "Freiberuflicher Webentwickler",
-          subtitle: "Selbstständig | 2023 – Heute",
+          subtitle: "Private Projekte | 2023 – Heute",
           description:
-            "Arbeit an freien Projekten zur Webentwicklung und -gestaltung. Entwicklung von benutzerfreundlichen, modernen Webseiten mit React und anderen Technologien. Zusammenarbeit mit Kunden zur Erstellung maßgeschneiderter digitaler Lösungen.",
+            "Arbeit an privaten Projekten zur Webentwicklung und -gestaltung. Entwicklung von benutzerfreundlichen, modernen Webseiten mit React und anderen Technologien. Zusammenarbeit mit Kunden zur Erstellung maßgeschneiderter digitaler Lösungen.",
+        },
+        {
+          title: "Frontend Web Developer",
+          subtitle: "IT School | 2023",
+          description:
+            "Abschluss des Frontend Web Development Programms. Dabei wurden moderne Technologien wie React, HTML, CSS und JavaScript eingesetzt, um responsive und benutzerfreundliche Webanwendungen zu entwickeln.",
+          icon: <FaCode />,
+        },
+        {
+          title: "UI/UX Designer",
+          subtitle: "Freelance & IT School | 2024",
+          description:
+            "Erstellung von interaktiven Prototypen mit Figma und Miro. Nutzerforschung, Wireframing und visuelle Gestaltung für optimierte User Experience.",
+          icon: <FaPencilRuler />,
         },
         {
           title: "Lasertechniker",
@@ -28,18 +42,19 @@ const Resume = () => {
           description:
             "Betreuung und Überwachung von Lasersystemen zur Fertigung in der Elektronikindustrie. Durchführung regelmäßiger Wartungen und Fehlerbehebungen. Einhaltung strenger Sicherheitsprotokolle und Qualitätskontrollen.",
         },
-        {
-          title: "Fertigungsmitarbeiter",
-          subtitle: "Pressfinish GmbH | Januar 2022 – Dezember 2022",
-          description:
-            "Fertigung und Montage von Baugruppen in der Elektronikproduktion. Sicherstellung einer präzisen und termingerechten Fertigung. Zusammenarbeit mit dem Team zur Erhöhung der Produktionsqualität.",
-        },
       ],
     },
     {
       title: "Bildung",
       icon: <FaUniversity className={styles.sectionIcon} />,
       items: [
+        {
+          title: "UI/UX Design Kurs",
+          subtitle: "IT School | 2024",
+          description:
+            "Vertiefung in User Experience Design, Prototyping mit Figma und Wireframing mit Miro.",
+          icon: <FaPencilRuler />,
+        },
         {
           title: "IT School",
           subtitle: "2023",
@@ -59,14 +74,24 @@ const Resume = () => {
       icon: <FaCertificate className={styles.sectionIcon} />,
       items: [
         {
+          title: "Front-End Web Developer",
+          subtitle: "IT School | 2023",
+          description: "Zertifizierung in HTML, CSS, JavaScript und React.",
+          icon: <FaCode />,
+        },
+        {
+          title: "UI/UX Design",
+          subtitle: "IT School | 2024",
+          description: "Zertifizierung in Design Thinking, Prototyping und Wireframing.",
+          icon: <FaPencilRuler />,
+        },
+        {
           title: "Certified React Developer",
           subtitle: "React Training Institute | 2021",
-          description: "",
         },
         {
           title: "Full Stack Web Development",
           subtitle: "Online Bootcamp | 2020",
-          description: "",
         },
       ],
     },
@@ -114,7 +139,6 @@ const Resume = () => {
         ))}
       </motion.div>
 
-      {/* Link to download the Lebenslauf PDF */}
       <a href="/Lebenslauf.pdf" download className={styles.downloadButton}>
         Herunterladen <FaDownload className={styles.downloadIcon} />
       </a>

@@ -1,19 +1,32 @@
 import React from "react";
 import styles from "./Experience.module.css";
-import { FaBriefcase } from "react-icons/fa";
+import { FaBriefcase, FaPencilRuler } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Experience = () => {
   const experienceData = [
     {
-      role: "Freiberuflicher Webentwickler",
-      company: "Selbstständig",
-      duration: "2023 – Heute",
+      role: "IT School Certificate",
+      company: "IT School",
+      duration: "08.08.2024",
       responsibilities: [
-        "Arbeit an freien Projekten zur Webentwicklung und -gestaltung.",
-        "Entwicklung von benutzerfreundlichen, modernen Webseiten mit React und anderen Technologien.",
-        "Zusammenarbeit mit Kunden zur Erstellung maßgeschneiderter digitaler Lösungen.",
+        "Awarded to Dumitrel-Alexandru Gheorghe for attending and successfully completing the training program.",
+        "Issued 08.08.2024",
+        "Website: www.itschool.ro",
+        "Certificate No. ITSGO0224FE5904",
       ],
+      icon: <FaPencilRuler />, // Poți schimba iconița după preferințe
+    },
+    {
+      role: "UI/UX Designer",
+      company: "Freelance",
+      duration: "2024",
+      responsibilities: [
+        "Erstellung von interaktiven Prototypen mit Figma und Miro.",
+        "Nutzerforschung und Design Thinking für optimale User Experience.",
+        "Wireframing, visuelle Designs und mobile-first Ansätze.",
+      ],
+      icon: <FaPencilRuler />, // Icon pentru UI/UX Design
     },
     {
       role: "Lasertechniker",
@@ -24,6 +37,7 @@ const Experience = () => {
         "Durchführung regelmäßiger Wartungen und Fehlerbehebungen.",
         "Einhaltung strenger Sicherheitsprotokolle und Qualitätskontrollen.",
       ],
+      // Folosim implicit FaBriefcase dacă nu este definit un icon specific
     },
   ];
 
@@ -63,7 +77,7 @@ const Experience = () => {
           >
             <div className={styles.content}>
               <div className={styles.icon}>
-                <FaBriefcase />
+                {exp.icon ? exp.icon : <FaBriefcase />}
               </div>
               <div className={styles.details}>
                 <h3 className={styles.role}>{exp.role}</h3>
