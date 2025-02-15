@@ -19,6 +19,8 @@
   gap: 2rem;
   max-width: 1100px;
   margin: 0 auto;
+  /* Adăugăm perspectiva pentru efectul 3D */
+  perspective: 1500px;
 }
 
 .projectCard {
@@ -28,10 +30,12 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
+  cursor: pointer;
+  /* Permiterea transformărilor 3D */
+  transform-style: preserve-3d;
 }
 
 .projectCard:hover {
-  transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 

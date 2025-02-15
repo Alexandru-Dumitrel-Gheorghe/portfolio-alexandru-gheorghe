@@ -1,6 +1,6 @@
 @import "../../styles/variables.css";
 
-/* Global Box-Sizing */
+/* Box-Sizing Global */
 *,
 *::before,
 *::after {
@@ -10,37 +10,32 @@
 /* Secțiunea Contact */
 .contactSection {
   position: relative;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #f0f4ff, #e6ecff);
   font-family: var(--font-family);
   overflow: hidden;
   margin-top: 80px;
 }
 
-/* Elementul de fundal animat */
+/* Fundalul animat subtil */
 .background {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 250px;
-  background: linear-gradient(
-    135deg,
-    var(--primary-color),
-    var(--secondary-color)
-  );
+  top: -50px;
+  left: -50px;
+  width: 150%;
+  height: 300px;
+  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.3), transparent 70%);
+  filter: blur(60px);
   z-index: -1;
-  border-bottom-left-radius: 50% 20%;
-  border-bottom-right-radius: 50% 20%;
-  animation: backgroundAnimation 10s infinite alternate;
+  animation: moveBackground 8s ease-in-out infinite alternate;
 }
 
-@keyframes backgroundAnimation {
+@keyframes moveBackground {
   0% {
-    background-position: 0% 50%;
+    transform: translate(0, 0);
   }
   100% {
-    background-position: 100% 50%;
+    transform: translate(30px, 30px);
   }
 }
 
@@ -48,16 +43,16 @@
 .container {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 20px;
-  background-color: rgba(255, 255, 255, 0.95);
-  border-radius: var(--border-radius);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .container:hover {
-  transform: scale(1.02);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Formularul */
@@ -69,8 +64,8 @@
 
 /* Heading */
 .heading {
-  font-size: var(--font-size-large);
-  color: var(--primary-color);
+  font-size: 2rem;
+  color: #2540e3;
   margin-bottom: 10px;
   text-align: center;
   text-transform: uppercase;
@@ -79,18 +74,18 @@
 
 /* Subheading */
 .subheading {
-  font-size: var(--font-size-medium);
-  color: var(--text-color);
+  font-size: 1.1rem;
+  color: #555;
   margin-bottom: 30px;
   text-align: center;
 }
 
 /* Mesaj de eroare */
 .errorMessage {
-  background-color: var(--error-bg-color);
-  color: var(--error-color);
-  padding: 10px 20px;
-  border-radius: var(--border-radius);
+  background-color: #ffeded;
+  color: #e74c3c;
+  padding: 12px 20px;
+  border-radius: 8px;
   margin-bottom: 20px;
   width: 100%;
   text-align: center;
@@ -99,13 +94,13 @@
 
 /* Mesaj de mulțumire */
 .thankYouMessage {
-  font-size: var(--font-size-medium);
-  color: var(--primary-color);
+  font-size: 1.1rem;
+  color: #2540e3;
   text-align: center;
   padding: 20px;
-  border: 2px solid var(--primary-color);
-  border-radius: var(--border-radius);
-  background-color: rgba(0, 123, 255, 0.1);
+  border: 2px solid #2540e3;
+  border-radius: 8px;
+  background-color: rgba(37, 64, 227, 0.1);
 }
 
 /* Grid-ul formularului */
@@ -129,55 +124,55 @@
 
 /* Etichete */
 .label {
-  margin-bottom: 5px;
-  font-size: var(--font-size-small);
-  color: var(--text-color-dark);
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  color: #333;
 }
 
 /* Inputuri & Textarea */
 .input,
 .textarea {
   padding: 12px 15px;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  font-size: var(--font-size-small);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  background-color: #fff;
+  background-color: #fafafa;
 }
 
 .input:focus,
 .textarea:focus {
-  border-color: var(--primary-color);
+  border-color: #2540e3;
   outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  box-shadow: 0 0 5px rgba(37, 64, 227, 0.3);
 }
 
 /* Textarea specific */
 .textarea {
-  min-height: 150px;
+  min-height: 140px;
   resize: vertical;
 }
 
 /* Butonul de trimitere */
 .submitButton {
   margin-top: 30px;
-  padding: 15px 30px;
-  background-color: var(--primary-color);
+  padding: 14px 40px;
+  background-color: #2540e3;
   color: #fff;
   border: none;
-  border-radius: var(--border-radius);
+  border-radius: 6px;
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .submitButton:hover {
-  background-color: var(--accent-color);
+  background-color: #3a56f0;
   transform: translateY(-2px);
 }
 
 .submitButton:disabled {
-  background-color: var(--disabled-color);
+  background-color: #a5b1f2;
   cursor: not-allowed;
 }
 
@@ -188,39 +183,37 @@
   }
 
   .container {
-    padding: 30px 15px;
+    padding: 30px 20px;
   }
 
   .heading {
-    font-size: var(--font-size-medium);
+    font-size: 1.75rem;
   }
 
   .subheading {
-    font-size: var(--font-size-small);
+    font-size: 1rem;
   }
 
   .submitButton {
-    width: 50%;
-    padding: 15px;
+    width: 60%;
+    padding: 14px;
   }
 }
 
 @media (max-width: 480px) {
   .heading {
-    font-size: var(--font-size-base);
+    font-size: 1.5rem;
   }
 
-  .subheading {
-    font-size: calc(var(--font-size-small) - 0.1rem);
-  }
-
+  .subheading,
+  .label,
   .input,
   .textarea {
-    font-size: calc(var(--font-size-small) - 0.1rem);
+    font-size: 0.9rem;
   }
 
   .submitButton {
-    font-size: var(--font-size-small);
+    font-size: 0.9rem;
     padding: 12px;
   }
 }

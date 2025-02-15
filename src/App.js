@@ -11,6 +11,7 @@ import GitHubProjects from "./components/GitHubProjects/GitHubProjects"; // New 
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop"; // ScrollToTop component
+import ChatBot from "./components/ChatBot/ChatBot";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <section id="about">
           <About />
         </section>
+        
         <section id="resume">
           <Resume />
         </section>
@@ -34,6 +36,9 @@ function App() {
         </section>
         <section id="projects">
           <Projects />
+        </section>
+        <section id="chatbot">
+          <ChatBot/>
         </section>
         <section id="github-projects">
           <GitHubProjects username="YOUR_GITHUB_USERNAME" count={5} />

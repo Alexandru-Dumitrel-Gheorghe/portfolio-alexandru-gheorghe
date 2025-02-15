@@ -66,7 +66,7 @@ const Contact = () => {
 
   return (
     <section className={styles.contactSection} id="contact">
-      {/* Fundal animat cu gradient */}
+      {/* Fundal animat subtil */}
       <div className={styles.background}></div>
       <div className={styles.container}>
         <motion.form
