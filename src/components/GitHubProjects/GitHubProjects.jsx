@@ -1,55 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import {
-  FaExternalLinkAlt,
-  FaReact,
-  FaNodeJs,
-  FaJs,
-  FaHtml5,
-  FaCss3Alt,
-  FaDatabase,
-  FaGitAlt,
-} from "react-icons/fa";
+import { FaExternalLinkAlt, FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt } from "react-icons/fa";
 import styles from "./GitHubProjects.module.css";
 
 const GITHUB_USERNAME = "Alexandru-Dumitrel-Gheorghe";
 const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
-
-// Componentă wrapper pentru efectul 3D tilt
-const TiltCard = ({ children }) => {
-  const [rotate, setRotate] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    const cardRect = e.currentTarget.getBoundingClientRect();
-    const cardWidth = cardRect.width;
-    const cardHeight = cardRect.height;
-    const centerX = cardRect.left + cardWidth / 2;
-    const centerY = cardRect.top + cardHeight / 2;
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-    // Calculăm un unghi de rotație bazat pe distanța față de centru
-    const rotateY = ((mouseX - centerX) / cardWidth) * 30; 
-    const rotateX = -((mouseY - centerY) / cardHeight) * 30;
-    setRotate({ x: rotateX, y: rotateY });
-  };
-
-  const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
-  };
-
-  return (
-    <motion.div
-      className={styles.projectCard}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{ transformStyle: "preserve-3d" }}
-      animate={{ rotateX: rotate.x, rotateY: rotate.y }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-    >
-      {children}
-    </motion.div>
-  );
-};
 
 const GitHubProjects = () => {
   const [repos, setRepos] = useState([]);
@@ -87,20 +42,13 @@ const GitHubProjects = () => {
     const lowerName = repo.name.toLowerCase();
     const icons = [];
 
-    if (lowerName.includes("react"))
-      icons.push(<FaReact key="react" title="React" />);
-    if (lowerName.includes("node"))
-      icons.push(<FaNodeJs key="node" title="Node.js" />);
-    if (lowerName.includes("js"))
-      icons.push(<FaJs key="js" title="JavaScript" />);
-    if (lowerName.includes("html"))
-      icons.push(<FaHtml5 key="html" title="HTML5" />);
-    if (lowerName.includes("css"))
-      icons.push(<FaCss3Alt key="css" title="CSS3" />);
-    if (lowerName.includes("mongo") || lowerName.includes("db"))
-      icons.push(<FaDatabase key="db" title="MongoDB" />);
-    if (lowerName.includes("git"))
-      icons.push(<FaGitAlt key="git" title="Git" />);
+    if (lowerName.includes("react")) icons.push(<FaReact key="react" title="React" />);
+    if (lowerName.includes("node")) icons.push(<FaNodeJs key="node" title="Node.js" />);
+    if (lowerName.includes("js")) icons.push(<FaJs key="js" title="JavaScript" />);
+    if (lowerName.includes("html")) icons.push(<FaHtml5 key="html" title="HTML5" />);
+    if (lowerName.includes("css")) icons.push(<FaCss3Alt key="css" title="CSS3" />);
+    if (lowerName.includes("mongo") || lowerName.includes("db")) icons.push(<FaDatabase key="db" title="MongoDB" />);
+    if (lowerName.includes("git")) icons.push(<FaGitAlt key="git" title="Git" />);
 
     return icons;
   };
@@ -118,13 +66,15 @@ const GitHubProjects = () => {
       <h2 className={styles.heading}>Neueste GitHub-Projekte</h2>
       <div className={styles.projectGrid}>
         {repos.map((repo) => (
-          <TiltCard key={repo.id}>
+          <motion.div
+            key={repo.id}
+            className={styles.projectCard}
+            whileHover={{ scale: 1.05 }}
+          >
             <h3 className={styles.repoName}>{repo.name}</h3>
             <div className={styles.techIcons}>{getTechIcons(repo)}</div>
             <p className={styles.repoDescription}>
-              {repo.description
-                ? repo.description
-                : "Keine Beschreibung verfügbar."}
+              {repo.description ? repo.description : "Keine Beschreibung verfügbar."}
             </p>
             <a
               href={repo.html_url}
@@ -134,7 +84,7 @@ const GitHubProjects = () => {
             >
               Auf GitHub ansehen <FaExternalLinkAlt />
             </a>
-          </TiltCard>
+          </motion.div>
         ))}
       </div>
     </section>

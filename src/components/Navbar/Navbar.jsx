@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaLinkedin, FaGithub } from "react-icons/fa";
@@ -7,30 +7,33 @@ import { Link } from "react-scroll";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className={styles.navbar}>
-      {/* Logo */}
-      <div className={styles.logo}>Alexandru</div>
-
-      {/* Meniu desktop */}
+    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
+      <div className={styles.logo}>Alexandru Gheorghe</div>
+      
       <div className={styles.desktopMenu}>
-        <Link to="home" smooth={true} duration={500}>
-          Home
-        </Link>
-        <Link to="about" smooth={true} duration={500}>
-          About
-        </Link>
-        <Link to="projects" smooth={true} duration={500}>
-          Projects
-        </Link>
-        <Link to="contact" smooth={true} duration={500}>
-          Contact
-        </Link>
+        <Link to="home" smooth={true} duration={500}>Home</Link>
+        <Link to="about" smooth={true} duration={500}>About</Link>
+        <Link to="projects" smooth={true} duration={500}>Projects</Link>
+        <Link to="contact" smooth={true} duration={500}>Contact</Link>
 
-        {/* Iconițe social media în meniul desktop */}
         <div className={styles.socialLinks}>
           <a href="https://miro.com" target="_blank" rel="noreferrer">
             <SiMiro />
@@ -46,13 +49,11 @@ const Navbar = () => {
           </a>
         </div>
       </div>
-
-      {/* Buton hamburger (apare doar pe mobil) */}
+      
       <div className={styles.mobileMenuIcon} onClick={toggleMenu}>
         <FaBars />
       </div>
-
-      {/* Meniul mobil full-screen cu efect clip-path */}
+      
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -62,26 +63,16 @@ const Navbar = () => {
             exit={{ clipPath: "circle(0% at 90% 10%)", opacity: 0 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
-            {/* Butonul de închidere (X) */}
             <div className={styles.closeIcon} onClick={toggleMenu}>
               <FaTimes />
             </div>
-
+            
             <div className={styles.mobileMenuContent}>
-              <Link onClick={toggleMenu} to="home" smooth={true} duration={500}>
-                Home
-              </Link>
-              <Link onClick={toggleMenu} to="about" smooth={true} duration={500}>
-                About
-              </Link>
-              <Link onClick={toggleMenu} to="projects" smooth={true} duration={500}>
-                Projects
-              </Link>
-              <Link onClick={toggleMenu} to="contact" smooth={true} duration={500}>
-                Contact
-              </Link>
-
-              {/* Iconițe social media și în meniul mobil */}
+              <Link onClick={toggleMenu} to="home" smooth={true} duration={500}>Home</Link>
+              <Link onClick={toggleMenu} to="about" smooth={true} duration={500}>About</Link>
+              <Link onClick={toggleMenu} to="projects" smooth={true} duration={500}>Projects</Link>
+              <Link onClick={toggleMenu} to="contact" smooth={true} duration={500}>Contact</Link>
+              
               <div className={styles.mobileSocialLinks}>
                 <a href="https://miro.com" target="_blank" rel="noreferrer">
                   <SiMiro />

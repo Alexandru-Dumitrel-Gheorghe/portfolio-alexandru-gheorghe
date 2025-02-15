@@ -19,8 +19,7 @@
   gap: 2rem;
   max-width: 1100px;
   margin: 0 auto;
-  /* Adăugăm perspectiva pentru efectul 3D */
-  perspective: 1500px;
+  perspective: 1500px; /* Pentru efectul 3D */
 }
 
 .projectCard {
@@ -31,7 +30,6 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   cursor: pointer;
-  /* Permiterea transformărilor 3D */
   transform-style: preserve-3d;
 }
 
