@@ -66,7 +66,7 @@ const Header = () => {
           <div className={styles.contactContainer}>
             <div className={styles.contactItem}>
               <FaPhoneAlt className={styles.icon} />
-              <span>+49 160 93091768</span>
+              <span>+49 1577 2158264</span>
             </div>
             <div className={styles.contactItem}>
               <FaEnvelope className={styles.icon} />
