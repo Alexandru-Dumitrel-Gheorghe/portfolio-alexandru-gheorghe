@@ -10,6 +10,11 @@
 
 # production
 /build
+/.env.local
+
+echo ".env.local" >> .gitignore
+git rm --cached .env.local
+
 
 # misc
 .DS_Store

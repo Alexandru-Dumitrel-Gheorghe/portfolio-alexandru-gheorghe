@@ -7,9 +7,10 @@ import Experience from "./components/Experience/Experience";
 import Education from "./components/Education/Education";
 import Certifications from "./components/Certifications/Certifications";
 import Projects from "./components/Projects/Projects";
+import GitHubProjects from "./components/GitHubProjects/GitHubProjects"; // New GitHub projects component
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop"; // Import ScrollToTop
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop"; // ScrollToTop component
 
 function App() {
   return (
@@ -34,12 +35,15 @@ function App() {
         <section id="projects">
           <Projects />
         </section>
+        <section id="github-projects">
+          <GitHubProjects username="YOUR_GITHUB_USERNAME" count={5} />
+        </section>
         <section id="contact">
           <Contact />
         </section>
       </main>
       <Footer />
-      <ScrollToTop /> {/* Adaugăm ScrollToTop */}
+      <ScrollToTop />
     </div>
   );
 }
