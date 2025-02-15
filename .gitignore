@@ -10,7 +10,9 @@
 
 # production
 /build
-/.env.local
+/.env
+.env
+
 
 echo ".env.local" >> .gitignore
 git rm --cached .env.local
