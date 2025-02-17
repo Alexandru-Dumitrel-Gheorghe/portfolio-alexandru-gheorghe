@@ -33,8 +33,7 @@ const Projects = () => {
       gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/task-timer-app",
       image: require("../../assets/images/Timer.png"),
       technologies: ["React", "CSS Modules", "Bootstrap", "Node.js", "MongoDB"],
-    }
-    ,
+    },
     {
       title: "Wedding Photography",
       description:
@@ -99,7 +98,6 @@ const Projects = () => {
       image: require("../../assets/images/Breakout.png"),
       technologies: ["React", "JavaScript", "HTML5", "CSS3"],
     },
-
     {
       title: "Tetris Game",
       description:
@@ -117,28 +115,27 @@ const Projects = () => {
       image: require("../../assets/images/Tetris.png"),
       technologies: ["React", "JavaScript", "HTML5", "CSS3"],
     },
-  
   ];
 
   const getTechnologyIcon = (tech) => {
     switch (tech) {
       case "React":
-        return <FaReact />;
+        return <FaReact title="React" />;
       case "CSS Modules":
       case "CSS3":
-        return <FaCss3Alt />;
+        return <FaCss3Alt title="CSS3" />;
       case "Node.js":
-        return <FaNodeJs />;
+        return <FaNodeJs title="Node.js" />;
       case "JavaScript":
-        return <FaJs />;
+        return <FaJs title="JavaScript" />;
       case "HTML5":
-        return <FaHtml5 />;
+        return <FaHtml5 title="HTML5" />;
       case "Bootstrap":
-        return <FaBootstrap />;
+        return <FaBootstrap title="Bootstrap" />;
       case "MongoDB":
-        return <FaDatabase />;
+        return <FaDatabase title="MongoDB" />;
       case "Git":
-        return <FaGitAlt />;
+        return <FaGitAlt title="Git" />;
       default:
         return null;
     }
@@ -153,8 +150,7 @@ const Projects = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
         variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.2 } },
+          visible: { transition: { staggerChildren: 0.15 } },
         }}
       >
         {projectData.map((project, index) => (
@@ -166,7 +162,7 @@ const Projects = () => {
               hidden: { opacity: 0, y: 20 },
               visible: { opacity: 1, y: 0 },
             }}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.03 }}
           >
             <img
               src={project.image}
@@ -199,20 +195,23 @@ const Projects = () => {
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <span
+              <button
                 className={styles.close}
                 onClick={() => setSelectedProject(null)}
+                aria-label="Close project details"
               >
                 &times;
-              </span>
+              </button>
               <img
                 src={selectedProject.image}
                 alt={selectedProject.title}
                 className={styles.modalImage}
               />
-              <h3>{selectedProject.title}</h3>
-              <p>{selectedProject.description}</p>
-              <h4>Funktionen:</h4>
+              <h3 className={styles.modalTitle}>{selectedProject.title}</h3>
+              <p className={styles.modalDescription}>
+                {selectedProject.description}
+              </p>
+              <h4 className={styles.featuresHeading}>Funktionen:</h4>
               <ul className={styles.featuresList}>
                 {selectedProject.features.map((feature, idx) => (
                   <li key={idx}>{feature}</li>
@@ -221,7 +220,7 @@ const Projects = () => {
               <div className={styles.technologies}>
                 {selectedProject.technologies.map((tech, idx) => (
                   <span key={idx} className={styles.tech}>
-                    {getTechnologyIcon(tech)} {tech}
+                    {getTechnologyIcon(tech)} <span className={styles.techLabel}>{tech}</span>
                   </span>
                 ))}
               </div>
@@ -230,6 +229,7 @@ const Projects = () => {
                   href={selectedProject.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className={styles.linkButton}
                 >
                   Live ansehen <FaExternalLinkAlt />
                 </a>
@@ -237,6 +237,7 @@ const Projects = () => {
                   href={selectedProject.gitLink}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className={styles.linkButton}
                 >
                   GitHub <FaExternalLinkAlt />
                 </a>

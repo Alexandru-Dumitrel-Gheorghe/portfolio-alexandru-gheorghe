@@ -7,8 +7,7 @@
   margin-top: 40px;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: background-color var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .heading {
@@ -21,21 +20,21 @@
   letter-spacing: 1px;
 }
 
-/* Folosim grid pentru galerie */
+/* Galeria de proiecte */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
 }
 
+/* Card proiect */
 .projectItem {
   position: relative;
   cursor: pointer;
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .projectItem:hover {
@@ -54,11 +53,12 @@
   transform: scale(1.05);
 }
 
+/* Overlay la hover */
 .overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.65);
   color: #fff;
   padding: 10px;
   text-align: center;
@@ -89,7 +89,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.85);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,8 +106,8 @@
   max-height: 90vh;
   overflow-y: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform var(--transition-speed),
-    box-shadow var(--transition-speed);
+  position: relative;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
 }
 
 .modalContent:hover {
@@ -121,6 +121,8 @@
   right: 1.5rem;
   font-size: 2rem;
   cursor: pointer;
+  background: none;
+  border: none;
   color: var(--primary-color);
   transition: color var(--transition-speed);
 }
@@ -134,6 +136,24 @@
   height: auto;
   border-radius: var(--border-radius);
   margin-bottom: 1rem;
+}
+
+.modalTitle {
+  margin-top: 0;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+}
+
+.modalDescription {
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+.featuresHeading {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
 .featuresList {
@@ -160,22 +180,28 @@
   font-size: 0.9rem;
 }
 
+.techLabel {
+  margin-left: 0.3rem;
+}
+
 .links {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
 }
 
-.links a {
+.linkButton {
   text-decoration: none;
   color: var(--primary-color);
   font-weight: bold;
   display: inline-flex;
   align-items: center;
+  gap: 0.3rem;
   transition: color var(--transition-speed);
 }
 
-.links a:hover {
+.linkButton:hover {
   color: var(--accent-color);
 }
 

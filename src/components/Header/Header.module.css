@@ -5,7 +5,7 @@
   position: relative;
   min-height: 100vh;
   width: 100%;
-  display: flex; 
+  display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #eef2ff, #f0fdfa);
@@ -72,6 +72,7 @@
   border: 5px solid;
   box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-image-slice: 1;
 }
 
 .profileImageContainer:hover {
@@ -200,14 +201,21 @@
 }
 
 @media (max-width: 768px) {
+  /* Ajustăm dacă navbar-ul fix ocupă ~70px sus */
   .header {
-    margin-top: 70px; /* Ajustează dacă ai un navbar fix */
+    margin-top: 0; /* Poți seta 0 dacă vrei să fie lipit sus */
+  }
+  .container {
+    gap: 1.5rem;
+  }
+  .title {
+    font-size: 1.8rem;
   }
 }
 
 @media (max-width: 480px) {
   .title {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
   .roles {
     font-size: 1.1rem;

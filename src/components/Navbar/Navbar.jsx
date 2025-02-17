@@ -26,14 +26,17 @@ const Navbar = () => {
 
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
-      <div className={styles.logo}>Alexandru Gheorghe</div>
-      
-      <div className={styles.desktopMenu}>
-        <Link to="home" smooth={true} duration={500}>Home</Link>
-        <Link to="about" smooth={true} duration={500}>About</Link>
-        <Link to="projects" smooth={true} duration={500}>Projects</Link>
-        <Link to="contact" smooth={true} duration={500}>Contact</Link>
+      {/* Container general pentru nav (desktop) */}
+      <div className={styles.navContent}>
+        {/* Linkuri */}
+        <div className={styles.linksContainer}>
+          <Link to="home" smooth={true} duration={500}>Home</Link>
+          <Link to="about" smooth={true} duration={500}>About</Link>
+          <Link to="projects" smooth={true} duration={500}>Projects</Link>
+          <Link to="contact" smooth={true} duration={500}>Contact</Link>
+        </div>
 
+        {/* Iconițe social media (desktop) */}
         <div className={styles.socialLinks}>
           <a href="https://miro.com" target="_blank" rel="noreferrer">
             <SiMiro />
@@ -48,12 +51,14 @@ const Navbar = () => {
             <FaLinkedin />
           </a>
         </div>
+
+        {/* Buton hamburger (mobil) */}
+        <div className={styles.mobileMenuIcon} onClick={toggleMenu}>
+          <FaBars />
+        </div>
       </div>
-      
-      <div className={styles.mobileMenuIcon} onClick={toggleMenu}>
-        <FaBars />
-      </div>
-      
+
+      {/* Meniul mobil */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -80,10 +85,10 @@ const Navbar = () => {
                 <a href="https://figma.com" target="_blank" rel="noreferrer">
                   <SiFigma />
                 </a>
-                <a href="https://github.com/Alexandru-Dumitrel-Gheorghe" target="_blank" rel="noreferrer">
+                <a href="https://github.com" target="_blank" rel="noreferrer">
                   <FaGithub />
                 </a>
-                <a href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/" target="_blank" rel="noreferrer">
+                <a href="https://linkedin.com/in/username" target="_blank" rel="noreferrer">
                   <FaLinkedin />
                 </a>
               </div>

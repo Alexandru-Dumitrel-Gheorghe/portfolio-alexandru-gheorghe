@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react"; 
 import { motion } from "framer-motion";
 import styles from "./ChatBot.module.css";
 import { FaPaperPlane, FaMicrophone } from "react-icons/fa";
 
 const API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
-
 
 const TypingIndicator = () => {
   return (
@@ -26,13 +25,11 @@ const ChatBot = () => {
   ]);
   const [inputText, setInputText] = useState("");
   const chatboxRef = useRef(null);
-
   const suggestions = [
     "Wie ist das Wetter?",
     "Erzähl mir einen Witz.",
     "Was ist dein Lieblingsfilm?",
   ];
-
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef(null);
 
@@ -148,9 +145,8 @@ const ChatBot = () => {
     <div className={styles.container}>
       <h1 className={styles.pageTitle}>Chatbot</h1>
       <p className={styles.description}>
-        Dieser Chatbot basiert auf der OpenAI GPT-3.5-Turbo Technologie und wurde
-        mit modernen Webtechnologien wie React, Framer Motion und CSS Modules
-        entwickelt. Stellen Sie Ihre Fragen und erhalten Sie in Echtzeit Antworten.
+        Dieser Chatbot basiert auf OpenAI GPT-3.5-Turbo und modernen Webtechnologien.
+        Stellen Sie Ihre Fragen und erhalten Sie in Echtzeit Antworten.
       </p>
 
       <motion.div

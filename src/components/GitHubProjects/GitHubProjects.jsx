@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaExternalLinkAlt, FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt, FaDatabase, FaGitAlt } from "react-icons/fa";
+import { 
+  FaExternalLinkAlt, 
+  FaReact, 
+  FaNodeJs, 
+  FaJs, 
+  FaHtml5, 
+  FaCss3Alt, 
+  FaDatabase, 
+  FaGitAlt,
+  FaGithub 
+} from "react-icons/fa";
 import styles from "./GitHubProjects.module.css";
 
 const GITHUB_USERNAME = "Alexandru-Dumitrel-Gheorghe";
@@ -47,7 +57,8 @@ const GitHubProjects = () => {
     if (lowerName.includes("js")) icons.push(<FaJs key="js" title="JavaScript" />);
     if (lowerName.includes("html")) icons.push(<FaHtml5 key="html" title="HTML5" />);
     if (lowerName.includes("css")) icons.push(<FaCss3Alt key="css" title="CSS3" />);
-    if (lowerName.includes("mongo") || lowerName.includes("db")) icons.push(<FaDatabase key="db" title="MongoDB" />);
+    if (lowerName.includes("mongo") || lowerName.includes("db"))
+      icons.push(<FaDatabase key="db" title="MongoDB" />);
     if (lowerName.includes("git")) icons.push(<FaGitAlt key="git" title="Git" />);
 
     return icons;
@@ -63,7 +74,9 @@ const GitHubProjects = () => {
 
   return (
     <section id="github-projects" className={styles.githubProjects}>
-      <h2 className={styles.heading}>Neueste GitHub-Projekte</h2>
+      <h2 className={styles.heading}>
+        <FaGithub className={styles.githubIcon} /> Neueste GitHub-Projekte
+      </h2>
       <div className={styles.projectGrid}>
         {repos.map((repo) => (
           <motion.div

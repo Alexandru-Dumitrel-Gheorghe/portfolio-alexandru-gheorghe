@@ -1,71 +1,65 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0");
 
-/* Fundal gradient și centru vertical-orizontal */
+/* Container principal cu fundal modern */
 .container {
   min-height: 100vh;
   padding: 2rem 1rem;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #dbeafe, #f9fafb);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #eef2ff, #f0fdfa);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
 }
 
-/* Titlul și descrierea */
+/* Titlu și descriere */
 .pageTitle {
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  color: #1e3a8a;
 }
 
 .description {
   max-width: 700px;
-  margin: 0.5rem auto 2rem auto;
+  margin-bottom: 2rem;
   font-size: 1rem;
-  color: #4b5563;
+  color: #374151;
   line-height: 1.5;
 }
 
-/* Card-ul chatbot
-   - 800px lățime și înălțime fixă, dar cu responsive la ecrane mici */
+/* Card-ul ChatBot */
 .chatbot {
   width: 800px;
   height: 800px;
   max-width: 95%;
-  max-height: 70vh;
+  max-height: 80vh;
   margin: 0 auto;
   border-radius: 16px;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.75);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-
-  /* Pentru layout intern pe verticală */
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-/* Header-ul chatbot (fix la top) */
+/* Header-ul */
 .chatHeader {
-  background: rgba(30, 58, 138, 0.85);
+  background: #1e3a8a;
   color: #fff;
-  padding: 1rem;
-  text-align: center;
-
-  /* Să nu se micșoreze la flex */
+  padding: 1.2rem;
   flex-shrink: 0;
 }
 
-/* Zona de mesaje
-   - Folosim flex: 1 pentru a umple spațiul vertical disponibil */
+/* Zona de mesaje */
 .chatbox {
   list-style: none;
   margin: 0;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.4);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: #f3f4f6;
   flex: 1;
   overflow-y: auto;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 /* Fiecare mesaj */
@@ -76,17 +70,17 @@
   margin-bottom: 15px;
 }
 
-/* Mesaje incoming */
+/* Mesaje primite */
 .incoming {
   justify-content: flex-start;
 }
 
 .incoming span {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #1e3a8a;
 }
 
-/* Mesaje outgoing */
+/* Mesaje trimise */
 .outgoing {
   justify-content: flex-end;
 }
@@ -96,29 +90,30 @@
   color: #fff;
 }
 
-/* Bula de text */
+/* Bula de mesaj */
 .chat p {
-  max-width: 65%;
-  padding: 10px 15px;
-  border-radius: 12px;
-  background: rgba(229, 231, 235, 0.7);
-  color: #111827;
+  max-width: 70%;
+  padding: 12px 18px;
+  border-radius: 16px;
+  background: #e5e7eb;
+  color: #1f2937;
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.4;
+  word-wrap: break-word;
 }
 
-/* Indicator de tastare (TypingIndicator) */
+/* Indicatorul de tastare */
 .typingIndicator {
   display: flex;
-  gap: 4px;
+  gap: 6px;
   align-items: center;
   padding: 10px;
 }
 
 .typingIndicator span {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   background: #1e3a8a;
   border-radius: 50%;
   animation: blink 1.4s infinite both;
@@ -129,10 +124,9 @@
 .typingIndicator span:nth-child(3) {
   animation-delay: 0.4s;
 }
+
 @keyframes blink {
-  0%,
-  80%,
-  100% {
+  0%, 80%, 100% {
     opacity: 0;
   }
   40% {
@@ -140,39 +134,39 @@
   }
 }
 
-/* Zona de sugestii (sub chatbox) */
+/* Zona de sugestii */
 .suggestions {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 8px;
-  padding: 0.5rem 1rem;
-  background: rgba(255, 255, 255, 0.25);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.6);
   flex-shrink: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .suggestionButton {
   background: #1e3a8a;
   color: #fff;
   border: none;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: background 0.3s;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
 }
 
 .suggestionButton:hover {
-  background: #4338ca;
+  background: #374fc9;
 }
 
-/* Zona de input (fix la bottom) */
+/* Zona de input */
 .chatInput {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
-  background: rgba(249, 250, 251, 0.8);
+  padding: 1rem;
+  background: #fff;
   flex-shrink: 0;
 }
 
@@ -181,12 +175,12 @@
   resize: none;
   border: 1px solid #d1d5db;
   outline: none;
-  padding: 10px;
-  font-size: 0.95rem;
-  border-radius: 6px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
   background: #fff;
-  max-height: 100px;
-  transition: border-color 0.3s;
+  max-height: 120px;
+  transition: border-color 0.3s ease;
 }
 
 .chatInput textarea:focus {
@@ -197,28 +191,39 @@
 .voiceButton {
   background: none;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #1e3a8a;
   cursor: pointer;
-  margin-left: 8px;
-  transition: color 0.3s;
+  margin-left: 10px;
+  transition: color 0.3s ease;
 }
 
 .sendButton:hover,
 .voiceButton:hover {
-  color: #4338ca;
+  color: #374fc9;
 }
 
 .listening {
   color: #dc2626;
 }
 
-/* Media Query: pe ecrane mai mici de 850px, micșorăm dimensiunea chatbotului */
+/* Responsive adjustments */
 @media (max-width: 850px) {
   .chatbot {
-    width: 90%;
-    height: 80vh; /* Se adaptează la înălțimea ecranului */
-    max-width: 600px;
-    max-height: none; /* Eliminăm max-height, folosim height din % */
+    width: 95%;
+    height: 80vh;
+  }
+  .pageTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .chatInput textarea {
+    font-size: 0.9rem;
+  }
+  .suggestionButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
