@@ -1,11 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0");
 
-/* Container principal cu fundal modern */
+/* Definirea variabilelor CSS */
+:root {
+  --primary: #1e40af;
+  --primary-light: #3b82f6;
+  --bg-light: #f9fafb;
+  --text-dark: #1f2937;
+  --text-muted: #374151;
+  --bg-gradient-start: #eef2ff;
+  --bg-gradient-end: #f0fdfa;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Containerul principal */
 .container {
   min-height: 100vh;
   padding: 2rem 1rem;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #eef2ff 0%, #f0fdfa 100%);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,7 +28,7 @@
 .pageTitle {
   font-size: 2.4rem;
   margin-bottom: 0.5rem;
-  color: #1e40af;
+  color: var(--primary);
   font-weight: 600;
 }
 
@@ -24,11 +36,11 @@
   max-width: 700px;
   margin-bottom: 2rem;
   font-size: 1rem;
-  color: #374151;
+  color: var(--text-muted);
   line-height: 1.5;
 }
 
-/* Layout principal: sidebar + chatbot */
+/* Layout principal: sidebar + container de chat */
 .chatLayout {
   display: flex;
   width: 100%;
@@ -37,12 +49,12 @@
   margin: 0 auto;
 }
 
-/* SIDEBAR STYLING */
+/* Sidebar */
 .sidebar {
   flex: 0 0 250px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -55,7 +67,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: #1e40af;
+  background: var(--primary);
   color: #fff;
   border: none;
   padding: 0.6rem 1rem;
@@ -67,7 +79,7 @@
 }
 
 .newChatButton:hover {
-  background: #3b82f6;
+  background: var(--primary-light);
 }
 
 .chatList {
@@ -79,15 +91,18 @@
 }
 
 .chatSession {
+  width: 100%;
+  text-align: left;
   padding: 0.6rem 1rem;
   margin-bottom: 0.5rem;
-  background: #f9fafb;
+  background: var(--bg-light);
   border-radius: 8px;
   cursor: pointer;
   transition: background 0.3s ease;
   font-size: 0.9rem;
-  color: #1f2937;
+  color: var(--text-dark);
   font-weight: 500;
+  border: none;
 }
 
 .chatSession:hover {
@@ -96,14 +111,21 @@
 
 .activeSession {
   background: #dbeafe;
-  color: #1e40af;
+  color: var(--primary);
 }
 
-/* Card-ul ChatBot */
-.chatbot {
+/* Containerul de chat (fereastra + input) */
+.chatContainer {
   flex: 1;
+  display: flex;
+  flex-direction: column;
   height: 800px;
   max-height: 80vh;
+}
+
+/* Fereastra de chat */
+.chatbot {
+  flex: 1;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.85);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -112,16 +134,14 @@
   overflow: hidden;
 }
 
-/* Header-ul Chat */
 .chatHeader {
-  background: #1e40af;
+  background: var(--primary);
   color: #fff;
   padding: 1.2rem;
   flex-shrink: 0;
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Zona de mesaje */
 .chatbox {
   list-style: none;
   margin: 0;
@@ -131,7 +151,7 @@
   overflow-y: auto;
 }
 
-/* Mesaj */
+/* Mesajele de chat */
 .chat {
   display: flex;
   align-items: flex-start;
@@ -139,7 +159,6 @@
   margin-bottom: 20px;
 }
 
-/* Mesaje primite */
 .incoming {
   justify-content: flex-start;
 }
@@ -150,23 +169,21 @@
   animation: bounce 1s infinite alternate;
 }
 
-/* Mesaje trimise */
 .outgoing {
   justify-content: flex-end;
 }
 
 .outgoing p {
-  background: #1e40af;
+  background: var(--primary);
   color: #fff;
 }
 
-/* Bula de mesaj */
 .chat p {
   max-width: 70%;
   padding: 14px 20px;
   border-radius: 20px;
   background: #e5e7eb;
-  color: #1f2937;
+  color: var(--text-dark);
   margin: 0;
   font-size: 1rem;
   line-height: 1.5;
@@ -184,7 +201,7 @@
 .typingIndicator span {
   width: 10px;
   height: 10px;
-  background: #1e40af;
+  background: var(--primary);
   border-radius: 50%;
   animation: blink 1.4s infinite both;
 }
@@ -209,12 +226,12 @@
   padding: 1rem;
   background: rgba(255, 255, 255, 0.7);
   flex-shrink: 0;
-  border-top: 1px solid rgba(0,0,0,0.05);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .suggestionButton {
-  background: #1e40af;
+  background: var(--primary);
   color: #fff;
   border: none;
   padding: 0.6rem 1.2rem;
@@ -225,7 +242,7 @@
 }
 
 .suggestionButton:hover {
-  background: #3b82f6;
+  background: var(--primary-light);
 }
 
 /* Zona de input */
@@ -235,7 +252,7 @@
   padding: 1.2rem;
   background: #fff;
   flex-shrink: 0;
-  border-top: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .chatInput textarea {
@@ -252,7 +269,7 @@
 }
 
 .chatInput textarea:focus {
-  border-color: #1e40af;
+  border-color: var(--primary);
 }
 
 .sendButton,
@@ -260,36 +277,34 @@
   background: none;
   border: none;
   font-size: 1.5rem;
-  color: #1e40af;
+  color: var(--primary);
   cursor: pointer;
   margin-left: 12px;
-  transition: color 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .sendButton:hover,
 .voiceButton:hover {
-  color: #3b82f6;
+  color: var(--primary-light);
+  transform: scale(1.1);
+}
+
+.sendButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .listening {
   color: #dc2626;
 }
 
-/* Animație bounce iconBot */
+/* Animație bounce */
 @keyframes bounce {
   from { transform: translateY(0); }
   to { transform: translateY(-5px); }
 }
 
-/* Icon animate */
-.animatedIcon {
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-.animatedIcon:hover {
-  transform: scale(1.2);
-}
-
-/* Responsive adjustments */
+/* Ajustări responsive */
 @media (max-width: 1000px) {
   .sidebar {
     flex: 0 0 220px;
@@ -306,7 +321,7 @@
     height: 300px;
     max-height: 50vh;
   }
-  .chatbot {
+  .chatContainer {
     width: 95%;
     height: 80vh;
   }
@@ -314,10 +329,6 @@
 @media (max-width: 500px) {
   .pageTitle {
     font-size: 1.8rem;
-  }
-  .sidebar {
-    height: auto;
-    max-height: none;
   }
   .chatSession {
     font-size: 0.85rem;
