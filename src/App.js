@@ -3,9 +3,6 @@ import styles from "./App.css";
 import Header from "./components/Header/Header";
 import About from "./components/About/About";
 import Resume from "./components/Resume/Resume";
-import Experience from "./components/Experience/Experience";
-import Education from "./components/Education/Education";
-import Certifications from "./components/Certifications/Certifications";
 import Projects from "./components/Projects/Projects";
 import GitHubProjects from "./components/GitHubProjects/GitHubProjects"; // New GitHub projects component
 import Contact from "./components/Contact/Contact";
@@ -25,15 +22,7 @@ function App() {
         <section id="resume">
           <Resume />
         </section>
-        <section id="experience">
-          <Experience />
-        </section>
-        <section id="education">
-          <Education />
-        </section>
-        <section id="certifications">
-          <Certifications />
-        </section>
+        
         <section id="projects">
           <Projects />
         </section>

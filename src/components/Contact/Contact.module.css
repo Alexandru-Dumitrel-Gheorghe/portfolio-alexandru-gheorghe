@@ -1,6 +1,6 @@
 @import "../../styles/variables.css";
 
-/* Box-Sizing Global */
+/* Global Box-Sizing */
 *,
 *::before,
 *::after {
@@ -68,7 +68,6 @@
   color: #2540e3;
   margin-bottom: 10px;
   text-align: center;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 
@@ -111,6 +110,7 @@
   width: 100%;
 }
 
+/* Grupuri de câmpuri */
 .formGroup {
   display: flex;
   flex-direction: column;
@@ -181,19 +181,15 @@
   .formGrid {
     grid-template-columns: 1fr;
   }
-
   .container {
     padding: 30px 20px;
   }
-
   .heading {
     font-size: 1.75rem;
   }
-
   .subheading {
     font-size: 1rem;
   }
-
   .submitButton {
     width: 60%;
     padding: 14px;
@@ -204,14 +200,12 @@
   .heading {
     font-size: 1.5rem;
   }
-
   .subheading,
   .label,
   .input,
   .textarea {
     font-size: 0.9rem;
   }
-
   .submitButton {
     font-size: 0.9rem;
     padding: 12px;

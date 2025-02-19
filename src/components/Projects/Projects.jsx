@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import styles from "./Projects.module.css";
 import {
   FaReact,
@@ -13,9 +13,113 @@ import {
 } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Mapping pentru iconițele tehnologiilor folosite în proiecte
+const techIcons = {
+  React: <FaReact title="React" />,
+  "CSS Modules": <FaCss3Alt title="CSS3" />,
+  CSS3: <FaCss3Alt title="CSS3" />,
+  "Node.js": <FaNodeJs title="Node.js" />,
+  JavaScript: <FaJs title="JavaScript" />,
+  HTML5: <FaHtml5 title="HTML5" />,
+  Bootstrap: <FaBootstrap title="Bootstrap" />,
+  MongoDB: <FaDatabase title="MongoDB" />,
+  Git: <FaGitAlt title="Git" />,
+};
+
+// Card-ul de proiect (cercul mic + imagine mare la hover)
+const ProjectCard = memo(({ project, onSelect }) => (
+  <div className={styles.iconImage} onClick={() => onSelect(project)}>
+    {/* Imaginea mică (în cerc) */}
+    <div className={styles.icon}>
+      <img src={project.image} alt={project.title} />
+    </div>
+
+    {/* Imaginea mare + detalii la hover */}
+    <div className={styles.hoverImage}>
+      <img src={project.image} alt={project.title} />
+      <div className={styles.content}>
+        <div className={styles.details}>
+          <h3 className={styles.name}>{project.title}</h3>
+          <p className={styles.job}>{project.technologies.join(" | ")}</p>
+          <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+            Live <FaExternalLinkAlt />
+          </a>
+          <br />
+          <a href={project.gitLink} target="_blank" rel="noopener noreferrer">
+            GitHub <FaExternalLinkAlt />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+));
+
+// Modalul de detalii (apare când se face click pe un cerc)
+const ProjectModal = ({ project, onClose }) => (
+  <motion.div
+    className={styles.modal}
+    onClick={onClose}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+  >
+    <motion.div
+      className={styles.modalContent}
+      onClick={(e) => e.stopPropagation()}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.8, opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
+      <button
+        className={styles.close}
+        onClick={onClose}
+        aria-label="Close project details"
+      >
+        &times;
+      </button>
+      <img src={project.image} alt={project.title} className={styles.modalImage} />
+      <h3 className={styles.modalTitle}>{project.title}</h3>
+      <p className={styles.modalDescription}>{project.description}</p>
+      <h4 className={styles.featuresHeading}>Funktionen:</h4>
+      <ul className={styles.featuresList}>
+        {project.features.map((feature, idx) => (
+          <li key={idx}>{feature}</li>
+        ))}
+      </ul>
+      <div className={styles.technologies}>
+        {project.technologies.map((tech, idx) => (
+          <span key={idx} className={styles.tech}>
+            {techIcons[tech]} <span className={styles.techLabel}>{tech}</span>
+          </span>
+        ))}
+      </div>
+      <div className={styles.links}>
+        <a
+          href={project.liveLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.linkButton}
+        >
+          Live ansehen <FaExternalLinkAlt />
+        </a>
+        <a
+          href={project.gitLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.linkButton}
+        >
+          GitHub <FaExternalLinkAlt />
+        </a>
+      </div>
+    </motion.div>
+  </motion.div>
+);
+
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
+  // Datele proiectelor
   const projectData = [
     {
       title: "Task Timer",
@@ -27,7 +131,7 @@ const Projects = () => {
         "Berichte: Tägliche, wöchentliche und monatliche Berichte zur Nachverfolgung der Aufgabenabschlüsse und der aufgewendeten Zeit.",
         "PDF-Export: Erstellen Sie einen PDF-Bericht der Aufgabenprotokolle zur Offline-Verfolgung.",
         "Dunkelmodus: Wechseln Sie zwischen hellen und dunklen Themen für ein angenehmes Benutzererlebnis.",
-        "Responsives Design: Optimiert für sowohl Desktop- als auch mobile Geräte.",
+        "Responsives Design: Optimiert pentru Desktop und mobile Geräte.",
       ],
       liveLink: "https://task-timerv1.netlify.app/",
       gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/task-timer-app",
@@ -66,32 +170,16 @@ const Projects = () => {
       technologies: ["Bootstrap", "JavaScript", "React", "Git"],
     },
     {
-      title: "Personal Portfolio",
-      description:
-        "Eine persönliche Portfolio-Website, die Projekte, Fähigkeiten und Dienstleistungen eines Junior Frontend Webentwicklers präsentiert.",
-      features: [
-        "Moderne und minimalistische Benutzeroberfläche",
-        "Responsives Design für alle Geräte",
-        "Kontaktformular für direkte Anfragen",
-        "Übersicht über Technologien und Projekte",
-      ],
-      liveLink: "https://alex-developer.netlify.app",
-      gitLink:
-        "https://github.com/Alexandru-Dumitrel-Gheorghe/Web-Developer-Site",
-      image: require("../../assets/images/Portofolio.png"),
-      technologies: ["React", "CSS Modules", "JavaScript", "HTML5"],
-    },
-    {
       title: "Breakout Game in React",
       description:
         "A modern take on the classic Breakout game, built using React. It features multiple levels with increasing difficulty, dynamic ball speed adjustments, power-ups, and sound effects for an engaging gameplay experience.",
       features: [
-        "Multiple Levels: 4 distinct levels defined in src/levels/levels.js with increasing challenge.",
-        "Dynamic Ball Speed: The ball's speed increases with each level for progressive difficulty.",
-        "Power-Ups: Occasionally drops power-ups that grant extra lives, increase paddle width, spawn extra balls, or shrink the paddle.",
-        "Sound Effects: Audio feedback for paddle hits, brick hits, losing lives, level completion, and game over events.",
-        "Responsive Design: Automatically adjusts game board dimensions for different screen sizes.",
-        "Immersive Controls: Paddle controlled with the mouse; the cursor is hidden for an immersive experience.",
+        "Multiple Levels: 4 distinct levels with increasing challenge.",
+        "Dynamic Ball Speed: Speed increases with each level.",
+        "Power-Ups: Extra lives, paddle width changes, extra balls, or paddle shrinkage.",
+        "Sound Effects: Feedback for paddle hits, brick hits, losing lives, and level completion.",
+        "Responsive Design: Adjusts for different screen sizes.",
+        "Immersive Controls: Paddle controlled with the mouse; cursor is hidden for immersion.",
       ],
       liveLink: "https://breakout-v1.netlify.app/",
       gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/Breakout-Game",
@@ -101,14 +189,14 @@ const Projects = () => {
     {
       title: "Tetris Game",
       description:
-        "Tetris is a timeless and highly addictive puzzle game built using React. In this game, players must arrange falling tetrominoes (shapes made up of four blocks) to form complete horizontal lines. As lines clear, players earn points, and the falling speed increases progressively.",
+        "Tetris is a timeless and highly addictive puzzle game built using React. Players must arrange falling tetrominoes to form complete horizontal lines, earning points as the falling speed increases progressively.",
       features: [
-        "Multiple Levels: 4 distinct levels defined in src/levels/levels.js with increasing challenge.",
-        "Dynamic Ball Speed: The falling speed increases as the game progresses.",
-        "Power-Ups: Extra lives, increased paddle width, extra balls, or paddle shrinkage when bricks are destroyed.",
-        "Sound Effects: Audio feedback for paddle hits, brick hits, losing lives, level completion, and game over events.",
-        "Responsive Design: The game board adjusts automatically to different screen sizes.",
-        "Immersive Controls: Paddle controlled with the mouse, with the cursor hidden over the game board.",
+        "Multiple Levels with increasing challenge.",
+        "Dynamic Ball Speed: Falling speed increases with game progress.",
+        "Power-Ups: Extra lives, paddle width changes, extra balls, or paddle shrinkage when bricks are destroyed.",
+        "Sound Effects: Audio feedback for various game events.",
+        "Responsive Design: Game board adjusts automatically for screen sizes.",
+        "Immersive Controls: Paddle controlled with the mouse, with hidden cursor.",
       ],
       liveLink: "https://tetris-alex93.netlify.app/",
       gitLink: "https://github.com/Alexandru-Dumitrel-Gheorghe/Tetris-Game",
@@ -117,133 +205,97 @@ const Projects = () => {
     },
   ];
 
-  const getTechnologyIcon = (tech) => {
-    switch (tech) {
-      case "React":
-        return <FaReact title="React" />;
-      case "CSS Modules":
-      case "CSS3":
-        return <FaCss3Alt title="CSS3" />;
-      case "Node.js":
-        return <FaNodeJs title="Node.js" />;
-      case "JavaScript":
-        return <FaJs title="JavaScript" />;
-      case "HTML5":
-        return <FaHtml5 title="HTML5" />;
-      case "Bootstrap":
-        return <FaBootstrap title="Bootstrap" />;
-      case "MongoDB":
-        return <FaDatabase title="MongoDB" />;
-      case "Git":
-        return <FaGitAlt title="Git" />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <section id="projects" className={styles.projects}>
-      <h2 className={styles.heading}>Projekte</h2>
-      <motion.div
-        className={styles.gallery}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={{
-          visible: { transition: { staggerChildren: 0.15 } },
-        }}
-      >
-        {projectData.map((project, index) => (
-          <motion.div
-            key={index}
-            className={styles.projectItem}
-            onClick={() => setSelectedProject(project)}
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 },
-            }}
-            whileHover={{ scale: 1.03 }}
-          >
-            <img
-              src={project.image}
-              alt={`Screenshot von ${project.title}`}
-              className={styles.projectImage}
-              loading="lazy"
-            />
-            <div className={styles.overlay}>
-              <h3 className={styles.projectTitle}>{project.title}</h3>
-              <FaExternalLinkAlt className={styles.linkIcon} />
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+      {/* Secțiunea de titlu și categorii */}
+      <div className={styles.headerContainer}>
+        <h1 className={styles.heading}>Projekte</h1>
 
+        {/* Categorii de tehnologii */}
+        <div className={styles.techCategories}>
+          {/* Card-ul pentru Frontend */}
+          <div className={styles.categoryCard}>
+            <h4>Frontend</h4>
+            <ul>
+              <li>
+                <FaHtml5 className={styles.iconTech} /> HTML5
+              </li>
+              <li>
+                <FaCss3Alt className={styles.iconTech} /> CSS3
+              </li>
+              <li>
+                <FaJs className={styles.iconTech} /> JavaScript (ES6+)
+              </li>
+              <li>
+                <FaReact className={styles.iconTech} /> React
+              </li>
+              <li>
+                <FaBootstrap className={styles.iconTech} /> Bootstrap
+              </li>
+              <li>
+                <FaGitAlt className={styles.iconTech} /> Git &amp; GitHub
+              </li>
+            </ul>
+          </div>
+
+          {/* Card-ul pentru Backend */}
+          <div className={styles.categoryCard}>
+            <h4>Backend</h4>
+            <ul>
+              <li>
+                <FaDatabase className={styles.iconTech} /> MongoDB
+              </li>
+              <li>
+                <FaNodeJs className={styles.iconTech} /> Node.js
+              </li>
+            </ul>
+          </div>
+
+          {/* Card-ul pentru UI/UX Design */}
+          <div className={styles.categoryCard}>
+            <h4>UI/UX Design</h4>
+            <ul>
+              <li>
+                <span className={styles.customIcon} title="UI/UX">
+                  🎨
+                </span>{" "}
+                UI/UX Design
+              </li>
+              <li>
+                <span className={styles.customIcon} title="Figma">
+                  🖌️
+                </span>{" "}
+                Figma
+              </li>
+              <li>
+                <span className={styles.customIcon} title="Miro">
+                  📋
+                </span>{" "}
+                Miro
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      {/* Lista proiectelor (cercuri + imagini mari la hover) */}
+      <div className={styles.projectsContainer}>
+        {projectData.map((project, index) => (
+          <ProjectCard
+            key={index}
+            project={project}
+            onSelect={setSelectedProject}
+          />
+        ))}
+      </div>
+
+      {/* Modal pentru detalii proiect */}
       <AnimatePresence>
         {selectedProject && (
-          <motion.div
-            className={styles.modal}
-            onClick={() => setSelectedProject(null)}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className={styles.modalContent}
-              onClick={(e) => e.stopPropagation()}
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <button
-                className={styles.close}
-                onClick={() => setSelectedProject(null)}
-                aria-label="Close project details"
-              >
-                &times;
-              </button>
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className={styles.modalImage}
-              />
-              <h3 className={styles.modalTitle}>{selectedProject.title}</h3>
-              <p className={styles.modalDescription}>
-                {selectedProject.description}
-              </p>
-              <h4 className={styles.featuresHeading}>Funktionen:</h4>
-              <ul className={styles.featuresList}>
-                {selectedProject.features.map((feature, idx) => (
-                  <li key={idx}>{feature}</li>
-                ))}
-              </ul>
-              <div className={styles.technologies}>
-                {selectedProject.technologies.map((tech, idx) => (
-                  <span key={idx} className={styles.tech}>
-                    {getTechnologyIcon(tech)} <span className={styles.techLabel}>{tech}</span>
-                  </span>
-                ))}
-              </div>
-              <div className={styles.links}>
-                <a
-                  href={selectedProject.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.linkButton}
-                >
-                  Live ansehen <FaExternalLinkAlt />
-                </a>
-                <a
-                  href={selectedProject.gitLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.linkButton}
-                >
-                  GitHub <FaExternalLinkAlt />
-                </a>
-              </div>
-            </motion.div>
-          </motion.div>
+          <ProjectModal
+            project={selectedProject}
+            onClose={() => setSelectedProject(null)}
+          />
         )}
       </AnimatePresence>
     </section>

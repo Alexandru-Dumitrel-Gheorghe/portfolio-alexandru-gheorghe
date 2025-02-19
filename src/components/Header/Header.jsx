@@ -17,10 +17,9 @@ const Header = () => {
 
   return (
     <header className={styles.header} id="home">
-      {/* Navbar fix de sus */}
       <Navbar />
 
-      {/* Wave Divider de jos */}
+      {/* Wave Divider în partea de jos */}
       <div className={styles.waveWrapper}>
         <svg
           className={styles.waveSvg}
@@ -44,51 +43,12 @@ const Header = () => {
       />
 
       <div className={styles.container}>
-        {/* Stânga: Imagine + Contact */}
+        {/* Coloana stângă: Text + CTA */}
         <motion.div
-          className={styles.leftColumn}
+          className={styles.textColumn}
           initial={{ x: -50, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
-        >
-          <motion.div
-            className={styles.profileImageContainer}
-            whileHover={{ rotate: 3, scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <img
-              src={profileImage}
-              alt="Profilbild von Alexandru Gheorghe"
-              className={styles.profileImage}
-            />
-          </motion.div>
-
-          <div className={styles.contactContainer}>
-            <div className={styles.contactItem}>
-              <FaPhoneAlt className={styles.icon} />
-              <span>+49 1577 2158264</span>
-            </div>
-            <div className={styles.contactItem}>
-              <FaEnvelope className={styles.icon} />
-              <span>gheorghe.93@icloud.com</span>
-            </div>
-            <div className={styles.contactItem}>
-              <FaMapMarkerAlt className={styles.icon} />
-              <span>Fürstenfeldbruck, Deutschland</span>
-            </div>
-            <div className={styles.contactItem}>
-              <FaBirthdayCake className={styles.icon} />
-              <span>{age} Jahre</span>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Dreapta: Text + CTA */}
-        <motion.div
-          className={styles.rightColumn}
-          initial={{ x: 50, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
         >
           <motion.h1
             className={styles.title}
@@ -141,6 +101,55 @@ const Header = () => {
               Meine Projekte
             </Link>
           </motion.div>
+        </motion.div>
+
+        {/* Coloana dreaptă: Imagine + Contact Info Card */}
+        <motion.div
+          className={styles.profileColumn}
+          initial={{ x: 50, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.div
+            className={styles.profileImageContainer}
+            whileHover={{ rotate: 3, scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <img
+              src={profileImage}
+              alt="Profilbild von Alexandru Gheorghe"
+              className={styles.profileImage}
+            />
+          </motion.div>
+
+          {/* Card cu Contact Info */}
+          <div className={styles.contactInfoCard}>
+            <h3>Kontakt  Info</h3>
+            <div className={styles.contactItem}>
+              <div className={styles.iconWrapper}>
+                <FaPhoneAlt className={styles.icon} />
+              </div>
+              <span>+49 1577 2158264</span>
+            </div>
+            <div className={styles.contactItem}>
+              <div className={styles.iconWrapper}>
+                <FaEnvelope className={styles.icon} />
+              </div>
+              <span>gheorghe.93@icloud.com</span>
+            </div>
+            <div className={styles.contactItem}>
+              <div className={styles.iconWrapper}>
+                <FaMapMarkerAlt className={styles.icon} />
+              </div>
+              <span>Fürstenfeldbruck, Deutschland</span>
+            </div>
+            <div className={styles.contactItem}>
+              <div className={styles.iconWrapper}>
+                <FaBirthdayCake className={styles.icon} />
+              </div>
+              <span>{age} Jahre</span>
+            </div>
+          </div>
         </motion.div>
       </div>
     </header>

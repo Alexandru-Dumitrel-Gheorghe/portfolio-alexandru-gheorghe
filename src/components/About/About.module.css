@@ -1,25 +1,45 @@
+@import "../../styles/variables.css";
+
 .aboutSection {
   position: relative;
-  padding-bottom: 5rem;
+  /* Mai puțin padding sus și jos */
+  padding: 5rem 2rem 3rem;
   overflow: hidden;
   background: linear-gradient(135deg, #eef2ff, #f0fdfa);
+  text-align: center;
 }
 
-/* Containerul principal */
+/* Container principal */
 .container {
   position: relative;
   z-index: 2;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 8rem 2rem 2rem;
-  text-align: center;
 }
 
-/* Titlu secțiune */
+/* Header de secțiune (titlu, subtitlu, linie decorativă) */
+.sectionHeader {
+  margin-bottom: 3rem;
+}
+
 .title {
   font-size: 2rem;
   color: #1e293b;
-  margin-bottom: 2rem;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #64748b;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.decorLine {
+  width: 80px;
+  height: 3px;
+  background-color: #3b82f6;
+  margin: 0 auto;
+  border-radius: 2px;
 }
 
 /* Grid cu cardurile */
@@ -28,26 +48,45 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   align-items: start;
+  /* Opțional: un background discret sub carduri
+     background: rgba(255, 255, 255, 0.4);
+     backdrop-filter: blur(10px);
+     border-radius: 12px;
+     padding: 2rem; 
+   */
 }
 
-/* Indicator de scroll down */
+/* Indicator de scroll (cerc + săgeată animată) */
 .scrollIndicator {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
 }
 
+.scrollCircle {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #3b82f6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Săgeată mică */
 .arrow {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  border-bottom: 3px solid #3b82f6;
-  border-right: 3px solid #3b82f6;
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid #3b82f6;
+  border-right: 2px solid #3b82f6;
   transform: rotate(45deg);
 }
 
 /* Media Queries */
 @media (max-width: 1024px) {
-  .container {
-    padding: 6rem 2rem 2rem;
+  .aboutSection {
+    padding: 4rem 1.5rem 2.5rem;
   }
 }
 
@@ -55,13 +94,19 @@
   .columns {
     grid-template-columns: 1fr;
   }
-  .container {
-    padding: 8rem 1rem 2rem;
+  .sectionHeader {
+    margin-bottom: 2rem;
   }
 }
 
 @media (max-width: 480px) {
   .title {
     font-size: 1.8rem;
+  }
+  .subtitle {
+    font-size: 0.9rem;
+  }
+  .aboutSection {
+    padding: 3.5rem 1rem 2rem;
   }
 }

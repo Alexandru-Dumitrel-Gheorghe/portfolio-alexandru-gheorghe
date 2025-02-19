@@ -1,88 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 @import "../../styles/variables.css";
 
+/* Keyframe pentru fade-in */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Reset & font settings */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Containerul secțiunii */
 .projects {
   padding: var(--padding);
-  background-color: var(--background-color-light);
+  background: linear-gradient(135deg, #eef2ff 0%, #f0fdfa 50%, #ebf4ff 100%);
   color: var(--text-color);
-  margin-top: 40px;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
 }
 
-.heading {
+/* Container pentru titlu și categorii */
+.headerContainer {
   text-align: center;
-  font-size: var(--font-size-large);
-  color: var(--primary-color);
   margin-bottom: 2rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
-/* Galeria de proiecte */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem;
-}
-
-/* Card proiect */
-.projectItem {
+/* Titlu principal */
+.heading {
   position: relative;
-  cursor: pointer;
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  display: inline-block;
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0 auto 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
 }
 
-.projectItem:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.projectImage {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  transition: transform var(--transition-speed);
-}
-
-.projectItem:hover .projectImage {
-  transform: scale(1.05);
-}
-
-/* Overlay la hover */
-.overlay {
+.heading::after {
+  content: "";
   position: absolute;
-  bottom: 0;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent-color);
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.heading:hover::after {
+  width: 100px;
+  opacity: 1;
+}
+
+/* Grid pentru cardurile de categorii (Frontend, Backend, UI/UX) */
+.techCategories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-bottom: 70px;
+}
+
+/* Card individual de categorie */
+.categoryCard {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.categoryCard h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
+}
+
+.categoryCard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.categoryCard li {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  display: flex;
+  align-items: center;
+}
+
+/* Iconițele react-icons (HTML5, CSS3, etc.) */
+.iconTech {
+  margin-right: 0.4rem;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.iconTech:hover {
+  transform: scale(1.2);
+}
+
+/* Emoji custom (UI/UX, Figma, Miro) */
+.customIcon {
+  margin-right: 0.4rem;
+  font-size: 1.1rem;
+  transition: transform 0.3s ease;
+}
+
+.customIcon:hover {
+  transform: scale(1.2);
+}
+
+/* Containerul proiectelor (cercuri + imagini la hover) */
+.projectsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 15px;
+  min-height: 450px;
+  padding-bottom: 1rem;
+  overflow: visible;
+}
+
+/* Card-ul de proiect (cercul mic) */
+.iconImage {
+  position: relative;
+  height: 70px;
+  width: 70px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 0;
+}
+
+.iconImage:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+/* Imaginea mică (avatar) */
+.icon {
+  position: relative;
+  height: 70px;
+  width: 70px;
+}
+
+.icon img {
+  position: absolute;
+  height: 95%;
+  width: 95%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--primary-color);
+  opacity: 0;
+  animation: fadeIn 0.8s forwards ease-in;
+}
+
+/* Imaginea mare afișată la hover */
+.hoverImage {
+  position: absolute;
+  height: 350px;
+  width: 300px;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 25px;
+  pointer-events: none;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.5s ease, left 0.5s ease;
+  transition-delay: 0s, 0.5s;
+}
+
+.hoverImage img {
+  position: absolute;
+  height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.65);
-  color: #fff;
+  object-fit: cover;
+  border: 3px solid #fff;
+  border-radius: 25px;
+  opacity: 0.95;
+}
+
+/* Efect de "pop" și evidențiere la hover */
+.iconImage:hover .hoverImage {
+  left: -200px;
+  transform: translateX(80px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+  z-index: 999;
+  transition-delay: 0s, 0.5s;
+}
+
+/* Conținutul text din overlay-ul hover */
+.hoverImage .content {
+  position: absolute;
+  width: 100%;
+  bottom: -10px;
+  padding: 0 10px;
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  left: 50%;
+  bottom: -7px;
+  transform: rotate(45deg) translateX(-50%);
+  z-index: -1;
+}
+
+.details {
+  position: relative;
+  background: #fff;
   padding: 10px;
+  border-radius: 12px;
   text-align: center;
   opacity: 0;
-  transform: translateY(100%);
-  transition: transform var(--transition-speed), opacity var(--transition-speed);
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: all 0.5s ease;
+  transition-delay: 0.9s;
 }
 
-.projectItem:hover .overlay {
+.iconImage:hover .details {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(4px);
+  pointer-events: auto;
 }
 
-.projectTitle {
-  margin: 0;
-  font-size: 1.2rem;
+.details::before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  left: 50%;
+  bottom: -15px;
+  transform: rotate(45deg) translateX(-50%);
+  z-index: -1;
 }
 
-.linkIcon {
+/* Textul de titlu și subtitlu */
+.name {
   font-size: 1rem;
-  margin-left: 0.5rem;
+  font-weight: 500;
 }
 
-/* Modal Styles */
+.job {
+  font-size: 0.9rem;
+  color: var(--accent-color);
+  margin: -3px 0 5px;
+}
+
+/* Link-uri în overlay */
+.details a {
+  display: inline-block;
+  margin-top: 4px;
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+
+.details a:hover {
+  color: var(--primary-color);
+}
+
+/* Modal */
 .modal {
   position: fixed;
   top: 0;
@@ -93,7 +297,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 9999;
   padding: 1rem;
 }
 
@@ -163,6 +367,7 @@
   margin-bottom: 1rem;
 }
 
+/* Secțiunea de tehnologii (badge-uri în modal) */
 .technologies {
   display: flex;
   flex-wrap: wrap;
@@ -184,6 +389,7 @@
   margin-left: 0.3rem;
 }
 
+/* Link-uri din modal */
 .links {
   display: flex;
   gap: 1rem;
@@ -205,9 +411,66 @@
   color: var(--accent-color);
 }
 
-/* Responsive */
+/* Responsivity */
 @media (max-width: 768px) {
-  .projectImage {
-    height: 180px;
+  .iconImage {
+    height: 60px;
+    width: 60px;
+  }
+  .icon img {
+    height: 90%;
+    width: 90%;
+  }
+  .hoverImage {
+    height: 280px;
+    width: 240px;
+    bottom: 80px;
+  }
+  .projectsContainer {
+    gap: 10px;
+  }
+  .details a {
+    font-size: 0.85rem;
+  }
+  .job {
+    font-size: 0.8rem;
+  }
+  /* Mărirea puțin a elementelor din modal */
+  .modalContent {
+    padding: 1.5rem;
+  }
+  .modalTitle {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .iconImage {
+    height: 50px;
+    width: 50px;
+  }
+  .icon img {
+    height: 85%;
+    width: 85%;
+  }
+  .hoverImage {
+    height: 220px;
+    width: 180px;
+    bottom: 70px;
+  }
+  .name {
+    font-size: 0.9rem;
+  }
+  .job {
+    font-size: 0.75rem;
+  }
+  .details a {
+    font-size: 0.8rem;
+  }
+  .modalContent {
+    padding: 1rem;
+  }
+  .modalTitle {
+    font-size: 1.4rem;
   }
 }
