@@ -122,7 +122,7 @@
 
 .contactPanel {
   width: 100%;
-  background-color: #ffffff;
+  background-color: #272222;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   padding: 1rem 1.5rem;
@@ -164,7 +164,7 @@
 .title {
   font-size: 2.4rem;
   font-weight: bold;
-  color: #1e293b;
+  color: #1e293b ;
   line-height: 1.4;
   margin-bottom: 0.5rem;
 }
@@ -191,7 +191,9 @@
   margin-bottom: 1rem;
   max-width: 500px;
 }
-
+.contactInfoCard h3{
+  color: #272222;
+}
 /* Buton CTA */
 .ctaButton {
   display: inline-block;

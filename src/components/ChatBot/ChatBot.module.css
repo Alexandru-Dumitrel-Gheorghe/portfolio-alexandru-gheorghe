@@ -41,25 +41,28 @@
 }
 
 /* Layout principal: sidebar + container de chat */
+/* Lățimea maximă redusă la 900px */
 .chatLayout {
   display: flex;
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px; /* redus de la 1200px */
   gap: 1rem;
   margin: 0 auto;
 }
 
 /* Sidebar */
+/* Lățimea fixă scăzută la 220px (în loc de 250px) */
 .sidebar {
-  flex: 0 0 250px;
+  flex: 0 0 220px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 15px var(--shadow);
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  height: 800px;
-  max-height: 80vh;
+  /* Înălțimea scăzută la 600px (în loc de 800px) */
+  height: 600px;
+  max-height: 70vh;
   overflow: hidden;
 }
 
@@ -119,8 +122,9 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 800px;
-  max-height: 80vh;
+  /* Înălțimea scăzută la 600px (în loc de 800px) */
+  height: 600px;
+  max-height: 70vh;
 }
 
 /* Fereastra de chat */
@@ -307,7 +311,7 @@
 /* Ajustări responsive */
 @media (max-width: 1000px) {
   .sidebar {
-    flex: 0 0 220px;
+    flex: 0 0 200px;
   }
 }
 @media (max-width: 850px) {
@@ -323,7 +327,7 @@
   }
   .chatContainer {
     width: 95%;
-    height: 80vh;
+    height: 70vh;
   }
 }
 @media (max-width: 500px) {

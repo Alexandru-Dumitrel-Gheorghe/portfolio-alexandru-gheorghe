@@ -1,476 +1,314 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-@import "../../styles/variables.css";
 
-/* Keyframe pentru fade-in */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+.projectsSection {
+  padding: 4rem 2rem;
+  background: #f9f9f9;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
 }
 
-/* Reset & font settings */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-}
-
-/* Containerul secțiunii */
-.projects {
-  padding: var(--padding);
-  background: linear-gradient(135deg, #eef2ff 0%, #f0fdfa 50%, #ebf4ff 100%);
-  color: var(--text-color);
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
-}
-
-/* Container pentru titlu și categorii */
-.headerContainer {
+.header {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-/* Titlu principal */
-.heading {
-  position: relative;
-  display: inline-block;
-  font-size: 2rem;
-  color: var(--primary-color);
-  margin: 0 auto 2rem;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-align: center;
-}
-
-.heading::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: var(--accent-color);
-  border-radius: 2px;
-  opacity: 0;
-  transition: opacity 0.3s ease, width 0.3s ease;
-}
-
-.heading:hover::after {
-  width: 100px;
-  opacity: 1;
-}
-
-/* Grid pentru cardurile de categorii (Frontend, Backend, UI/UX) */
-.techCategories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-  margin-bottom: 70px;
-}
-
-/* Card individual de categorie */
-.categoryCard {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
-  text-align: left;
-}
-
-.categoryCard h4 {
-  font-size: 1.2rem;
+.header h1 {
+  font-size: 2.5rem;
   margin-bottom: 0.5rem;
-  color: var(--primary-color);
+  color: #333;
 }
 
-.categoryCard ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.header p {
+  font-size: 1.2rem;
+  color: #777;
 }
 
-.categoryCard li {
-  font-size: 0.95rem;
-  margin-bottom: 0.3rem;
-  display: flex;
-  align-items: center;
-}
-
-/* Iconițele react-icons (HTML5, CSS3, etc.) */
-.iconTech {
-  margin-right: 0.4rem;
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
-}
-
-.iconTech:hover {
-  transform: scale(1.2);
-}
-
-/* Emoji custom (UI/UX, Figma, Miro) */
-.customIcon {
-  margin-right: 0.4rem;
-  font-size: 1.1rem;
-  transition: transform 0.3s ease;
-}
-
-.customIcon:hover {
-  transform: scale(1.2);
-}
-
-/* Containerul proiectelor (cercuri + imagini la hover) */
-.projectsContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 15px;
-  min-height: 450px;
-  padding-bottom: 1rem;
-  overflow: visible;
-}
-
-/* Card-ul de proiect (cercul mic) */
-.iconImage {
-  position: relative;
-  height: 70px;
-  width: 70px;
-  cursor: pointer;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  z-index: 0;
-}
-
-.iconImage:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-}
-
-/* Imaginea mică (avatar) */
-.icon {
-  position: relative;
-  height: 70px;
-  width: 70px;
-}
-
-.icon img {
-  position: absolute;
-  height: 95%;
-  width: 95%;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid var(--primary-color);
-  opacity: 0;
-  animation: fadeIn 0.8s forwards ease-in;
-}
-
-/* Imaginea mare afișată la hover */
-.hoverImage {
-  position: absolute;
-  height: 350px;
-  width: 300px;
-  bottom: 100px;
-  left: 50%;
-  transform: translateX(-50%);
-  border-radius: 25px;
-  pointer-events: none;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-  transition: transform 0.5s ease, left 0.5s ease;
-  transition-delay: 0s, 0.5s;
-}
-
-.hoverImage img {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  border: 3px solid #fff;
-  border-radius: 25px;
-  opacity: 0.95;
-}
-
-/* Efect de "pop" și evidențiere la hover */
-.iconImage:hover .hoverImage {
-  left: -200px;
-  transform: translateX(80px) scale(1.03);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-  z-index: 999;
-  transition-delay: 0s, 0.5s;
-}
-
-/* Conținutul text din overlay-ul hover */
-.hoverImage .content {
-  position: absolute;
-  width: 100%;
-  bottom: -10px;
-  padding: 0 10px;
-}
-
-.content::before {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  background: #fff;
-  left: 50%;
-  bottom: -7px;
-  transform: rotate(45deg) translateX(-50%);
-  z-index: -1;
-}
-
-.details {
-  position: relative;
-  background: #fff;
-  padding: 10px;
-  border-radius: 12px;
+/* Container für die Filter-Buttons */
+.filterContainer {
   text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(10px);
-  transition: all 0.5s ease;
-  transition-delay: 0.9s;
+  margin-bottom: 1rem;
 }
 
-.iconImage:hover .details {
-  opacity: 1;
-  transform: translateY(4px);
-  pointer-events: auto;
-}
-
-.details::before {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  background: #fff;
-  left: 50%;
-  bottom: -15px;
-  transform: rotate(45deg) translateX(-50%);
-  z-index: -1;
-}
-
-/* Textul de titlu și subtitlu */
-.name {
-  font-size: 1rem;
+.filterButton {
+  background: #eee;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  margin: 0 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
   font-weight: 500;
 }
 
-.job {
-  font-size: 0.9rem;
-  color: var(--accent-color);
-  margin: -3px 0 5px;
+.filterButton:hover,
+.filterButton:focus {
+  background: #ddd;
+  transform: scale(1.02);
+  outline: none;
 }
 
-/* Link-uri în overlay */
-.details a {
-  display: inline-block;
-  margin-top: 4px;
-  text-decoration: none;
-  color: #333;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
+.activeFilter {
+  background: #1e40af;
+  color: #fff;
 }
 
-.details a:hover {
-  color: var(--primary-color);
+/* Suchleiste */
+.searchContainer {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-/* Modal */
-.modal {
+.searchInput {
+  width: 80%;
+  max-width: 400px;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
+}
+
+.searchInput:focus {
+  border-color: #1e40af;
+  outline: none;
+}
+
+/* Grid für mehrere Projekte */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Wenn <= 3 Projekte, machen wir sie quadratisch und begrenzen die Breite */
+.squareGrid {
+  display: grid;
+  /* Jede Spalte: min. 280px, max. 400px */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 400px));
+  /* Zentrieren der Cards */
+  justify-content: center;
+  gap: 2rem;
+}
+
+.squareGrid .projectCard {
+  aspect-ratio: 1 / 1; /* Card wird quadratisch */
+  width: 100%;         /* füllt die Spalte */
+}
+
+.squareGrid .projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Projekt-Card */
+.projectCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Standardbild-Größe (falls kein squareGrid) */
+.projectImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Overlay am unteren Rand der Card */
+.cardOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* Am mărit opacitatea gradientului la 0.8 pentru un contrast mai bun */
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  color: #fff;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.projectCard:hover .cardOverlay {
+  opacity: 1;
+}
+
+.projectTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  /* Umbra textului pentru lizibilitate pe fundalul închis */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Modal-Backdrop */
+.modalBackdrop {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
-  padding: 1rem;
+  z-index: 1000;
 }
 
+/* Modal-Content */
 .modalContent {
-  background-color: #fff;
+  background: #fff;
   padding: 2rem;
-  border-radius: var(--border-radius);
-  max-width: 800px;
-  width: 100%;
+  border-radius: 12px;
+  max-width: 500px; /* Maximalbreite reduziert */
+  width: 90%;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   position: relative;
-  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.modalContent:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.close {
+/* Schließen-Button im Modal */
+.modalClose {
   position: absolute;
   top: 1rem;
-  right: 1.5rem;
-  font-size: 2rem;
-  cursor: pointer;
-  background: none;
+  right: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #fff;
   border: none;
-  color: var(--primary-color);
-  transition: color var(--transition-speed);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.close:hover {
-  color: var(--accent-color);
+.modalClose:hover,
+.modalClose:focus {
+  background-color: #f2f2f2;
+  transform: scale(1.1);
+  color: #e74c3c;
+  outline: none;
 }
 
 .modalImage {
   width: 100%;
   height: auto;
-  border-radius: var(--border-radius);
+  border-radius: 8px;
   margin-bottom: 1rem;
 }
 
 .modalTitle {
-  margin-top: 0;
-  font-size: 1.8rem;
-  color: var(--primary-color);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
 }
 
 .modalDescription {
   font-size: 1rem;
-  color: var(--text-color);
   margin-bottom: 1.5rem;
+  color: #555;
 }
 
-.featuresHeading {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: var(--primary-color);
-}
-
-.featuresList {
-  list-style: disc;
-  padding-left: 1.5rem;
-  text-align: left;
-  margin-bottom: 1rem;
-}
-
-/* Secțiunea de tehnologii (badge-uri în modal) */
-.technologies {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0;
-}
-
-.tech {
-  display: flex;
-  align-items: center;
-  background-color: var(--secondary-color);
-  color: #fff;
-  padding: 0.4rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.9rem;
-}
-
-.techLabel {
-  margin-left: 0.3rem;
-}
-
-/* Link-uri din modal */
-.links {
+.modalLinks {
+  margin-bottom: 1.5rem;
   display: flex;
   gap: 1rem;
-  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
 .linkButton {
   text-decoration: none;
-  color: var(--primary-color);
+  background: #1e40af;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.linkButton:hover,
+.linkButton:focus {
+  background: #163172;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.featuresHeading {
+  font-size: 1.2rem;
   font-weight: bold;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  transition: color var(--transition-speed);
+  margin-bottom: 0.5rem;
+  color: #333;
 }
 
-.linkButton:hover {
-  color: var(--accent-color);
+.featuresList {
+  margin-bottom: 1.5rem;
+  list-style: disc;
+  padding-left: 1.5rem;
+  color: #555;
 }
 
-/* Responsivity */
+/* Technologien-Badges */
+.projectTech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.techBadge {
+  background: #1e40af;
+  color: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  .iconImage {
-    height: 60px;
-    width: 60px;
+  .projectImage {
+    height: 180px;
   }
-  .icon img {
-    height: 90%;
-    width: 90%;
-  }
-  .hoverImage {
-    height: 280px;
-    width: 240px;
-    bottom: 80px;
-  }
-  .projectsContainer {
-    gap: 10px;
-  }
-  .details a {
-    font-size: 0.85rem;
-  }
-  .job {
-    font-size: 0.8rem;
-  }
-  /* Mărirea puțin a elementelor din modal */
   .modalContent {
     padding: 1.5rem;
   }
   .modalTitle {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 }
 
 @media (max-width: 480px) {
-  .iconImage {
-    height: 50px;
-    width: 50px;
+  .projectImage {
+    height: 150px;
   }
-  .icon img {
-    height: 85%;
-    width: 85%;
+  .header h1 {
+    font-size: 2rem;
   }
-  .hoverImage {
-    height: 220px;
-    width: 180px;
-    bottom: 70px;
-  }
-  .name {
-    font-size: 0.9rem;
-  }
-  .job {
-    font-size: 0.75rem;
-  }
-  .details a {
-    font-size: 0.8rem;
+  .header p {
+    font-size: 1rem;
   }
   .modalContent {
     padding: 1rem;
   }
   .modalTitle {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
+  }
+  .searchInput {
+    width: 90%;
   }
 }
